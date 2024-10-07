@@ -1,4 +1,4 @@
-import {INodeProperties} from 'n8n-workflow';
+import { INodeProperties } from 'n8n-workflow';
 
 import {
 	createSubscriberFields,
@@ -51,7 +51,7 @@ export const klickTippOperations: INodeProperties[] = [
 							{
 								type: 'setKeyValue',
 								properties: {
-									tagId: '={{$responseItem.id}}',
+									tagId: '={{$responseItem}}',
 									klicktippSessionId: '={{$json["klicktippSessionId"]}}',
 									klicktippSessionName: '={{$json["klicktippSessionName"]}}',
 								},
@@ -350,8 +350,8 @@ export const klickTippOperations: INodeProperties[] = [
 							{
 								type: 'setKeyValue',
 								properties: {
-									'klicktippSessionId': '={{$responseItem.sessid}}',
-									'klicktippSessionName': '={{$responseItem.session_name}}',
+									klicktippSessionId: '={{$responseItem.sessid}}',
+									klicktippSessionName: '={{$responseItem.session_name}}',
 								},
 							},
 						],
@@ -370,9 +370,6 @@ export const klickTippOperations: INodeProperties[] = [
 						headers: {
 							'Cookie': '={{$json["klicktippSessionName"]}}={{$json["klicktippSessionId"]}}',
 						},
-						body: {
-							debug: '={{$getWorkflowStaticData("node").klickTippSessionName}}'
-						},
 						json: true,
 					},
 					output: {
@@ -381,15 +378,18 @@ export const klickTippOperations: INodeProperties[] = [
 								type: 'setKeyValue',
 								properties: {
 									success: '={{!$responseItem.error}}',
+									// Reset session variables
+									klicktippSessionId: '',
+									klicktippSessionName: 'null',
 								},
-							},
+							}
 						],
 					},
 				},
 				action: 'Logout',
 			},
 			{
-				name: 'Redirect Subscription Process',
+				name: 'Fetch redirection URL',
 				value: 'redirectSubscriptionProcess',
 				description: 'Fetch redirection URL from KlickTipp API',
 				routing: {
