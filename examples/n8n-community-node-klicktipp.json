@@ -1,0 +1,1833 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "username": "",
+        "password": "",
+        "requestOptions": {}
+      },
+      "id": "7f6db8be-6c2d-47fe-bfd1-503576d6eebf",
+      "name": "KlickTipp",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "1d07dfbb-f029-48df-94c9-00da3d71b82e",
+      "name": "KlickTipp2",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fetchSubscriptionProcesses",
+        "requestOptions": {}
+      },
+      "id": "0e60197c-2827-42c7-a6c5-5ead70e13c50",
+      "name": "KlickTipp1",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -180,
+        60
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "90c68925-1e8d-42c7-aff6-36532ba5fa54",
+      "name": "KlickTipp3",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getSubscriptionProcess",
+        "listId": "={{ $json[\"listId\"] }}",
+        "requestOptions": {}
+      },
+      "id": "ecbeadd9-5430-48a9-854c-eecdb4de4c9f",
+      "name": "KlickTipp4",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -40,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "7eb1ddec-4f7e-4615-bad1-70052a36e7ae",
+      "name": "KlickTipp5",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        100,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"listId\"] = 353458;\n\nreturn items;"
+      },
+      "id": "ae91d55c-2b9a-4641-9d9b-193812223c38",
+      "name": "Set List ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        240
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "52fd7e59-5a79-4b05-8ae2-17810e3575ce",
+      "name": "KlickTipp6",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "redirectSubscriptionProcess",
+        "listId": "={{ $json[\"listId\"] }}",
+        "email": "={{ $json[\"email\"] }}",
+        "requestOptions": {}
+      },
+      "id": "9664f0da-b092-43f4-a378-d69c5d8c291b",
+      "name": "KlickTipp7",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        100,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "5cd2fb47-d668-43c0-9fe4-7602874d77bc",
+      "name": "KlickTipp8",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        240,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"listId\"] = 353458;\n\nreturn items;"
+      },
+      "id": "012e3b25-4eb2-4810-80d5-b9a64b80aea8",
+      "name": "Set List ID2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -180,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"princejames.glen@milkads.org\";\n\nreturn items;"
+      },
+      "id": "2f95e921-aed4-45c1-8911-6d5f5a4c50a4",
+      "name": "Set Email",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -40,
+        420
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "1fe31e3d-f017-46e9-b047-8da70d10a991",
+      "name": "KlickTipp9",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fetchTags",
+        "requestOptions": {}
+      },
+      "id": "d02912de-a0ed-4a7f-b8ca-0f2fd1ca8e7e",
+      "name": "KlickTipp10",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "24385a55-5c4e-42fc-a934-a5be72e25e1b",
+      "name": "KlickTipp11",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        720
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "c6fa9656-9d46-46df-ae3c-072708066f37",
+      "name": "KlickTipp12",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "createTag",
+        "name": "= {{ $json[\"name\"] }}",
+        "text": "= {{ $json[\"text\"] }}",
+        "requestOptions": {}
+      },
+      "id": "9f53ba00-e84e-49d1-a47f-e47cbed12881",
+      "name": "KlickTipp13",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "c30d0485-bec8-405b-8a2e-96ceed4197b7",
+      "name": "KlickTipp14",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"name\"] = \"Lorem Ipsum Test\";\n\nreturn items;"
+      },
+      "id": "4b87011a-d116-4343-8ef4-0a64128685e9",
+      "name": "Set Tag Name",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"text\"] = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sem turpis, ultricies at finibus eget, ultricies a mauris. Pellentesque pharetra tellus eu commodo vulputate.\";\n\nreturn items;"
+      },
+      "id": "012d08cd-0041-4c83-ba96-2b982508e575",
+      "name": "Set Tag Description",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        880
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "4b422e0d-afa6-4bc6-b8c6-2d2c9270b687",
+      "name": "KlickTipp15",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getTag",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "requestOptions": {}
+      },
+      "id": "bf3e8f51-03f1-41f3-9f30-51f2a1575a26",
+      "name": "KlickTipp16",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "735c4fff-b774-44f5-9636-91579eecfffa",
+      "name": "KlickTipp17",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId\"] = 12135270;\n\nreturn items;"
+      },
+      "id": "75958ebd-79dc-475f-a46e-a592690e05cb",
+      "name": "Set Tag ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1040
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "f996a183-d1ff-4799-b157-585a64860712",
+      "name": "KlickTipp18",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "updateTag",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "name": "={{ $json[\"name\"] }}",
+        "text": "={{ $json[\"text\"] }}",
+        "requestOptions": {}
+      },
+      "id": "51b47112-8c41-44ab-a889-6c622b094852",
+      "name": "KlickTipp19",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "38f9f0c2-0d74-47a0-8a0f-9852e88e58ce",
+      "name": "KlickTipp20",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        360,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId\"] = 12135270;\n\nreturn items;"
+      },
+      "id": "dbea6789-2156-4659-9ba5-58545f435c5b",
+      "name": "Set Tag ID1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"name\"] = \"Lorem Ipsum Test\";\n\nreturn items;"
+      },
+      "id": "4bc53012-7b10-4876-ac8d-2945d161f3bd",
+      "name": "Set Tag Name1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"text\"] = \"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur sem turpis, ultricies at finibus eget, ultricies a mauris. Pellentesque pharetra tellus eu commodo vulputate.\";\n\nreturn items;"
+      },
+      "id": "56614ab3-7011-4507-b3d5-4e4d21ed4bc9",
+      "name": "Set Tag Description1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        80,
+        1200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId\"] = 12135270;\n\nreturn items;"
+      },
+      "id": "09ca541d-c12f-4104-8de8-b01bd371d2b0",
+      "name": "Set Tag ID2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "deleteTag",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "requestOptions": {}
+      },
+      "id": "cf694616-fdf8-48b4-83bb-a2719b648958",
+      "name": "KlickTipp21",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "aa10fe8f-3ca1-4ce4-9a0b-7e8240cb8b84",
+      "name": "KlickTipp22",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "b2803408-11e7-4ead-af5f-858e729cb743",
+      "name": "KlickTipp23",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1360
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "c60ef3da-98ef-4032-ac40-c3859c49a9ac",
+      "name": "KlickTipp24",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "tagEmail",
+        "email": "={{ $json[\"email\"] }}",
+        "tagIds": {
+          "tagIdValues": [
+            {
+              "tagId": "12042204"
+            }
+          ]
+        },
+        "requestOptions": {}
+      },
+      "id": "53effc3a-eb3b-4177-9a27-ae422aec32f9",
+      "name": "KlickTipp25",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "d7fd8330-6520-49d2-ab5e-1d5bc39d26e2",
+      "name": "KlickTipp26",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"pererat171@rinseart.com\";\n\nreturn items;"
+      },
+      "id": "80805981-a1b3-4d85-8eac-db98d83022d2",
+      "name": "Set Email1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId1\"] = 12042204;\n\nreturn items;"
+      },
+      "id": "1fb007ef-209c-4b8d-b8dc-2a7958e5bb1f",
+      "name": "Set Tag IDs",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1520
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "c0f0ba06-734a-4bf5-a7d9-3708c867d36a",
+      "name": "KlickTipp27",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "untagEmail",
+        "email": "={{ $json[\"email\"] }}",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "requestOptions": {}
+      },
+      "id": "c5a213f6-9308-4b2b-97b4-223c48099f90",
+      "name": "KlickTipp28",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "ba6ca731-8540-48f2-bc36-194789a1f3d5",
+      "name": "KlickTipp29",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"pererat171@rinseart.com\";\n\nreturn items;"
+      },
+      "id": "84c58a2d-0829-46b6-917f-030525efd71c",
+      "name": "Set Email2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId\"] = 12042204;\n\nreturn items;"
+      },
+      "id": "6b366b75-1749-4198-a7f2-e14cbbee3dbe",
+      "name": "Set Tag ID3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        1700
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "7f0a1b93-350b-4717-9e46-1101fcd9ee52",
+      "name": "KlickTipp30",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fetchFields",
+        "requestOptions": {}
+      },
+      "id": "3159aee4-5f32-4cca-910e-cfe978fbed4e",
+      "name": "KlickTipp31",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "ac459c9f-21c7-455f-b3ec-87e2a1b469a0",
+      "name": "KlickTipp32",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        1960
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "12b525ab-8771-4646-aee1-afc580f90afd",
+      "name": "KlickTipp33",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subscribe",
+        "email": "={{ $json[\"email\"] }}",
+        "smsNumber": "={{ $json[\"smsNumber\"] }}",
+        "listId": "={{ $json[\"listId\"] }}",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "fields": {},
+        "requestOptions": {}
+      },
+      "id": "f62481d9-e0fd-4f3a-9dae-ba42347c34aa",
+      "name": "KlickTipp34",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        360,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "c3db28ce-5d4d-4e81-9340-0c5303e1a1e0",
+      "name": "KlickTipp35",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        500,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"fapaji6166@rinseart.com\";\n\nreturn items;"
+      },
+      "id": "7dddf756-6fea-4714-83cc-6a284d2ec2d6",
+      "name": "Set Email3",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"smsNumber\"] = 004916317300;\n\nreturn items;"
+      },
+      "id": "57f210b3-9728-4547-b9b1-2a2c86887772",
+      "name": "Set SMS number",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"listId\"] = 353458;\n\nreturn items;"
+      },
+      "id": "f57f24c5-f5f6-463e-8dcd-f36096f99cc2",
+      "name": "Set List ID1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        80,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"tagId\"] = 12071604;\n\nreturn items;"
+      },
+      "id": "0d6e36aa-c24c-4b9a-95d3-fc3ce646e127",
+      "name": "Set Tag ID4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        2200
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"fieldFirstName\"] = \"John\";\n$json[\"fieldLastName\"] = \"Doe\";\n$json[\"fieldCompanyName\"] = \"Doe Industries\";\n$json[\"fieldStreet1\"] = \"123 Main St\";\n$json[\"fieldStreet2\"] = \"Apt 4B\";\n$json[\"fieldCity\"] = \"Anytown\";\n$json[\"fieldState\"] = \"NY\";\n$json[\"fieldZip\"] = \"12345\";\n$json[\"fieldCountry\"] = \"USA\";\n$json[\"fieldPrivatePhone\"] = \"555-1234\";\n$json[\"fieldMobilePhone\"] = \"555-5678\";\n$json[\"fieldPhone\"] = \"555-9876\";\n$json[\"fieldFax\"] = \"555-4321\";\n$json[\"fieldWebsite\"] = \"https://doeindustries.com\";\n$json[\"fieldBirthday\"] = 495986091;\n$json[\"fieldLeadValue\"] = 100;\n\nreturn items;"
+      },
+      "id": "3d863efc-4e2f-4645-a967-dc77fbdc3d71",
+      "name": "Set Fields",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        360,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "28fd1f01-c40a-4aa2-93ad-2d20034dbafb",
+      "name": "KlickTipp36",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "fetchSubscribers",
+        "requestOptions": {}
+      },
+      "id": "800f1983-8f68-41cd-8c19-38b6047ac058",
+      "name": "KlickTipp37",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        2380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "a870a03b-657c-4b8b-bb45-e6a61badc231",
+      "name": "KlickTipp38",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        2380
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "subscribe",
+        "email": "={{ $json[\"email\"] }}",
+        "smsNumber": "={{ $json[\"smsNumber\"] }}",
+        "listId": "={{ $json[\"listId\"] }}",
+        "tagId": "={{ $json[\"tagId\"] }}",
+        "fields": {
+          "fieldBirthday": "={{ $json[\"fieldBirthday\"] }}",
+          "fieldCity": "={{ $json[\"fieldCity\"] }}",
+          "fieldCompanyName": "={{ $json[\"fieldCompanyName\"] }}",
+          "fieldCountry": "={{ $json[\"fieldCountry\"] }}",
+          "fieldFax": "={{ $json[\"fieldFax\"] }}",
+          "fieldFirstName": "={{ $json[\"fieldFirstName\"] }}",
+          "fieldLastName": "={{ $json[\"fieldLastName\"] }}",
+          "fieldLeadValue": "={{ $json[\"fieldLeadValue\"] }}",
+          "fieldMobilePhone": "={{ $json[\"fieldMobilePhone\"] }}",
+          "fieldPhone": "={{ $json[\"fieldPhone\"] }}",
+          "fieldPrivatePhone": "={{ $json[\"fieldPrivatePhone\"] }}",
+          "fieldState": "={{ $json[\"fieldState\"] }}",
+          "fieldStreet1": "={{ $json[\"fieldStreet1\"] }}",
+          "fieldStreet2": "={{ $json[\"fieldStreet2\"] }}",
+          "fieldWebsite": "={{ $json[\"fieldWebsite\"] }}",
+          "fieldZip": "={{ $json[\"fieldZip\"] }}"
+        },
+        "requestOptions": {}
+      },
+      "id": "32933b88-13aa-44bc-b6e6-3a085d51475b",
+      "name": "KlickTipp39",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        500,
+        2060
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "updateSubscriber",
+        "subscriberId": "={{ $json[\"subscriberId\"] }}",
+        "email": "={{ $json[\"newEmail\"] }}",
+        "smsNumber": "={{ $json[\"newSmsNumber\"] }}",
+        "fields": {},
+        "requestOptions": {}
+      },
+      "id": "f2ed2f97-be0a-41f0-b5ab-78d1d88819bc",
+      "name": "KlickTipp40",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        220,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "160aac41-3583-4297-9c3a-c4017cff5988",
+      "name": "KlickTipp41",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        360,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"anshika.catelin@milkads.org\";\n\nreturn items;"
+      },
+      "id": "e3872656-40c8-4999-9865-6f04b24043fa",
+      "name": "Set Email4",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"smsNumber\"] = 004916317377;\n\nreturn items;"
+      },
+      "id": "49e80aa9-f5b1-458e-9005-676c26430550",
+      "name": "Set SMS number1",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "4b392bff-ed5e-48a9-8df4-f024c6d9c806",
+      "name": "KlickTipp42",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"subscriberId\"] = 150022384;\n\nreturn items;"
+      },
+      "id": "8ef4cace-bf46-43aa-b19f-074fe248d71b",
+      "name": "Set Subscribder ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        80,
+        2560
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "searchSubscriber",
+        "email": "={{ $json[\"email\"] }}",
+        "requestOptions": {}
+      },
+      "id": "fbf94f15-8863-451e-b1ff-bfe2dc174014",
+      "name": "KlickTipp43",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        2740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "2fd3e73b-2541-4d19-beb8-3685dbadf5c6",
+      "name": "KlickTipp44",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        2740
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"anshika.catelin@milkads.org\";\n\nreturn items;"
+      },
+      "id": "90a45ea9-79cb-4051-9dc6-8f7e93005006",
+      "name": "Set Email5",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        2740
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "4e067e4c-b1c4-4dea-b0e5-769e3e4b4f3b",
+      "name": "KlickTipp45",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2740
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "getSubscriber",
+        "subscriberId": "={{ $json[\"subscriberId\"] }}",
+        "requestOptions": {}
+      },
+      "id": "d40ed955-707d-4cac-95cc-13b398d326c0",
+      "name": "KlickTipp46",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -60,
+        2920
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "ce4444c8-2685-4115-a5fc-7c9b0d2947b8",
+      "name": "KlickTipp47",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        2920
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "040c4418-f2a2-44b4-847a-b9b70c3e11c3",
+      "name": "KlickTipp48",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        2920
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"subscriberId\"] = 149974952;\n\nreturn items;"
+      },
+      "id": "c84120ce-38ea-44cf-901d-1219ea91a22b",
+      "name": "Set Subscriber ID",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        2920
+      ]
+    },
+    {
+      "parameters": {},
+      "id": "5daf6948-08e3-4885-bcff-ab33128fa7ab",
+      "name": "When clicking ‘Test workflow’",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -580,
+        3140
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "resendAutoresponder",
+        "autoresponderId": "={{ $json[\"autoresponder\"] }}",
+        "email": "={{ $json[\"email\"] }}",
+        "requestOptions": {}
+      },
+      "id": "55c6c2e6-5f8e-413a-87ae-406e7637923d",
+      "name": "KlickTipp49",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        80,
+        3100
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "logout",
+        "requestOptions": {}
+      },
+      "id": "716c4c71-a71a-4df9-80f8-4fb50a926713",
+      "name": "KlickTipp50",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        200,
+        3100
+      ]
+    },
+    {
+      "parameters": {
+        "username": "mchudesnov",
+        "password": "tecatab0m4",
+        "requestOptions": {}
+      },
+      "id": "9e4e2cac-485e-4aa3-bc71-a1ac10a456ae",
+      "name": "KlickTipp51",
+      "type": "CUSTOM.klickTipp",
+      "typeVersion": 1,
+      "position": [
+        -340,
+        3100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"autoresponder\"] = 1614900;\n\nreturn items;"
+      },
+      "id": "93599d06-b45f-494b-bbb1-589155729324",
+      "name": "Set Subscriber ID2",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -60,
+        3100
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "$json[\"email\"] = \"rangler.yadir@milkads.org\";\n\nreturn items;"
+      },
+      "id": "63f29f96-78d7-4c1d-aedd-7b02b1b13e33",
+      "name": "Set Email6",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -200,
+        3100
+      ]
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "KlickTipp": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp1": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp3": {
+      "main": [
+        [
+          {
+            "node": "Set List ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp4": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set List ID": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp6": {
+      "main": [
+        [
+          {
+            "node": "Set List ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp7": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set List ID2": {
+      "main": [
+        [
+          {
+            "node": "Set Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp9": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp10": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp12": {
+      "main": [
+        [
+          {
+            "node": "Set Tag Name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp13": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp14",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag Name": {
+      "main": [
+        [
+          {
+            "node": "Set Tag Description",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag Description": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp15": {
+      "main": [
+        [
+          {
+            "node": "Set Tag ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp16": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag ID": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp18": {
+      "main": [
+        [
+          {
+            "node": "Set Tag ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp19": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag ID1": {
+      "main": [
+        [
+          {
+            "node": "Set Tag Name1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag Name1": {
+      "main": [
+        [
+          {
+            "node": "Set Tag Description1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag Description1": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag ID2": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp21",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp21": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp22",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp23": {
+      "main": [
+        [
+          {
+            "node": "Set Tag ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp24": {
+      "main": [
+        [
+          {
+            "node": "Set Tag IDs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp25": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp26",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email1": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp25",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag IDs": {
+      "main": [
+        [
+          {
+            "node": "Set Email1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp27": {
+      "main": [
+        [
+          {
+            "node": "Set Tag ID3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp28": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp29",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email2": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp28",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag ID3": {
+      "main": [
+        [
+          {
+            "node": "Set Email2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp30": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp31",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp31": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp32",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp33": {
+      "main": [
+        [
+          {
+            "node": "Set Email3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp34": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp35",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email3": {
+      "main": [
+        [
+          {
+            "node": "Set SMS number",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set SMS number": {
+      "main": [
+        [
+          {
+            "node": "Set List ID1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set List ID1": {
+      "main": [
+        [
+          {
+            "node": "Set Tag ID4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tag ID4": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp34",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Fields": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp39",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp36": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp37",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp37": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp38",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp40": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp41",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email4": {
+      "main": [
+        [
+          {
+            "node": "Set SMS number1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set SMS number1": {
+      "main": [
+        [
+          {
+            "node": "Set Subscribder ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp42": {
+      "main": [
+        [
+          {
+            "node": "Set Email4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Subscribder ID": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp40",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp43": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp44",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email5": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp43",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp45": {
+      "main": [
+        [
+          {
+            "node": "Set Email5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp46": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp47",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp48": {
+      "main": [
+        [
+          {
+            "node": "Set Subscriber ID",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Subscriber ID": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp46",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp49": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp50",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "KlickTipp51": {
+      "main": [
+        [
+          {
+            "node": "Set Email6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Subscriber ID2": {
+      "main": [
+        [
+          {
+            "node": "KlickTipp49",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Email6": {
+      "main": [
+        [
+          {
+            "node": "Set Subscriber ID2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When clicking ‘Test workflow’": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "506981d2-721d-4efd-90be-bd1e35aafce3",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d59d135498cc69bb504a352cbe510abdaa93356e0c05ef0ddd5d102de621cc99"
+  },
+  "id": "DZoQEfVCO5EEoWsL",
+  "tags": []
+}
