@@ -1,23 +1,26 @@
 import { INodePropertyOptions } from 'n8n-workflow';
 
-export const searchSubscriber: INodePropertyOptions = {
-	name: 'Search Subscriber',
-	value: 'searchSubscriber',
-	description: 'Search subscriber by email and return subscriber ID',
+export const getSubscriptionProcess: INodePropertyOptions = {
+	name: 'Get Subscription Process',
+	value: 'getSubscriptionProcess',
+	description: 'Get a specific subscription process by its ID from KlickTipp API',
 	routing: {
 		request: {
-			method: 'POST',
-			url: '/subscriber/search',
-			body: {
-				email: '={{$parameter["email"]}}',
-			},
+			method: 'GET',
+			url: '=/list/{{$parameter["listId"]}}',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
 				Cookie: '={{$json["klicktippSessionName"]}}={{$json["klicktippSessionId"]}}',
 			},
+			json: true,
 		},
 		output: {
 			postReceive: [
+				{
+					type: 'setKeyValue',
+					properties: {
+						payload: '={{$responseItem}}',
+					},
+				},
 				{
 					type: 'setKeyValue',
 					properties: {
@@ -29,5 +32,5 @@ export const searchSubscriber: INodePropertyOptions = {
 			],
 		},
 	},
-	action: 'Search subscriber by email',
+	action: 'Get a specific subscription process by ID',
 };

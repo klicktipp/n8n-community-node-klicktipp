@@ -1,18 +1,16 @@
 import { INodePropertyOptions } from 'n8n-workflow';
 
-export const subscribe: INodePropertyOptions = {
-	name: 'Subscribe',
-	value: 'subscribe',
-	description: 'Subscribe an email',
+export const updateSubscriber: INodePropertyOptions = {
+	name: 'Update Subscriber',
+	value: 'updateSubscriber',
+	description: 'Update the subscriber by ID',
 	routing: {
 		request: {
-			method: 'POST',
-			url: '/subscriber',
+			method: 'PUT',
+			url: '=/subscriber/{{$parameter["subscriberId"]}}',
 			body: {
-				email: '={{$parameter["email"]}}',
-				smsnumber: '={{$parameter["smsNumber"] || undefined}}',
-				listid: '={{$parameter["listId"] || undefined}}',
-				tagid: '={{$parameter["tagId"] || undefined}}',
+				newemail: '={{$parameter["email"] || undefined}}',
+				newsmsnumber: '={{$parameter["smsNumber"] || undefined}}',
 				fields: {
 					fieldBirthday: '={{$parameter["fieldBirthday"] || undefined}}',
 					fieldCity: '={{$parameter["fieldCity"] || undefined}}',
@@ -42,7 +40,7 @@ export const subscribe: INodePropertyOptions = {
 				{
 					type: 'setKeyValue',
 					properties: {
-						payload: '={{$responseItem}}',
+						success: '={{!$responseItem.error}}',
 						klicktippSessionId: '={{$json["klicktippSessionId"]}}',
 						klicktippSessionName: '={{$json["klicktippSessionName"]}}',
 					},
@@ -50,5 +48,5 @@ export const subscribe: INodePropertyOptions = {
 			],
 		},
 	},
-	action: 'Subscribe an email',
+	action: 'Update a subscriber by ID',
 };

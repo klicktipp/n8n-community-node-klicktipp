@@ -1,48 +1,48 @@
-import {INodePropertyOptions} from "n8n-workflow";
+import { INodePropertyOptions } from 'n8n-workflow';
 
 export const signIn: INodePropertyOptions = {
-  name: 'Sign In',
-  value: 'signIn',
-  description: 'Subscribe an email using an API key',
-  routing: {
-    request: {
-      method: 'POST',
-      url: '/subscriber/signin',
-      body: {
-        apikey: '={{$parameter["apiKey"]}}',
-        email: '={{$parameter["email"]}}',
-        //smsnumber: '={{$parameter["smsNumber"] || undefined}}',
-        fields: {
-          fieldBirthday: '={{$parameter["fieldBirthday"] || undefined}}',
-          fieldCity: '={{$parameter["fieldCity"] || undefined}}',
-          fieldCompanyName: '={{$parameter["fieldCompanyName"] || undefined}}',
-          fieldCountry: '={{$parameter["fieldCountry"] || undefined}}',
-          fieldFax: '={{$parameter["fieldFax"] || undefined}}',
-          fieldFirstName: '={{$parameter["fieldFirstName"] || undefined}}',
-          fieldLastName: '={{$parameter["fieldLastName"] || undefined}}',
-          fieldLeadValue: '={{$parameter["fieldLeadValue"] || undefined}}',
-          fieldMobilePhone: '={{$parameter["fieldMobilePhone"] || undefined}}',
-          fieldPhone: '={{$parameter["fieldPhone"] || undefined}}',
-          fieldPrivatePhone: '={{$parameter["fieldPrivatePhone"] || undefined}}',
-          fieldState: '={{$parameter["fieldState"] || undefined}}',
-          fieldStreet1: '={{$parameter["fieldStreet1"] || undefined}}',
-          fieldStreet2: '={{$parameter["fieldStreet2"] || undefined}}',
-          fieldWebsite: '={{$parameter["fieldWebsite"] || undefined}}',
-          fieldZip: '={{$parameter["fieldZip"] || undefined}}',
-        },
-      },
-      json: true,
-    },
-    output: {
-      postReceive: [
-        {
-          type: 'setKeyValue',
-          properties: {
-            payload: '={{$responseItem}}'
-          },
-        },
-      ],
-    },
-  },
-  action: 'Sign in',
-}
+	name: 'Sign In',
+	value: 'signIn',
+	description: 'Subscribe an email using an API key',
+	routing: {
+		request: {
+			method: 'POST',
+			url: '/subscriber/signin',
+			body: {
+				apikey: '={{$parameter["apiKey"]}}',
+				email: '={{$parameter["email"]}}',
+				smsnumber: '={{$parameter["smsNumber"] || undefined}}',
+				fields: {
+					fieldBirthday: '={{$parameter["fieldBirthday"] || undefined}}',
+					fieldCity: '={{$parameter["fieldCity"] || undefined}}',
+					fieldCompanyName: '={{$parameter["fieldCompanyName"] || undefined}}',
+					fieldCountry: '={{$parameter["fieldCountry"] || undefined}}',
+					fieldFax: '={{$parameter["fieldFax"] || undefined}}',
+					fieldFirstName: '={{$parameter["fieldFirstName"] || undefined}}',
+					fieldLastName: '={{$parameter["fieldLastName"] || undefined}}',
+					fieldLeadValue: '={{$parameter["fieldLeadValue"] || undefined}}',
+					fieldMobilePhone: '={{$parameter["fieldMobilePhone"] || undefined}}',
+					fieldPhone: '={{$parameter["fieldPhone"] || undefined}}',
+					fieldPrivatePhone: '={{$parameter["fieldPrivatePhone"] || undefined}}',
+					fieldState: '={{$parameter["fieldState"] || undefined}}',
+					fieldStreet1: '={{$parameter["fieldStreet1"] || undefined}}',
+					fieldStreet2: '={{$parameter["fieldStreet2"] || undefined}}',
+					fieldWebsite: '={{$parameter["fieldWebsite"] || undefined}}',
+					fieldZip: '={{$parameter["fieldZip"] || undefined}}',
+				},
+			},
+			json: true,
+		},
+		output: {
+			postReceive: [
+				{
+					type: 'setKeyValue',
+					properties: {
+						payload: '={{$responseItem}}',
+					},
+				},
+			],
+		},
+	},
+	action: 'Sign in',
+};

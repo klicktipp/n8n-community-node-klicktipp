@@ -1,27 +1,24 @@
 import { INodePropertyOptions } from 'n8n-workflow';
 
-export const searchSubscriber: INodePropertyOptions = {
-	name: 'Search Subscriber',
-	value: 'searchSubscriber',
-	description: 'Search subscriber by email and return subscriber ID',
+export const deleteTag: INodePropertyOptions = {
+	name: 'Delete Tag',
+	value: 'deleteTag',
+	description: 'Delete a manual tag in KlickTipp',
 	routing: {
 		request: {
-			method: 'POST',
-			url: '/subscriber/search',
-			body: {
-				email: '={{$parameter["email"]}}',
-			},
+			method: 'DELETE',
+			url: '=/tag/{{$parameter["tagId"]}}',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
 				Cookie: '={{$json["klicktippSessionName"]}}={{$json["klicktippSessionId"]}}',
 			},
+			json: true,
 		},
 		output: {
 			postReceive: [
 				{
 					type: 'setKeyValue',
 					properties: {
-						payload: '={{$responseItem}}',
+						success: '={{!$responseItem.error}}',
 						klicktippSessionId: '={{$json["klicktippSessionId"]}}',
 						klicktippSessionName: '={{$json["klicktippSessionName"]}}',
 					},
@@ -29,5 +26,5 @@ export const searchSubscriber: INodePropertyOptions = {
 			],
 		},
 	},
-	action: 'Search subscriber by email',
+	action: 'Delete a tag',
 };

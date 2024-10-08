@@ -1,8 +1,5 @@
 import { INodeType, INodeTypeDescription } from 'n8n-workflow';
-import {
-	klickTippOperations,
-	klickTippFields
-} from './KlickTippDescription';
+import { klickTippOperations, klickTippFields } from './KlickTippDescription';
 
 export class KlickTipp implements INodeType {
 	description: INodeTypeDescription = {
@@ -24,9 +21,6 @@ export class KlickTipp implements INodeType {
 				'Content-Type': 'application/json',
 			},
 		},
-		properties: [
-			...klickTippOperations,
-			...klickTippFields
-		],
+		properties: [...klickTippOperations, ...klickTippFields],
 	};
 }

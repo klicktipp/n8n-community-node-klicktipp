@@ -1,9 +1,9 @@
 import { INodeProperties } from 'n8n-workflow';
 
 import {
-	createSubscriberFields,
+	subscribeFields,
 	unsubscribeFields,
-	credentialsFields,
+	authFields,
 	updateSubscriberFields,
 	getSubscriberFields,
 	searchSubscriberFields,
@@ -14,13 +14,13 @@ import {
 	getSubscriptionProcessFields,
 	getSubscriptionProcessRedirectionUrlFields,
 	deleteSubscriberFields,
-	tagSubscriber,
-	untagSubscriber,
+	tagEmailFields,
+	untagEmailFields,
 	signInFields,
 	signOffFields,
 	signOutFields,
-	autoresponderFields,
-	getSubscribersByTagIdFields
+	resendAutoresponderFields,
+	getSubscribersByTagIdFields,
 } from './fields';
 
 import {
@@ -45,10 +45,10 @@ import {
 	fetchContactFields,
 	getSubscribersByTagId,
 	fetchSubscriptionProcesses,
-	getSubscriberById,
-	getSubscriptionProcessById,
+	getSubscriber,
+	getSubscriptionProcess,
 	resendAutoresponder,
-	updateSubscriberById,
+	updateSubscriber,
 } from './operation-options';
 
 export const klickTippOperations: INodeProperties[] = [
@@ -79,26 +79,26 @@ export const klickTippOperations: INodeProperties[] = [
 			fetchContactFields,
 			getSubscribersByTagId,
 			fetchSubscriptionProcesses,
-			getSubscriberById,
-			getSubscriptionProcessById,
+			getSubscriber,
+			getSubscriptionProcess,
 			resendAutoresponder,
-			updateSubscriberById,
+			updateSubscriber,
 		],
 		default: 'login',
 	},
 ];
 
 export const klickTippFields: INodeProperties[] = [
-	...credentialsFields,
+	...authFields,
 	...createTagFields,
 	...updateTagFields,
 	...getTagFields,
 	...deleteTagFields,
 	...getSubscriberFields,
 	...searchSubscriberFields,
-	...createSubscriberFields,
-	...tagSubscriber,
-	...untagSubscriber,
+	...subscribeFields,
+	...tagEmailFields,
+	...untagEmailFields,
 	...unsubscribeFields,
 	...updateSubscriberFields,
 	...deleteSubscriberFields,
@@ -107,6 +107,6 @@ export const klickTippFields: INodeProperties[] = [
 	...signInFields,
 	...signOffFields,
 	...signOutFields,
-	...autoresponderFields,
-	...getSubscribersByTagIdFields
+	...resendAutoresponderFields,
+	...getSubscribersByTagIdFields,
 ];

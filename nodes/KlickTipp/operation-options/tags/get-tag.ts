@@ -1,20 +1,17 @@
 import { INodePropertyOptions } from 'n8n-workflow';
 
-export const searchSubscriber: INodePropertyOptions = {
-	name: 'Search Subscriber',
-	value: 'searchSubscriber',
-	description: 'Search subscriber by email and return subscriber ID',
+export const getTag: INodePropertyOptions = {
+	name: 'Get Tag',
+	value: 'getTag',
+	description: 'Get the definition of a specific tag',
 	routing: {
 		request: {
-			method: 'POST',
-			url: '/subscriber/search',
-			body: {
-				email: '={{$parameter["email"]}}',
-			},
+			method: 'GET',
+			url: '=/tag/{{$parameter["tagId"]}}',
 			headers: {
-				'Content-Type': 'application/x-www-form-urlencoded',
 				Cookie: '={{$json["klicktippSessionName"]}}={{$json["klicktippSessionId"]}}',
 			},
+			json: true,
 		},
 		output: {
 			postReceive: [
@@ -29,5 +26,5 @@ export const searchSubscriber: INodePropertyOptions = {
 			],
 		},
 	},
-	action: 'Search subscriber by email',
+	action: 'Get a specific tag by ID',
 };

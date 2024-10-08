@@ -1,15 +1,16 @@
 import { INodePropertyOptions } from 'n8n-workflow';
 
-export const searchSubscriber: INodePropertyOptions = {
-	name: 'Search Subscriber',
-	value: 'searchSubscriber',
-	description: 'Search subscriber by email and return subscriber ID',
+export const updateTag: INodePropertyOptions = {
+	name: 'Update Tag',
+	value: 'updateTag',
+	description: 'Update a manual tag in KlickTipp',
 	routing: {
 		request: {
-			method: 'POST',
-			url: '/subscriber/search',
+			method: 'PUT',
+			url: '=/tag/{{$parameter["tagId"]}}',
 			body: {
-				email: '={{$parameter["email"]}}',
+				name: '={{$parameter["name"]}}',
+				text: '={{$parameter["text"]}}',
 			},
 			headers: {
 				'Content-Type': 'application/x-www-form-urlencoded',
@@ -21,7 +22,7 @@ export const searchSubscriber: INodePropertyOptions = {
 				{
 					type: 'setKeyValue',
 					properties: {
-						payload: '={{$responseItem}}',
+						success: '={{!$responseItem.error}}',
 						klicktippSessionId: '={{$json["klicktippSessionId"]}}',
 						klicktippSessionName: '={{$json["klicktippSessionName"]}}',
 					},
@@ -29,5 +30,5 @@ export const searchSubscriber: INodePropertyOptions = {
 			],
 		},
 	},
-	action: 'Search subscriber by email',
+	action: 'Update a tag by ID',
 };

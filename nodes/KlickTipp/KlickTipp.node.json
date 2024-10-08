@@ -1,14 +1,9 @@
 {
-	"node": "n8n-nodes-base.klickTipp",
+	"node": "n8n-community.klickTipp",
 	"nodeVersion": "1.0",
 	"codexVersion": "1.0",
-	"categories": ["Development", "API"],
+	"categories": ["Marketing", "API", "Email"],
 	"resources": {
-		"credentialDocumentation": [
-			{
-				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
-			}
-		],
 		"primaryDocumentation": [
 			{
 				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
