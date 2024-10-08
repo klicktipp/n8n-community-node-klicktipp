@@ -7,6 +7,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'number',
 		default: '',
 		description: 'The subscriber\'s birthday, represented as a Unix timestamp',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'City',
@@ -14,6 +19,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The city part of the subscriber\'s address',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Company Name',
@@ -21,6 +31,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The name of the subscriber\'s company, if applicable',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Country',
@@ -28,6 +43,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The country part of the subscriber\'s address',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Fax Number',
@@ -35,6 +55,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s fax number',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'First Name',
@@ -42,6 +67,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s first name',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Last Name',
@@ -49,6 +79,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s last name',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Lead Value (Number)',
@@ -56,6 +91,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'number',
 		default: '',
 		description: 'The value assigned to this lead, useful for ranking or prioritizing leads',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Mobile Phone Number',
@@ -63,6 +103,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s mobile phone number',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Phone Number',
@@ -70,6 +115,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s primary phone number',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Private Phone Number',
@@ -77,6 +127,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The subscriber\'s private phone number',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'State/Province',
@@ -84,6 +139,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The state or province part of the subscriber\'s address',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Street Address Line 1',
@@ -91,6 +151,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The primary street address line (e.g., street number and street name)',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Street Address Line 2',
@@ -98,6 +163,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The secondary street address line (e.g., apartment, suite, or unit number)',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'Website URL',
@@ -105,6 +175,11 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The URL of the subscriber\'s website, if applicable',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 	{
 		displayName: 'ZIP/Postal Code',
@@ -112,5 +187,10 @@ export const subscriberCustomFields: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'The ZIP or postal code part of the subscriber\'s address',
+		displayOptions: {
+			show: {
+				operation: ['subscribe', 'updateSubscriber', 'signIn'],
+			},
+		},
 	},
 ];

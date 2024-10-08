@@ -1,13 +1,13 @@
 import { INodeProperties } from 'n8n-workflow';
 
-export const getSubscriptionProcessRedirectionUrl: INodeProperties[]  = [
+export const getSubscriptionProcessRedirectionUrlFields: INodeProperties[]  = [
 	{
 		displayName: 'List ID',
 		name: 'listId',
 		type: 'string',
 		displayOptions: {
 			show: {
-				operation: ['redirectSubscriptionProcess'],
+				operation: ['getSubscriptionProcessRedirectionURL'],
 			},
 		},
 		default: '',
@@ -21,7 +21,7 @@ export const getSubscriptionProcessRedirectionUrl: INodeProperties[]  = [
 		placeholder: 'name@email.com',
 		displayOptions: {
 			show: {
-				operation: ['redirectSubscriptionProcess'],
+				operation: ['getSubscriptionProcessRedirectionURL'],
 			},
 		},
 		default: '',
