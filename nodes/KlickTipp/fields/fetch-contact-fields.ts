@@ -1,5 +1,6 @@
 import { INodeProperties } from 'n8n-workflow';
 
+// could it be that this is never used?
 export const fetchContactFields: INodeProperties[] = [
 	{
 		displayName: 'Birthday (Timestamp)',

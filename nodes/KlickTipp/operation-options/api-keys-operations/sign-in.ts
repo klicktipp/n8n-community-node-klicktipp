@@ -9,6 +9,7 @@ export const signIn: INodePropertyOptions = {
 			method: 'POST',
 			url: '/subscriber/signin',
 			body: {
+				// are the correct parameters being passed => api_key and email_address is from the docs
 				apikey: '={{$parameter["apiKey"]}}',
 				email: '={{$parameter["email"]}}',
 				smsnumber: '={{$parameter["smsNumber"] || undefined}}',

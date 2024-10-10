@@ -57,6 +57,7 @@ export const signInFields: INodeProperties[] = [
 		required: true,
 		description: 'The ID of the subscriber',
 	},
+	// could this be a possible issue when declaring email and sms twice (required/not required)? Or this is intended?
 	{
 		displayName: 'Email',
 		displayOptions: {
