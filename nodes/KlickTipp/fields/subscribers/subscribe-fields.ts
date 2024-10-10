@@ -40,6 +40,18 @@ export const subscribeFields: INodeProperties[] = [
 		description: 'ID of the double opt-in process (list)',
 	},
 	{
+		displayName: 'Tag ID',
+		displayOptions: {
+			show: {
+				operation: ['subscribe'],
+			},
+		},
+		name: 'tagId',
+		type: 'string',
+		default: '',
+		description: 'ID of the tag',
+	},
+	{
 		displayName: 'Birthday (Timestamp)',
 		name: 'fieldBirthday',
 		type: 'number',
