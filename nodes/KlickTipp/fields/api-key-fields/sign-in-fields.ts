@@ -41,47 +41,7 @@ export const signInFields: INodeProperties[] = [
 		name: 'smsNumber',
 		type: 'string',
 		default: '',
-		required: true,
 		description: 'SMS mobile number of the subscriber',
-	},
-	{
-		displayName: 'Subscriber ID',
-		name: 'subscriberId',
-		type: 'string',
-		displayOptions: {
-			show: {
-				operation: ['signIn'],
-			},
-		},
-		default: '',
-		required: true,
-		description: 'The ID of the subscriber',
-	},
-	// could this be a possible issue when declaring email and sms twice (required/not required)? Or this is intended?
-	{
-		displayName: 'Email',
-		displayOptions: {
-			show: {
-				operation: ['signIn'],
-			},
-		},
-		name: 'email',
-		type: 'string',
-		placeholder: 'name@email.com',
-		default: '',
-		description: 'The email address of the subscriber',
-	},
-	{
-		displayName: 'SMS Number',
-		displayOptions: {
-			show: {
-				operation: ['signIn'],
-			},
-		},
-		name: 'smsNumber',
-		type: 'string',
-		default: '',
-		description: 'SMS mobile number of the recipient',
 	},
 	{
 		displayName: 'Birthday (Timestamp)',
