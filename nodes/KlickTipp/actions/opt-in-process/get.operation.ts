@@ -1,10 +1,9 @@
 import type {
-  IDataObject,
   IExecuteFunctions,
   INodeProperties
 } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {handleError, handleResponse, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -33,15 +32,13 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const listId = this.getNodeParameter('listId', index) as string;
 
   if (!listId) {
-    throw new Error('The opt-in process ID is required');
+    return handleError.call(this, 'The opt-in process ID is required.');
   }
 
-  const responseData = await apiRequest.call(this, 'GET', `/list/${listId}`);
-
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
-
-  return executionData;
+  try {
+    const responseData = await apiRequest.call(this, 'GET', `/list/${listId}`);
+    return handleResponse.call(this, responseData, index);
+  } catch (error) {
+    return handleError.call(this, error);
+  }
 }

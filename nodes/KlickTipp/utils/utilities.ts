@@ -1,4 +1,4 @@
-import {IDataObject, IDisplayOptions, INodeProperties} from "n8n-workflow";
+import {IDataObject, IDisplayOptions, IExecuteFunctions, INodeExecutionData, INodeProperties} from "n8n-workflow";
 import NodeCache from 'node-cache';
 
 import { merge, reduce } from 'lodash';
@@ -44,3 +44,19 @@ export function clearCache(keys?: string[]) {
 }
 
 export { cache };
+
+export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
+  return this.helpers.returnJsonArray({
+    success: false,
+    error: (error as Error).message || 'Undefined error',
+  });
+}
+
+export function handleResponse(this: IExecuteFunctions, data: unknown, index: number): INodeExecutionData[] {
+  const responseData = typeof data === 'object' && data !== null ? (data as IDataObject) : {};
+
+  return this.helpers.constructExecutionMetaData(
+    this.helpers.returnJsonArray(responseData),
+    { itemData: { item: index } },
+  );
+}

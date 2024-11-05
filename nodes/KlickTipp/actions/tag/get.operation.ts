@@ -1,10 +1,9 @@
 import type {
-  IDataObject,
   IExecuteFunctions,
   INodeProperties
 } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {handleError, handleResponse, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -34,19 +33,13 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const tagId = this.getNodeParameter('tagId', index) as string;
 
   if (!tagId) {
-    throw new Error('The tag ID is required.');
+    return handleError.call(this, 'The tag ID is required.');
   }
 
   try {
     const responseData = await apiRequest.call(this, 'GET', `/tag/${tagId}`);
-
-    const executionData = this.helpers.constructExecutionMetaData(
-      this.helpers.returnJsonArray(responseData as IDataObject),
-      { itemData: { item: index } },
-    );
-
-    return executionData;
+    return handleResponse.call(this, responseData, index);
   } catch (error) {
-    return this.helpers.returnJsonArray({ success: false, error: error.message || 'Undefined error' });
+    return handleError.call(this, error);
   }
 }

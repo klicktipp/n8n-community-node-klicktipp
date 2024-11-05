@@ -1,6 +1,6 @@
 import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {handleError, updateDisplayOptions} from '../../utils/utilities';
 import {clearCache} from "../../utils/utilities";
 
 export const properties: INodeProperties[] = [
@@ -30,15 +30,14 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const tagId = this.getNodeParameter('tagId', index) as string;
 
   if (!tagId) {
-    throw new Error('The tag ID is required.');
+    return handleError.call(this, 'The tag ID is required.');
   }
 
   try {
     await apiRequest.call(this, 'DELETE', `/tag/${tagId}`);
     clearCache(['cachedTags']);
-
     return this.helpers.returnJsonArray({ success: true });
   } catch (error) {
-    return this.helpers.returnJsonArray({ success: false, error: error.message || 'Undefined error' });
+    return handleError.call(this, error);
   }
 }
