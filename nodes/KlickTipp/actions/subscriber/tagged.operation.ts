@@ -33,7 +33,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const tagId = this.getNodeParameter('tagId', index) as number;
 
   if (!tagId) {
-    throw new Error('Tag ID is required.');
+    throw new Error('The tag ID is required.');
   }
 
   const body = { tagid: tagId }

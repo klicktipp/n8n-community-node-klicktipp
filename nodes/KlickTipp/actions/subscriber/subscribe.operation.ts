@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {transformDataFields, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -23,7 +23,7 @@ export const properties: INodeProperties[] = [
     name: 'listId',
     type: 'options',
     typeOptions: {
-      loadOptionsMethod: 'getSubscriptionProcesses'
+      loadOptionsMethod: 'getOptInProcesses'
     },
     description: 'Select the the ID of a opt-in process (optional)',
     default: ''
@@ -91,36 +91,18 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const smsNumber = this.getNodeParameter('smsNumber', index) as string;
   const fields = this.getNodeParameter('fields', index) as IDataObject;
 
-  const dataFields = fields.dataFields as IDataObject[];
+  if (!email) {
+    throw new Error('The email address is required.');
+  }
 
-  // Explicitly type `acc` as `IDataObject` to avoid index type errors
-  const result = dataFields.reduce((acc: IDataObject, field) => {
-    // Check if `fieldId` exists and is a string, to avoid TypeScript index type errors
-    if (field.fieldId && typeof field.fieldId === 'string') {
-      acc[field.fieldId] = field.fieldValue;
-    }
-    return acc;
-  }, {} as IDataObject);
-
+  // Construct request body
   const body: IDataObject = {
     email,
+    ...(listId && { listid: listId }),
+    ...(tagId && { tagid: tagId }),
+    ...(smsNumber && { smsnumber: smsNumber }),
+    ...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
   };
-
-  if (listId) {
-    body.listId = listId;
-  }
-
-  if (tagId) {
-    body.tagId = tagId;
-  }
-
-  if (smsNumber) {
-    body.smsnumber = smsNumber;
-  }
-
-  if (fields) {
-    body.fields = result;
-  }
 
   const responseData = await apiRequest.call(this, 'POST', '/subscriber', body);
 

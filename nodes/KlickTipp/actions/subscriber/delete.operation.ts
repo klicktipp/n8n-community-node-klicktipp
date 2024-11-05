@@ -9,7 +9,7 @@ export const properties: INodeProperties[] = [
     type: 'string',
     default: '',
     required: true,
-    description: 'The subscriber\'s ID',
+    description: 'Enter the ID of the subscriber you want to delete.',
   }
 ];
 
@@ -24,6 +24,10 @@ export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
   const subscriberId = this.getNodeParameter('subscriberId', index) as string;
+
+  if (!subscriberId) {
+    throw new Error('The subscriber ID is required');
+  }
 
   const responseData = await apiRequest.call(this, 'DELETE', `/subscriber/${subscriberId}`);
 

@@ -13,7 +13,7 @@ export const properties: INodeProperties[] = [
     type: 'string',
     required: true,
     default: '',
-    description: 'Select the subscriber to retrieve',
+    description: 'Enter the ID of the subscriber you want to retrieve.',
   }
 ];
 
@@ -30,7 +30,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const subscriberId = this.getNodeParameter('subscriberId', index) as string;
 
   if (!subscriberId) {
-    throw new Error('Tag ID is required.');
+    throw new Error('The subscriber ID is required');
   }
 
   const responseData = await apiRequest.call(this, 'GET', `/subscriber/${subscriberId}`);

@@ -1,7 +1,7 @@
 import { NodeConnectionType, type INodeTypeDescription } from 'n8n-workflow';
 
 import * as tag from './tag';
-import * as subscription from './subscription-process';
+import * as optIn from './opt-in-process';
 import * as subscriber from './subscriber';
 import * as field from './field';
 
@@ -38,7 +38,7 @@ export const description: INodeTypeDescription = {
 				},
 				{
 					name: 'Opt-in process',
-					value: 'subscription',
+					value: 'opt-in',
 				},
 				{
 					name: 'Subscriber',
@@ -51,7 +51,7 @@ export const description: INodeTypeDescription = {
 			],
 		},
 		...tag.description,
-		...subscription.description,
+		...optIn.description,
 		...subscriber.description,
 		...field.description
 	],

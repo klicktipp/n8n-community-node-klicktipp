@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {transformDataFields, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -78,30 +78,16 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const smsNumber = this.getNodeParameter('smsNumber', index) as string;
   const fields = this.getNodeParameter('fields', index) as IDataObject;
 
-  const dataFields = fields.dataFields as IDataObject[];
-
-  // Explicitly type `acc` as `IDataObject` to avoid index type errors
-  const result = dataFields.reduce((acc: IDataObject, field) => {
-    // Check if `fieldId` exists and is a string, to avoid TypeScript index type errors
-    if (field.fieldId && typeof field.fieldId === 'string') {
-      acc[field.fieldId] = field.fieldValue;
-    }
-    return acc;
-  }, {} as IDataObject);
-
-  let body: IDataObject = {};
-
-  if (email) {
-    body.newemail = email;
+  if (!subscriberId) {
+    throw new Error('The subscriber ID is required.');
   }
 
-  if (smsNumber) {
-    body.newsmsnumber = smsNumber;
-  }
-
-  if (fields) {
-    body.fields = result;
-  }
+  // Construct request body
+  const body: IDataObject = {
+    ...(email && { newemail: email }),
+    ...(smsNumber && { newsmsnumber: smsNumber }),
+    ...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
+  };
 
   const responseData = await apiRequest.call(this, 'PUT', `/subscriber/${subscriberId}`, body);
 

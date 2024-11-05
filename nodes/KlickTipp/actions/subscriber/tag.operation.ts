@@ -20,7 +20,8 @@ export const properties: INodeProperties[] = [
       multipleValues: true
     },
     default: [],
-    description: 'Select the tag (optional)',
+    description: 'Select the tag (required)',
+    required: true
   },
 ];
 
@@ -36,6 +37,14 @@ export const description = updateDisplayOptions(displayOptions, properties);
 export async function execute(this: IExecuteFunctions, index: number) {
   const email = this.getNodeParameter('email', index) as string;
   const tagId = this.getNodeParameter('tagId', index) as number;
+
+  if (!email) {
+    throw new Error('The email address is required..');
+  }
+
+  if (!tagId) {
+    throw new Error('The tag ID is required.');
+  }
 
   const body: IDataObject = {
     email,

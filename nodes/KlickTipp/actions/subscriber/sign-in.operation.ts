@@ -89,12 +89,8 @@ export async function execute(this: IExecuteFunctions, index: number) {
     email,
     apikey: apiKey,
     ...(smsNumber && { smsNumber }),
+    ...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
   };
-
-  // Process data fields if available
-  if (fields?.dataFields) {
-    body.fields = transformDataFields(fields.dataFields as IDataObject[]);
-  }
 
   const responseData = await apiRequest.call(this, 'POST', '/subscriber/signin', body);
 

@@ -30,12 +30,10 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const email = this.getNodeParameter('email', index) as string;
 
   if (!email) {
-    throw new Error('Email is required.');
+    throw new Error('The email address is required.');
   }
 
-  const body = { email };
-
-  const responseData = await apiRequest.call(this, 'POST', '/subscriber/unsubscribe', body);
+  const responseData = await apiRequest.call(this, 'POST', '/subscriber/unsubscribe', { email });
 
   const executionData = this.helpers.constructExecutionMetaData(
     this.helpers.returnJsonArray(responseData as IDataObject),

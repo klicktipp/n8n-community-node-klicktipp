@@ -32,31 +32,31 @@ export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropert
 	return tags;
 }
 
-export async function getSubscriptionProcesses(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+export async function getOptInProcesses(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 	const responseData = await apiRequest.call(this, 'GET', '/list');
 
 	if (typeof responseData !== 'object' || responseData === null) {
 		throw new Error('Unexpected response format');
 	}
 
-	const subscriptions: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
+	const processes: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
 		([id, name]) => {
-			const subscriptionProcessName = name ? name : 'Predefined double opt-in process';
+			const processName = name ? name : 'Predefined double opt-in process';
 
 			return {
-				name: subscriptionProcessName,
+				name: processName,
 				value: id,
 			};
 		}
 	);
 
 	// Add a placeholder option at the beginning
-	subscriptions.unshift({
+	processes.unshift({
 		name: 'Please select the opt-in process',
 		value: '',
 	});
 
-	return subscriptions;
+	return processes;
 }
 
 export async function getFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {

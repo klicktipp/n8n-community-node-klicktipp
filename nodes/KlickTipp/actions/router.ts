@@ -3,7 +3,7 @@ import { NodeApiError, NodeOperationError } from 'n8n-workflow';
 
 import type { KlickTippType } from './node.type';
 
-import * as subscriptionProcess from './subscription-process';
+import * as optIn from './opt-in-process';
 import * as tag from './tag';
 import * as subscriber from './subscriber';
 import * as field from './field';
@@ -25,8 +25,8 @@ export async function router(this: IExecuteFunctions) {
 	for (let i = 0; i < items.length; i++) {
 		try {
 			switch (KlickTipp.resource) {
-				case 'subscription':
-					responseData = await subscriptionProcess[KlickTipp.operation].execute.call(this, i);
+				case 'opt-in':
+					responseData = await optIn[KlickTipp.operation].execute.call(this, i);
 					break;
 				case 'tag':
 					responseData = await tag[KlickTipp.operation].execute.call(this, i);
