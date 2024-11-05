@@ -1,4 +1,3 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
 import { NodeConnectionType, type INodeTypeDescription } from 'n8n-workflow';
 
 import * as tag from './tag';
@@ -12,14 +11,13 @@ export const description: INodeTypeDescription = {
 	group: ['transform'],
 	icon: 'file:klicktipp.svg',
 	version: 2,
+	subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 	description: 'Interact with KlickTipp API',
 	defaults: {
 		name: 'KlickTipp',
 	},
 	inputs: [NodeConnectionType.Main],
 	outputs: [NodeConnectionType.Main],
-	// @ts-ignore
-	usableAsTool: true,
 	credentials: [
 		{
 			name: 'klickTippApi',
