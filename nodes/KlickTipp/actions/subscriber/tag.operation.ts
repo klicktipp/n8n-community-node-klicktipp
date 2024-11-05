@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {handleError, handleResponse, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -38,11 +38,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const tagId = this.getNodeParameter('tagId', index) as number;
 
   if (!email) {
-    throw new Error('The email address is required..');
+    return handleError.call(this, 'The email address is required.');
   }
 
   if (!tagId) {
-    throw new Error('The tag ID is required.');
+    return handleError.call(this, 'The tag ID is required.');
   }
 
   const body: IDataObject = {
@@ -50,12 +50,10 @@ export async function execute(this: IExecuteFunctions, index: number) {
     tagids: tagId
   };
 
-  const responseData = await apiRequest.call(this, 'POST', '/subscriber/tag', body);
-
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
-
-  return executionData;
+  try {
+    const responseData = await apiRequest.call(this, 'POST', '/subscriber/tag', body);
+    return handleResponse.call(this, responseData, index);
+  } catch (error) {
+    return handleError.call(this, error);
+  }
 }

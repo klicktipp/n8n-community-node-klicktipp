@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import {transformDataFields, updateDisplayOptions} from '../../utils/utilities';
+import {handleError, handleResponse, transformDataFields, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -77,11 +77,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const apiKey = credentials.apiKey as string;
 
   if (!email) {
-    throw new Error('The email address is required.');
+    return handleError.call(this, 'The email address is required.');
   }
 
   if (!apiKey) {
-    throw new Error('The API key is required.');
+    return handleError.call(this, 'The API key is required.');
   }
 
   // Prepare the request body
@@ -92,12 +92,10 @@ export async function execute(this: IExecuteFunctions, index: number) {
     ...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
   };
 
-  const responseData = await apiRequest.call(this, 'POST', '/subscriber/signin', body);
-
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
-
-  return executionData;
+  try {
+    const responseData = await apiRequest.call(this, 'POST', '/subscriber/signin', body);
+    return handleResponse.call(this, responseData, index);
+  } catch (error) {
+    return handleError.call(this, error);
+  }
 }

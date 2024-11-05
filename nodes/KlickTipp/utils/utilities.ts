@@ -1,7 +1,7 @@
 import {IDataObject, IDisplayOptions, IExecuteFunctions, INodeExecutionData, INodeProperties} from "n8n-workflow";
 import NodeCache from 'node-cache';
 
-import { merge, reduce } from 'lodash';
+import {merge, reduce, uniqBy} from 'lodash';
 
 export function updateDisplayOptions(
   displayOptions: IDisplayOptions,
@@ -16,8 +16,11 @@ export function updateDisplayOptions(
 }
 
 export function transformDataFields(dataFields: IDataObject[]): IDataObject {
+  // Remove duplicates based on fieldId
+  const uniqueFields = uniqBy(dataFields, 'fieldId');
+
   return reduce(
-    dataFields,
+    uniqueFields,
     (acc, field) => {
       const fieldId = field.fieldId as string;
       if (fieldId) {

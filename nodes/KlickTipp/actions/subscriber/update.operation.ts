@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import {transformDataFields, updateDisplayOptions} from '../../utils/utilities';
+import {handleError, handleResponse, transformDataFields, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
@@ -79,7 +79,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const fields = this.getNodeParameter('fields', index) as IDataObject;
 
   if (!subscriberId) {
-    throw new Error('The subscriber ID is required.');
+    return handleError.call(this, 'The subscriber ID is required.');
   }
 
   // Construct request body
@@ -89,12 +89,10 @@ export async function execute(this: IExecuteFunctions, index: number) {
     ...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
   };
 
-  const responseData = await apiRequest.call(this, 'PUT', `/subscriber/${subscriberId}`, body);
-
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
-
-  return executionData;
+  try {
+    const responseData = await apiRequest.call(this, 'PUT', `/subscriber/${subscriberId}`, body);
+    return handleResponse.call(this, responseData, index);
+  } catch (error) {
+    return handleError.call(this, error);
+  }
 }

@@ -14,7 +14,6 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-
   try {
     const responseData = await apiRequest.call(this, 'GET', `/list`);
 
