@@ -14,10 +14,9 @@ export const properties: INodeProperties[] = [
   {
     displayName: 'Tag ID',
     name: 'tagId',
-    type: 'options',
+    type: 'multiOptions',
     typeOptions: {
-      loadOptionsMethod: 'getTags',
-      multipleValues: true
+      loadOptionsMethod: 'getTags'
     },
     default: [],
     description: 'Select the tag (required)',
