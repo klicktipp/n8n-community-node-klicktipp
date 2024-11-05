@@ -107,7 +107,7 @@ export const description: INodeProperties[] = [
         action: 'Subscriber update',
       },
     ],
-    default: 'subscribe',
+    default: 'index',
   },
   ...subscribe.description,
   ...unsubscribe.description,

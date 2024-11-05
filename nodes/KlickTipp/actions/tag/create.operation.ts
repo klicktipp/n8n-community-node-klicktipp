@@ -33,13 +33,15 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const name = this.getNodeParameter('name', index) as string;
   const description = this.getNodeParameter('description', index) as string;
 
+  if (!name) {
+    throw new Error('The tag name is required.');
+  }
+
+  // Construct request body
   const body: IDataObject = {
     name,
+    ...(description && { text: description }),
   };
-
-  if (description) {
-    body.text = description;
-  }
 
   const responseData = await apiRequest.call(this, 'POST', '/tag', body);
 

@@ -1,11 +1,6 @@
-import type {IDataObject, ILoadOptionsFunctions, INodePropertyOptions} from 'n8n-workflow';
+import type {ILoadOptionsFunctions, INodePropertyOptions} from 'n8n-workflow';
 import { apiRequest } from '../transport';
 import {IResponse} from "../helpers/interfaces";
-
-interface IStaticData {
-	allFields?: INodePropertyOptions[];
-	[key: string]: any;
-}
 
 export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
 	const responseData = await apiRequest.call(this, 'GET', '/tag');
@@ -60,29 +55,22 @@ export async function getOptInProcesses(this: ILoadOptionsFunctions): Promise<IN
 }
 
 export async function getFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	const staticData = this.getWorkflowStaticData('node') as IStaticData;
-	// Load all available fields if not cached
-	if (!staticData.allFields) {
-		const responseData = await apiRequest.call(this, 'GET', '/field');
-		staticData.allFields = Object.entries(responseData).map(([id, name]) => ({
-			name: name as string,
-			value: id as string,
-		}));
+	// Fetch fields from the API
+	const responseData = await apiRequest.call(this, 'GET', '/field');
+
+	// Check for an unexpected response format
+	if (typeof responseData !== 'object' || responseData === null) {
+		throw new Error('Unexpected response format');
 	}
 
-	// Get currently selected fields
-	const fieldsParameter = this.getNodeParameter('fields', 0, {}) as IDataObject;
-	const selectedFields = Array.isArray(fieldsParameter.dataFields)
-		? (fieldsParameter.dataFields as IDataObject[])
-		: [];
-
-	// Mark already selected options as disabled
-	const availableFields = staticData.allFields.map((option: INodePropertyOptions) => {
-		if (selectedFields.some((field) => field.fieldId === option.value)) {
-			return { ...option, disabled: true };
+	const fields: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
+		([id, name]) => {
+			return {
+				name: name,
+				value: id,
+			};
 		}
-		return option;
-	});
+	);
 
-	return availableFields;
+	return fields;
 }

@@ -28,6 +28,10 @@ export const description = updateDisplayOptions(displayOptions, properties);
 export async function execute(this: IExecuteFunctions, index: number) {
   const tagId = this.getNodeParameter('tagId', index) as string;
 
+  if (!tagId) {
+    throw new Error('The tag ID is required.');
+  }
+
   const responseData = await apiRequest.call(this, 'DELETE', `/tag/${tagId}`);
 
   const executionData = this.helpers.constructExecutionMetaData(

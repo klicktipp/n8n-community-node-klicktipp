@@ -45,13 +45,15 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const name = this.getNodeParameter('name', index) as string;
   const description = this.getNodeParameter('description', index) as string;
 
-  const body: IDataObject = {
-    name,
-  };
-
-  if (description) {
-    body.text = description;
+  if (!tagId) {
+    throw new Error('The tag ID is required.');
   }
+
+  // Construct request body
+  const body: IDataObject = {
+    ...(name && { name }),
+    ...(description && { text: description }),
+  };
 
   const responseData = await apiRequest.call(this, 'PUT', `/tag/${tagId}`, body);
 
