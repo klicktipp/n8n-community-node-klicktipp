@@ -37,7 +37,7 @@ export const description: INodeProperties[] = [
         action: 'Opt-in process redirect URL',
       },
     ],
-    default: 'getAll',
+    default: 'index',
   },
   ...getRedirect.description,
   ...get.description,

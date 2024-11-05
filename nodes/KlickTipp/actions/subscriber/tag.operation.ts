@@ -19,7 +19,7 @@ export const properties: INodeProperties[] = [
       loadOptionsMethod: 'getTags',
       multipleValues: true
     },
-    default: '',
+    default: [],
     description: 'Select the tag (optional)',
   },
 ];

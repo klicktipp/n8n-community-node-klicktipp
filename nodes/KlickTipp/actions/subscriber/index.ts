@@ -7,7 +7,7 @@ import * as del from './delete.operation';
 import * as get from './get.operation';
 import * as search from './search.operation';
 import * as signIn from './sign-in.operation';
-import * as signOff from './sign-in.operation';
+import * as signOff from './sign-off.operation';
 import * as signOut from './sign-out.operation';
 import * as tag from './tag.operation';
 import * as tagged from './tagged.operation';

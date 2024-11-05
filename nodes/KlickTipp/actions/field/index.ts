@@ -16,12 +16,11 @@ export const description: INodeProperties[] = [
       },
     },
     options: [
-
       {
         name: 'Field index',
         value: 'index',
         description: 'Returns an associative array <code>[field_id] => [field_name]</code> of all data fields.',
-        action: 'Field index',
+        action: 'index',
       },
     ],
     default: 'index',
