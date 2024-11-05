@@ -1,16 +1,8 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { updateDisplayOptions } from '../../utils/utilities';
+import {transformDataFields, updateDisplayOptions} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
-  {
-    displayName: 'API Key',
-    name: 'apiKey',
-    type: 'credentialsSelect',
-    default: '',
-    required: true,
-    placeholder: 'Enter your API key (required)'
-  },
   {
     displayName: 'Email',
     name: 'email',
@@ -73,36 +65,37 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-  const apiKey = this.getNodeParameter('apiKey', index) as string;
+  const credentials = await this.getCredentials('klickTippApi');
+  if (!credentials) {
+    throw new Error('Missing credentials. Please check that your KlickTipp API credentials are configured correctly.');
+  }
+
+  // Retrieve required parameters from the node
   const email = this.getNodeParameter('email', index) as string;
   const smsNumber = this.getNodeParameter('smsNumber', index) as string;
   const fields = this.getNodeParameter('fields', index) as IDataObject;
+  const apiKey = credentials.apiKey as string;
 
-  const dataFields = fields.dataFields as IDataObject[];
+  if (!email) {
+    throw new Error('The email address is required.');
+  }
 
-  // Explicitly type `acc` as `IDataObject` to avoid index type errors
-  const result = dataFields.reduce((acc: IDataObject, field) => {
-    // Check if `fieldId` exists and is a string, to avoid TypeScript index type errors
-    if (field.fieldId && typeof field.fieldId === 'string') {
-      acc[field.fieldId] = field.fieldValue;
-    }
-    return acc;
-  }, {} as IDataObject);
+  if (!apiKey) {
+    throw new Error('The API key is required.');
+  }
 
+  // Prepare the request body
   const body: IDataObject = {
     email,
-    apikey: apiKey
+    apikey: apiKey,
+    ...(smsNumber && { smsNumber }),
   };
 
-  if (smsNumber) {
-    body.smsNumber = smsNumber;
+  // Process data fields if available
+  if (fields?.dataFields) {
+    body.fields = transformDataFields(fields.dataFields as IDataObject[]);
   }
 
-  if (fields) {
-    body.fields = result;
-  }
-
-  console.log({body});
   const responseData = await apiRequest.call(this, 'POST', '/subscriber/signin', body);
 
   const executionData = this.helpers.constructExecutionMetaData(

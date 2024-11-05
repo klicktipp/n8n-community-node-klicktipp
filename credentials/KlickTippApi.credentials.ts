@@ -13,6 +13,15 @@ export class KlickTippApi implements ICredentialType {
   documentationUrl = ''; // Add documentation URL if available
   properties: INodeProperties[] = [
     {
+      displayName: 'API Key',
+      name: 'apiKey',
+      type: 'string',
+      typeOptions: {
+        password: true,
+      },
+      default: '',
+    },
+    {
       displayName: 'Username',
       name: 'username',
       type: 'string',

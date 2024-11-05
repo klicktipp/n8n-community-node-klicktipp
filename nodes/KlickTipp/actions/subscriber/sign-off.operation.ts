@@ -4,14 +4,6 @@ import { updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
   {
-    displayName: 'API Key',
-    name: 'apiKey',
-    type: 'credentialsSelect',
-    default: '',
-    required: true,
-    placeholder: 'Enter your API key (required)'
-  },
-  {
     displayName: 'Email',
     name: 'email',
     type: 'string',
@@ -31,8 +23,16 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-  const apiKey = this.getNodeParameter('apiKey', index) as string;
+  const credentials = await this.getCredentials('klickTippApi');
+  if (!credentials) {
+    throw new Error('Missing credentials. Please check that your KlickTipp API credentials are configured correctly.');
+  }
+  const apiKey = credentials.apiKey as string;
+
   const email = this.getNodeParameter('email', index) as string;
+  if (!email) {
+    throw new Error('The email address is required.');
+  }
 
   const body: IDataObject = {
     email,

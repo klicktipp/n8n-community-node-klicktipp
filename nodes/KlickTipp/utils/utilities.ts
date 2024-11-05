@@ -1,7 +1,6 @@
-import {IDisplayOptions, INodeProperties} from "n8n-workflow";
+import {IDataObject, IDisplayOptions, INodeProperties} from "n8n-workflow";
 
-import { merge } from 'lodash';
-
+import { merge, reduce } from 'lodash';
 
 export function updateDisplayOptions(
   displayOptions: IDisplayOptions,
@@ -13,4 +12,18 @@ export function updateDisplayOptions(
       displayOptions: merge({}, nodeProperty.displayOptions, displayOptions),
     };
   });
+}
+
+export function transformDataFields(dataFields: IDataObject[]): IDataObject {
+  return reduce(
+    dataFields,
+    (acc, field) => {
+      const fieldId = field.fieldId as string;
+      if (fieldId) {
+        acc[fieldId] = field.fieldValue;
+      }
+      return acc;
+    },
+    {} as IDataObject,
+  );
 }
