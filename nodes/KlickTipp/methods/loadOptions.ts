@@ -1,76 +1,77 @@
 import type {ILoadOptionsFunctions, INodePropertyOptions} from 'n8n-workflow';
 import { apiRequest } from '../transport';
 import {IResponse} from "../helpers/interfaces";
+import NodeCache from 'node-cache';
 
-export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	const responseData = await apiRequest.call(this, 'GET', '/tag');
+const cache = new NodeCache({ stdTTL: 600 }); // Cache items for 10 minutes
 
+/**
+ * Utility function to get data from cache or API and transform it to INodePropertyOptions format.
+ * @param {string} cacheKey - Unique cache key for storing the data.
+ * @param {string} endpoint - API endpoint to fetch data from if not in cache.
+ * @param {string} placeholder - Placeholder text for the first option.
+ * @param {string} defaultName - Default name if a value is missing (optional).
+ * @returns {Promise<INodePropertyOptions[]>} - Array of options in INodePropertyOptions format.
+ */
+async function getCachedOptions(
+	this: ILoadOptionsFunctions,
+	cacheKey: string,
+	endpoint: string,
+	placeholder: string,
+	defaultName?: string
+): Promise<INodePropertyOptions[]> {
+	// Check the cache for existing data
+	let options = cache.get<INodePropertyOptions[]>(cacheKey);
+	if (options) {
+		console.log(`Served from cache: ${cacheKey}`);
+		return options;
+	}
+
+	// Fetch data from the API
+	const responseData = await apiRequest.call(this, 'GET', endpoint);
 	if (typeof responseData !== 'object' || responseData === null) {
 		throw new Error('Unexpected response format');
 	}
 
-	const tags: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
-		([id, name]) => {
-			return {
-				name: name,
-				value: id,
-			};
-		}
+	// Map the API response to INodePropertyOptions format
+	options = Object.entries(responseData as IResponse).map(([id, name]) => ({
+		name: name || defaultName || 'Unnamed',
+		value: id,
+	}));
+
+	// Add the placeholder option at the beginning
+	options.unshift({ name: placeholder, value: '' });
+
+	// Cache the options
+	cache.set(cacheKey, options);
+
+	return options;
+}
+
+export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+	return getCachedOptions.call(
+		this,
+		'cachedTags',
+		'/tag',
+		'Please select a tag'
 	);
-
-	// Add a placeholder option at the beginning
-	tags.unshift({
-		name: 'Please select a tag',
-		value: '',
-	});
-
-	return tags;
 }
 
 export async function getOptInProcesses(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	const responseData = await apiRequest.call(this, 'GET', '/list');
-
-	if (typeof responseData !== 'object' || responseData === null) {
-		throw new Error('Unexpected response format');
-	}
-
-	const processes: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
-		([id, name]) => {
-			const processName = name ? name : 'Predefined double opt-in process';
-
-			return {
-				name: processName,
-				value: id,
-			};
-		}
+	return getCachedOptions.call(
+		this,
+		'cachedOptInProcesses',
+		'/list',
+		'Please select the opt-in process',
+		'Predefined double opt-in process'
 	);
-
-	// Add a placeholder option at the beginning
-	processes.unshift({
-		name: 'Please select the opt-in process',
-		value: '',
-	});
-
-	return processes;
 }
 
 export async function getFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	// Fetch fields from the API
-	const responseData = await apiRequest.call(this, 'GET', '/field');
-
-	// Check for an unexpected response format
-	if (typeof responseData !== 'object' || responseData === null) {
-		throw new Error('Unexpected response format');
-	}
-
-	const fields: INodePropertyOptions[] = Object.entries(responseData as IResponse).map(
-		([id, name]) => {
-			return {
-				name: name,
-				value: id,
-			};
-		}
+	return getCachedOptions.call(
+		this,
+		'cachedDataFields',
+		'/field',
+		'Please select a field'
 	);
-
-	return fields;
 }
