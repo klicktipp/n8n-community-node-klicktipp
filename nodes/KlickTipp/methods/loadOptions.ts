@@ -1,17 +1,10 @@
-import type {ILoadOptionsFunctions, INodePropertyOptions} from 'n8n-workflow';
+import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../transport';
-import {IResponse} from "../helpers/interfaces";
-import NodeCache from 'node-cache';
-
-const cache = new NodeCache({ stdTTL: 600 }); // Cache items for 10 minutes
+import { IResponse } from "../helpers/interfaces";
+import { cache } from '../utils/utilities';
 
 /**
  * Utility function to get data from cache or API and transform it to INodePropertyOptions format.
- * @param {string} cacheKey - Unique cache key for storing the data.
- * @param {string} endpoint - API endpoint to fetch data from if not in cache.
- * @param {string} placeholder - Placeholder text for the first option.
- * @param {string} defaultName - Default name if a value is missing (optional).
- * @returns {Promise<INodePropertyOptions[]>} - Array of options in INodePropertyOptions format.
  */
 async function getCachedOptions(
 	this: ILoadOptionsFunctions,

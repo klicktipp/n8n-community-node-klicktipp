@@ -30,7 +30,7 @@ export const description: INodeTypeDescription = {
 			name: 'resource',
 			type: 'options',
 			noDataExpression: true,
-			default: 'message',
+			default: 'tag',
 			options: [
 				{
 					name: 'Tag',
@@ -53,6 +53,6 @@ export const description: INodeTypeDescription = {
 		...tag.description,
 		...optIn.description,
 		...subscriber.description,
-		...field.description
+		...field.description,
 	],
 };

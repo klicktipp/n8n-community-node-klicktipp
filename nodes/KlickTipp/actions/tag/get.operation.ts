@@ -37,12 +37,16 @@ export async function execute(this: IExecuteFunctions, index: number) {
     throw new Error('The tag ID is required.');
   }
 
-  const responseData = await apiRequest.call(this, 'GET', `/tag/${tagId}`);
+  try {
+    const responseData = await apiRequest.call(this, 'GET', `/tag/${tagId}`);
 
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
+    const executionData = this.helpers.constructExecutionMetaData(
+      this.helpers.returnJsonArray(responseData as IDataObject),
+      { itemData: { item: index } },
+    );
 
-  return executionData;
+    return executionData;
+  } catch (error) {
+    return this.helpers.returnJsonArray({ success: false, error: error.message || 'Undefined error' });
+  }
 }

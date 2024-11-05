@@ -14,12 +14,16 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-  const responseData = await apiRequest.call(this, 'GET', `/tag`);
+  try {
+    const responseData = await apiRequest.call(this, 'GET', `/tag`);
 
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
+    const executionData = this.helpers.constructExecutionMetaData(
+      this.helpers.returnJsonArray(responseData as IDataObject),
+      { itemData: { item: index } },
+    );
 
-  return executionData;
+    return executionData;
+  } catch (error) {
+    return this.helpers.returnJsonArray({ success: false, error: error.message || 'Undefined error' });
+  }
 }

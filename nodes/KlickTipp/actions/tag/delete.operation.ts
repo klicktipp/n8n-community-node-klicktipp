@@ -1,6 +1,7 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
 import { updateDisplayOptions } from '../../utils/utilities';
+import {clearCache} from "../../utils/utilities";
 
 export const properties: INodeProperties[] = [
   {
@@ -32,12 +33,12 @@ export async function execute(this: IExecuteFunctions, index: number) {
     throw new Error('The tag ID is required.');
   }
 
-  const responseData = await apiRequest.call(this, 'DELETE', `/tag/${tagId}`);
+  try {
+    await apiRequest.call(this, 'DELETE', `/tag/${tagId}`);
+    clearCache(['cachedTags']);
 
-  const executionData = this.helpers.constructExecutionMetaData(
-    this.helpers.returnJsonArray(responseData as IDataObject),
-    { itemData: { item: index } },
-  );
-
-  return executionData;
+    return this.helpers.returnJsonArray({ success: true });
+  } catch (error) {
+    return this.helpers.returnJsonArray({ success: false, error: error.message || 'Undefined error' });
+  }
 }

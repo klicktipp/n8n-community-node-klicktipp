@@ -1,4 +1,5 @@
 import {IDataObject, IDisplayOptions, INodeProperties} from "n8n-workflow";
+import NodeCache from 'node-cache';
 
 import { merge, reduce } from 'lodash';
 
@@ -27,3 +28,19 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
     {} as IDataObject,
   );
 }
+
+
+// Initialize the cache instance
+const cache = new NodeCache({ stdTTL: 600 });
+
+export function clearCache(keys?: string[]) {
+  if (keys) {
+    keys.forEach((key) => cache.del(key));
+    console.log(`Cleared cache keys: ${keys.join(', ')}`);
+  } else {
+    cache.flushAll();
+    console.log('Cleared all cache entries');
+  }
+}
+
+export { cache };
