@@ -12,7 +12,7 @@ export class KlickTipp implements INodeType {
 		},
 		inputs: ['main'],
 		outputs: ['main'],
-		properties: []
+		properties: [],
 	};
 
 	// async execute(this: IExecuteFunctions) {

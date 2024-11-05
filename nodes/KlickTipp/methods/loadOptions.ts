@@ -1,6 +1,6 @@
 import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../transport';
-import { IResponse } from "../helpers/interfaces";
+import { IResponse } from '../helpers/interfaces';
 import { cache } from '../utils/utilities';
 
 /**
@@ -11,7 +11,7 @@ async function getCachedOptions(
 	cacheKey: string,
 	endpoint: string,
 	placeholder: string,
-	defaultName?: string
+	defaultName?: string,
 ): Promise<INodePropertyOptions[]> {
 	// Check the cache for existing data
 	let options = cache.get<INodePropertyOptions[]>(cacheKey);
@@ -42,29 +42,21 @@ async function getCachedOptions(
 }
 
 export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(
-		this,
-		'cachedTags',
-		'/tag',
-		'Please select a tag'
-	);
+	return getCachedOptions.call(this, 'cachedTags', '/tag', 'Please select a tag');
 }
 
-export async function getOptInProcesses(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+export async function getOptInProcesses(
+	this: ILoadOptionsFunctions,
+): Promise<INodePropertyOptions[]> {
 	return getCachedOptions.call(
 		this,
 		'cachedOptInProcesses',
 		'/list',
 		'Please select the opt-in process',
-		'Predefined double opt-in process'
+		'Predefined double opt-in process',
 	);
 }
 
 export async function getFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(
-		this,
-		'cachedDataFields',
-		'/field',
-		'Please select a field'
-	);
+	return getCachedOptions.call(this, 'cachedDataFields', '/field', 'Please select a field');
 }

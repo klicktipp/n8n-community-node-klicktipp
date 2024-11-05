@@ -1,18 +1,18 @@
 {
-  "node": "n8n-community.klickTipp",
-  "nodeVersion": "1.0.0",
-  "codexVersion": "1.0.0",
-  "categories": ["KlickTipp","Marketing", "API", "Email"],
-  "resources": {
-    "credentialDocumentation": [
-      {
-        "url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
-      }
-    ],
-    "primaryDocumentation": [
-      {
-        "url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
-      }
-    ]
-  }
+	"node": "n8n-community.klickTipp",
+	"nodeVersion": "1.0.0",
+	"codexVersion": "1.0.0",
+	"categories": ["KlickTipp", "Marketing", "API", "Email"],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api"
+			}
+		]
+	}
 }
