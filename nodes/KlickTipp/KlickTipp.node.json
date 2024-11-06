@@ -2,7 +2,7 @@
 	"node": "n8n-community.klickTipp",
 	"nodeVersion": "1.0.0",
 	"codexVersion": "1.0.0",
-	"categories": ["KlickTipp", "Marketing", "API", "Email"],
+	"categories": ["KlickTipp", "Integration", "API"],
 	"resources": {
 		"credentialDocumentation": [
 			{
