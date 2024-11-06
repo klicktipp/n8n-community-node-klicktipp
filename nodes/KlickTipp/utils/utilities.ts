@@ -54,7 +54,8 @@ export function clearCache(keys?: string[]) {
 export { cache };
 
 export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
-	const errorMessage = typeof error === 'string' ? error : (error as Error).message || 'Undefined error';
+	const errorMessage =
+		typeof error === 'string' ? error : (error as Error).message || 'Undefined error';
 
 	return this.helpers.returnJsonArray({
 		success: false,

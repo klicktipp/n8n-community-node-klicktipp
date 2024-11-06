@@ -2,12 +2,15 @@ import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../transport';
 import { IResponse } from '../helpers/interfaces';
 import { cache } from '../utils/utilities';
-import {isEmpty, isObject} from "lodash";
+import { isEmpty, isObject } from 'lodash';
 
 /**
  * Adds a placeholder option to the beginning of options if provided.
  */
-function addPlaceholder(options: INodePropertyOptions[], placeholder?: string): INodePropertyOptions[] {
+function addPlaceholder(
+	options: INodePropertyOptions[],
+	placeholder?: string,
+): INodePropertyOptions[] {
 	if (placeholder) {
 		options.unshift({ name: placeholder, value: '' });
 	}
@@ -54,7 +57,9 @@ export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropert
 	return getCachedOptions.call(this, 'cachedTags', '/tag', 'Please select a tag');
 }
 
-export async function getTagsWithoutPlaceholder(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
+export async function getTagsWithoutPlaceholder(
+	this: ILoadOptionsFunctions,
+): Promise<INodePropertyOptions[]> {
 	return getCachedOptions.call(this, 'cachedTags', '/tag');
 }
 
