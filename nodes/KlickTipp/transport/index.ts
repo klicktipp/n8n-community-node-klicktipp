@@ -24,9 +24,6 @@ async function logout(
 	const logoutOptions: IRequestOptions = {
 		method: 'POST',
 		uri: `${BASE_URL}/account/logout`,
-		headers: {
-			Cookie: `${session.sessionName}=${session.sessionId}`,
-		},
 		json: true,
 		rejectUnauthorized: verifySSL,
 	};
