@@ -11,6 +11,34 @@ import {
 import { Buffer } from 'buffer';
 import { BASE_URL } from '../helpers/constants';
 
+async function logout(
+	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
+	authenticationMethod: string,
+	session: IDataObject,
+	verifySSL: boolean,
+) {
+	if (!session.sessionName || !session.sessionId) {
+		return;
+	}
+
+	const logoutOptions: IRequestOptions = {
+		method: 'POST',
+		uri: `${BASE_URL}/account/logout`,
+		headers: {
+			Cookie: `${session.sessionName}=${session.sessionId}`,
+		},
+		json: true,
+		rejectUnauthorized: verifySSL,
+	};
+
+	try {
+		await this.helpers.requestWithAuthentication.call(this, authenticationMethod, logoutOptions);
+		this.logger.info('Logout succeeded.');
+	} catch (error) {
+		this.logger.error(`Logout failed: ${error instanceof Error ? error.message : String(error)}`);
+	}
+}
+
 export async function apiRequest(
 	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
 	method: IHttpRequestMethods,
@@ -52,6 +80,7 @@ export async function apiRequest(
 		useQuerystring: false,
 		json: true,
 		...option,
+		rejectUnauthorized: verifySSL,
 	};
 
 	if (Object.keys(body).length === 0) {
@@ -64,25 +93,9 @@ export async function apiRequest(
 		// Perform the main API request
 		return await this.helpers.requestWithAuthentication.call(this, authenticationMethod, options);
 	} finally {
-		// Perform the logout request
-		const credentials = await this.getCredentials('klickTippApi');
-		if (credentials.sessionName && credentials.sessionId) {
-			const logoutOptions: IRequestOptions = {
-				method: 'POST',
-				uri: `${BASE_URL}/account/logout`,
-				headers: {
-					Cookie: `${credentials.sessionName}=${credentials.sessionId}`,
-				},
-				json: true,
-			};
-			try {
-				await this.helpers.request!(logoutOptions);
-				this.logger.info('Logout succeed.');
-			} catch (error) {
-				// Log the error but don't throw
-				this.logger.error(`Logout failed: ${error.message}`);
-			}
-		}
+		// Perform logout request in the finally block to ensure it always runs
+		const credentials = await this.getCredentials(authenticationMethod);
+		await logout.call(this, authenticationMethod, credentials, verifySSL);
 	}
 }
 
