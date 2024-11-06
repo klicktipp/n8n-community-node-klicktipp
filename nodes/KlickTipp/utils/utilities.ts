@@ -8,6 +8,7 @@ import {
 import NodeCache from 'node-cache';
 
 import { merge, reduce, uniqBy } from 'lodash';
+import { CACHE_TTL } from '../helpers/constants';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -39,7 +40,7 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 }
 
 // Initialize the cache instance
-const cache = new NodeCache({ stdTTL: 600 });
+const cache = new NodeCache({ stdTTL: CACHE_TTL });
 
 export function clearCache(keys?: string[]) {
 	if (keys) {
