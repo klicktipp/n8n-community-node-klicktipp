@@ -62,12 +62,10 @@ export function handleError(this: IExecuteFunctions, error: unknown): INodeExecu
 
 export function handleResponse(
 	this: IExecuteFunctions,
-	data: unknown,
+	data: IDataObject,
 	index: number,
 ): INodeExecutionData[] {
-	const responseData = typeof data === 'object' && data !== null ? (data as IDataObject) : {};
-
-	return this.helpers.constructExecutionMetaData(this.helpers.returnJsonArray(responseData), {
+	return this.helpers.constructExecutionMetaData(this.helpers.returnJsonArray(data), {
 		itemData: { item: index },
 	});
 }
