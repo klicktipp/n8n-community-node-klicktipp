@@ -32,7 +32,9 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	}
 
 	try {
-		const responseData = await apiRequest.call(this, 'POST', '/subscriber/tagged', { tagid: tagId });
+		const responseData = await apiRequest.call(this, 'POST', '/subscriber/tagged', {
+			tagid: tagId,
+		});
 		return handleResponse.call(this, responseData, index);
 	} catch (error) {
 		return handleError.call(this, error);
