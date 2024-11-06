@@ -5,10 +5,10 @@ import {
   IHttpRequestHelper,
   INodeProperties,
 } from 'n8n-workflow';
-import {BASE_URL} from "../nodes/KlickTipp/helpers/constants";
+import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from "../nodes/KlickTipp/helpers/constants";
 
 export class KlickTippApi implements ICredentialType {
-  name = 'klickTippApi';
+  name = KLICKTIPP_API_CREDENTIAL_NAME;
   displayName = 'KlickTipp API';
   documentationUrl = ''; // Add documentation URL if available
   properties: INodeProperties[] = [

@@ -9,7 +9,7 @@ import {
 	IRequestOptions,
 } from 'n8n-workflow';
 import { Buffer } from 'buffer';
-import { BASE_URL } from '../helpers/constants';
+import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from '../helpers/constants';
 
 async function logout(
 	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
@@ -84,15 +84,17 @@ export async function apiRequest(
 		delete options.body;
 	}
 
-	const authenticationMethod = 'klickTippApi';
-
 	try {
 		// Perform the main API request
-		return await this.helpers.requestWithAuthentication.call(this, authenticationMethod, options);
+		return await this.helpers.requestWithAuthentication.call(
+			this,
+			KLICKTIPP_API_CREDENTIAL_NAME,
+			options,
+		);
 	} finally {
 		// Perform logout request in the finally block to ensure it always runs
-		const credentials = await this.getCredentials(authenticationMethod);
-		await logout.call(this, authenticationMethod, credentials, verifySSL);
+		const credentials = await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME);
+		await logout.call(this, KLICKTIPP_API_CREDENTIAL_NAME, credentials, verifySSL);
 	}
 }
 
