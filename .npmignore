@@ -1,2 +1,10 @@
 .DS_Store
 *.tsbuildinfo
+
+# Exclude Git repository files
+.git
+.gitignore
+.github
+
+# Exclude IDE configuration directories
+.idea/
