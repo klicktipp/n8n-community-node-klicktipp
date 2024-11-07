@@ -9,7 +9,7 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		required: true,
 		default: '',
-		description: 'Enter the ID of the subscriber you want to retrieve.',
+		description: 'Enter the ID of the subscriber you want to retrieve',
 	},
 ];
 

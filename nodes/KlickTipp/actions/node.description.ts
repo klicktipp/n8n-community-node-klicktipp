@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-filename-against-convention */
 import { NodeConnectionType, type INodeTypeDescription } from 'n8n-workflow';
 
 import * as tag from './tag';
@@ -17,6 +18,7 @@ export const description: INodeTypeDescription = {
 		name: 'KlickTipp',
 	},
 	inputs: [NodeConnectionType.Main],
+	// eslint-disable-next-line n8n-nodes-base/node-class-description-outputs-wrong
 	outputs: [NodeConnectionType.Main],
 	credentials: [
 		{
@@ -37,7 +39,7 @@ export const description: INodeTypeDescription = {
 					value: 'tag',
 				},
 				{
-					name: 'Opt-in process',
+					name: 'Opt-in Process',
 					value: 'opt-in',
 				},
 				{

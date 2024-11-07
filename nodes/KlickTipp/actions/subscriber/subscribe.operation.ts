@@ -17,23 +17,25 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Enter email address (required)',
 	},
 	{
-		displayName: 'SMS number',
+		displayName: 'SMS Number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',
 		placeholder: 'Enter SMS number (optional)',
 	},
 	{
-		displayName: 'Opt-in process',
+		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
+		displayName: 'Opt-in Process',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
 			loadOptionsMethod: 'getOptInProcesses',
 		},
-		description: 'Select the the ID of a opt-in process (optional)',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 		default: '',
 	},
 	{
+		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
 		displayName: 'Tag ID',
 		name: 'tagId',
 		type: 'options',
@@ -41,10 +43,10 @@ export const properties: INodeProperties[] = [
 			loadOptionsMethod: 'getTags',
 		},
 		default: '',
-		description: 'Select the tag (optional)',
+		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 	},
 	{
-		displayName: 'Data fields',
+		displayName: 'Data Fields',
 		name: 'fields',
 		type: 'fixedCollection',
 		typeOptions: {
@@ -58,6 +60,7 @@ export const properties: INodeProperties[] = [
 				displayName: 'Data Field',
 				values: [
 					{
+						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
 						displayName: 'Field Name',
 						name: 'fieldId',
 						type: 'options',
@@ -65,7 +68,7 @@ export const properties: INodeProperties[] = [
 							loadOptionsMethod: 'getFields',
 						},
 						default: '',
-						description: 'Select the data field',
+						description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 					},
 					{
 						displayName: 'Field Value',

@@ -10,7 +10,7 @@ import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from "../nodes/KlickTipp/help
 export class KlickTippApi implements ICredentialType {
   name = KLICKTIPP_API_CREDENTIAL_NAME;
   displayName = 'KlickTipp API';
-  documentationUrl = ''; // Add documentation URL if available
+  documentationUrl = 'https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api';
   properties: INodeProperties[] = [
     {
       displayName: 'API Key',

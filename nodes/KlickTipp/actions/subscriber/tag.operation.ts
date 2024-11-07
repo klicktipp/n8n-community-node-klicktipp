@@ -12,14 +12,15 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Enter email address (required)',
 	},
 	{
-		displayName: 'Tag ID',
+		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		displayName: 'Tag IDs',
 		name: 'tagId',
 		type: 'multiOptions',
 		typeOptions: {
 			loadOptionsMethod: 'getTagsWithoutPlaceholder',
 		},
 		default: [],
-		description: 'Select the tag (required)',
+		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 		required: true,
 	},
 ];
