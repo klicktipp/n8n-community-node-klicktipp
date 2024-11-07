@@ -12,8 +12,9 @@
   "license": "MIT",
   "homepage": "https://github.com/klicktipp/n8n-community-node-klicktipp",
   "author": {
-    "name": "KlickTipp Inc",
-    "email": "awesome-klicktipp-email@klicktipp.com"
+    "name": "KlickTipp Team",
+    "email": "github@team.klicktipp.com",
+    "url": "https://www.klicktipp.com/"
   },
   "repository": {
     "type": "git",
@@ -39,6 +40,9 @@
   ],
   "n8n": {
     "n8nNodesApiVersion": 1,
+    "credentials": [
+      "dist/credentials/KlickTippApi.credentials.js"
+    ],
     "nodes": [
       "dist/nodes/KlickTipp/KlickTipp.node.js"
     ]
