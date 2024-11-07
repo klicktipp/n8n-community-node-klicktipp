@@ -1,52 +1,103 @@
-# n8n-community-node-klicktipp
+# n8n-nodes-klicktipp
 
-This is an n8n community node that integrates KlickTipp with n8n workflows, enabling you to manage subscribers, tags, subscription processes, and more directly from n8n.
+## KlickTipp API Integration for n8n
 
-KlickTipp is a powerful email marketing platform designed for managing subscriber lists, sending campaigns, and creating complex automation workflows.
+This package provides a set of nodes for integrating with the KlickTipp API in n8n, enabling you to manage subscribers, tags, subscription processes, and more directly within your workflows.
 
-[n8n](https://n8n.io/) is a [fair-code licensed](https://docs.n8n.io/reference/license/) workflow automation platform.
+For detailed information on the KlickTipp API, refer to the [official KlickTipp API documentation](https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api/).
+
+---
+
+## Table of Contents
+
+- [Installation](#installation)
+- [Nodes Overview](#nodes-overview)
+  - [Opt-in Process](#opt-in-process)
+  - [Tags](#tags)
+  - [Subscribers](#subscribers)
+  - [Data Fields](#data-fields)
+  - [Autoresponder](#autoresponder)
+- [Credentials](#credentials)
+- [Error Handling](#error-handling)
+- [License](#license)
+- [Example Workflows](#example-workflows)
 
 ---
 
 ## Installation
 
-Follow the [installation guide](https://docs.n8n.io/integrations/community-nodes/installation/) in the n8n community nodes documentation to install the `n8n-community-node-klicktipp`.
+To install the package, run the following command in your n8n directory:
+
+```bash
+npm install n8n-nodes-klicktipp
+```
+
+## Nodes Overview
+
+This package includes nodes to interact with various aspects of the KlickTipp API:
+
+### Opt-in Process
+
+- **Nodes**:
+  - `Opt-in Process Index`
+  - `Opt-in Process Get`
+  - `Opt-in Process Redirect URL`
+- **Description**: Manages opt-in processes, including listing all processes, retrieving details of a specific process, and obtaining redirect URLs.
+
+### Tags
+
+- **Nodes**:
+  - `Tag Index`
+  - `Tag Get`
+  - `Tag Create`
+  - `Tag Update`
+  - `Tag Delete`
+- **Description**: Manages tags within KlickTipp, enabling operations to list, create, update, and delete tags.
+
+### Subscribers
+
+- **Nodes**:
+  - `Resend Autoresponder`
+  - `Subscriber Index`
+  - `Subscriber Search`
+  - `Subscriber Tagged`
+  - `Subscriber Get`
+  - `Subscriber Subscribe`
+  - `Subscriber Update`
+  - `Subscriber Tag`
+  - `Subscriber Untag`
+  - `Subscriber Unsubscribe`
+  - `Subscriber Delete`
+  - `Subscriber Sign-In`
+  - `Subscriber Sign-Out`
+  - `Subscriber Sign-Off`
+- **Description**: Provides full management capabilities for subscribers, such as searching, tagging, updating, and deleting subscriber data.
+
+### Data Fields
+
+- **Node**: `Field Index`
+- **Description**: Retrieves all available data fields for subscribers.
 
 ---
 
-## Operations
+## Credentials
 
-This node provides several operations to interact with KlickTipp. Below is a list of the available operations:
+To authenticate with the KlickTipp API, configure your API credentials:
 
-- **Login:** Log into the KlickTipp API.
-- **Logout:** Log out of the KlickTipp API.
-- **Subscription Process Nodes:**
-    - Fetch available subscription processes.
-    - Retrieve specific subscription process by ID.
-    - Retrieve redirection URL for a given subscription process.
-- **Tag Nodes:**
-    - Create, update, delete tags.
-    - Tag and untag subscribers using their email.
-- **Subscriber Nodes:**
-    - Subscribe, unsubscribe, search, update, and delete subscribers.
-    - Resend autoresponders to subscribers.
-- **Field Index Node:** Retrieve available contact fields for subscribers, such as first name, last name, and email.
+- **Username**
+- **Password**
+- **API key**
+
+Once set up, these credentials will be used across all KlickTipp nodes in the package.
 
 ---
 
-## Compatibility
+## License
 
-This node requires n8n version `0.201.0` or higher.
-
----
-
-## Resources
-
-- [n8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/)
-- [KlickTipp API documentation](https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api/)
+This package is licensed under the MIT License. For details, see the `LICENSE` file.
 
 ---
 
-## Version History
+## Example Workflows
 
-- **1.0.0:** Initial release.
+Refer to the `examples/n8n-nodes-klicktipp.json` file for sample workflows showcasing the integration.
