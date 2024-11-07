@@ -23,13 +23,7 @@
       "position": [
         1320,
         60
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {},
@@ -40,13 +34,7 @@
       "position": [
         1320,
         -100
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -59,13 +47,7 @@
       "position": [
         1320,
         220
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -78,13 +60,7 @@
       "position": [
         1320,
         380
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -97,13 +73,7 @@
       "position": [
         1320,
         540
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -117,13 +87,7 @@
       "position": [
         1000,
         -100
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -136,13 +100,7 @@
       "position": [
         1000,
         60
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -156,13 +114,7 @@
       "position": [
         1000,
         220
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -176,13 +128,7 @@
       "position": [
         700,
         1500
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -195,13 +141,7 @@
       "position": [
         700,
         -100
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -215,13 +155,7 @@
       "position": [
         700,
         60
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -235,13 +169,7 @@
       "position": [
         700,
         220
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -255,13 +183,7 @@
       "position": [
         700,
         380
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -275,13 +197,7 @@
       "position": [
         700,
         540
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -295,13 +211,7 @@
       "position": [
         700,
         700
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -315,13 +225,7 @@
       "position": [
         700,
         860
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -336,13 +240,7 @@
         700,
         1020
       ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -357,13 +255,7 @@
       "position": [
         700,
         1180
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
     },
     {
       "parameters": {
@@ -378,13 +270,7 @@
         700,
         1340
       ],
-      "alwaysOutputData": true,
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -398,13 +284,21 @@
       "position": [
         700,
         1660
-      ],
-      "credentials": {
-        "klickTippApi": {
-          "id": "hJwKKNJ27j3p6YKW",
-          "name": "KlickTipp account"
-        }
-      }
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "resendAutoresponder"
+      },
+      "id": "a2e1d9ab-f48e-49f5-a20e-e73ebb0bc2cf",
+      "name": "KlickTipp20",
+      "type": "CUSTOM.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        700,
+        1820
+      ]
     }
   ],
   "pinData": {},
@@ -425,7 +319,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "73b3baf0-aa60-431a-9dd3-f14808c286b6",
+  "versionId": "2f78e43c-c601-4342-af7e-c57729b6a44f",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "d59d135498cc69bb504a352cbe510abdaa93356e0c05ef0ddd5d102de621cc99"

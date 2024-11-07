@@ -56,11 +56,6 @@ export async function apiRequest(
 		...defaultHeaders,
 	};
 
-	// Add session cookie if provided
-	if (session.sessionName && session.sessionId) {
-		headers['Cookie'] = `${session.sessionName}=${session.sessionId}`;
-	}
-
 	// Encode data if necessary for POST/PUT
 	let requestData: string | undefined;
 	if (method === 'POST' || method === 'PUT') {

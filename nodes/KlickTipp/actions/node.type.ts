@@ -4,6 +4,7 @@ type NodeMap = {
 	tag: 'create' | 'delete' | 'get' | 'index' | 'update';
 	['opt-in']: 'get' | 'getRedirect' | 'index';
 	subscriber:
+		| 'resendAutoresponder'
 		| 'subscribe'
 		| 'unsubscribe'
 		| 'index'

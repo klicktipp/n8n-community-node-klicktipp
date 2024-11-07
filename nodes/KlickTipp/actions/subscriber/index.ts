@@ -13,6 +13,7 @@ import * as tag from './tag.operation';
 import * as tagged from './tagged.operation';
 import * as untag from './untag.operation';
 import * as update from './update.operation';
+import * as resendAutoresponder from './resend-autoresponder.operation';
 
 export {
 	subscribe,
@@ -28,6 +29,7 @@ export {
 	tagged,
 	untag,
 	update,
+	resendAutoresponder
 };
 
 export const description: INodeProperties[] = [
@@ -42,6 +44,12 @@ export const description: INodeProperties[] = [
 			},
 		},
 		options: [
+			{
+				name: 'Resend Autoresponder',
+				value: 'resendAutoresponder',
+				description: 'Resends a follow-up email to a subscriber',
+				action: 'Resend autoresponder',
+			},
 			{
 				name: 'Subscriber Delete',
 				value: 'delete',
@@ -137,4 +145,5 @@ export const description: INodeProperties[] = [
 	...tagged.description,
 	...untag.description,
 	...update.description,
+	...resendAutoresponder.description
 ];
