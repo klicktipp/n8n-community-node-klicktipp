@@ -2,10 +2,12 @@
 
 ## KlickTipp API Integration for n8n
 
-This package provides a set of nodes for integrating with the KlickTipp API in n8n, enabling you to manage subscribers, tags, subscription processes, and more directly within your workflows.
+What is the KlickTipp Marketing Suite?
 
-For detailed information on the KlickTipp API, refer to the [official KlickTipp API documentation](https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api/).
+<a href="https://www.klicktipp.com/de?source=n8n" title="E-Mail-Marketing" target="_blank" rel="noopener noreferrer">KlickTipp Marketing Suite</a> is a digital marketing platform that empowers creators and small businesses to generate leads and turn them into passionate customers. It boosts growth with GDPR-compliant tools for email and SMS marketing, marketing automation, landing pages, and conversion rate optimization.
 
+This package provides a set of nodes for interacting with the KlickTipp API, allowing you to manage subscribers, tags, subscription processes, and more directly from n8n.
+For more detailed information on the KlickTipp API, including available functions for managing subscribers, tags, fields, and more, please refer to <a href="https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n" target="_blank" rel="noopener" title="E-Mail-Marketing API">official KlickTipp API client documentation</a>.
 ---
 
 ## Table of Contents
