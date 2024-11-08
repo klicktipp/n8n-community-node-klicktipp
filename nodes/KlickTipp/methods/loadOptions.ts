@@ -27,10 +27,20 @@ async function getCachedOptions(
 	placeholder?: string,
 	defaultName = 'Unnamed',
 ): Promise<INodePropertyOptions[]> {
+	// Access the credentials
+	const node = this.getNode();
+	const credentialsId = node.credentials?.klickTippApi?.id;
+
+	if (!credentialsId) {
+		throw new Error('Credentials ID is missing.');
+	}
+
+	const cacheKeyWithCredentials = `${cacheKey}_${credentialsId}`;
+
 	// Check the cache for existing data
-	let options = cache.get<INodePropertyOptions[]>(cacheKey);
+	let options = cache.get<INodePropertyOptions[]>(cacheKeyWithCredentials);
 	if (options) {
-		console.log(`Served from cache: ${cacheKey}`);
+		console.log(`Served from cache: ${cacheKeyWithCredentials}`);
 		return addPlaceholder(options, placeholder);
 	}
 
@@ -49,7 +59,7 @@ async function getCachedOptions(
 	}));
 
 	// Cache the options and add placeholder if needed
-	cache.set(cacheKey, options);
+	cache.set(cacheKeyWithCredentials, options);
 	return addPlaceholder(options, placeholder);
 }
 
