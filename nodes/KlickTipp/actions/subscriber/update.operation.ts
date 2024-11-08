@@ -14,6 +14,7 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'Select the subscriber to retrieve',
+		placeholder: 'Enter Subscriber ID (required)'
 	},
 	{
 		displayName: 'Email',

@@ -1,78 +1,91 @@
 {
-  "name": "My workflow 2",
+  "name": "KlickTipp Workflow",
   "nodes": [
     {
       "parameters": {},
-      "id": "57967f6f-5afc-4a45-bd79-dc0802984b7b",
+      "id": "3a409800-ebf4-4df0-b61d-6b5fb7bcd346",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
       "position": [
-        520,
-        -100
+        220,
+        160
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "operation": "create"
+      },
+      "id": "8c45d193-5f04-496d-b1c5-e7da809fd6c7",
+      "name": "KlickTipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        480,
+        -120
       ]
     },
     {
       "parameters": {
         "operation": "get"
       },
-      "id": "00f8e20c-79d5-4b3a-93aa-22a274d188e8",
-      "name": "KlickTipp",
-      "type": "CUSTOM.klicktipp",
+      "id": "a14918c3-eaf3-4d90-b3ee-dea60a1a4ffa",
+      "name": "KlickTipp1",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1320,
-        60
+        480,
+        40
       ]
     },
     {
       "parameters": {},
-      "id": "7947fa47-3f1f-41f1-8914-93bb8e215dfb",
-      "name": "KlickTipp1",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1320,
-        -100
-      ]
-    },
-    {
-      "parameters": {
-        "operation": "create"
-      },
-      "id": "b2051815-9641-4561-9e7b-a2dc2efb3d20",
+      "id": "5cae05aa-cb87-4ab8-8a75-e1ad28649162",
       "name": "KlickTipp2",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1320,
-        220
+        480,
+        -280
       ]
     },
     {
       "parameters": {
         "operation": "update"
       },
-      "id": "df14349d-4383-47bd-bd0e-84ea2221aa6e",
+      "id": "c14477ff-3c49-4da3-9d1e-c6bc08b42c1f",
       "name": "KlickTipp3",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1320,
-        380
+        480,
+        200
       ]
     },
     {
       "parameters": {
         "operation": "delete"
       },
-      "id": "6425e371-f2e7-4b7a-b692-039e7c3192f1",
+      "id": "133229ed-e136-422d-a3b1-008f47667b21",
       "name": "KlickTipp4",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1320,
-        540
+        480,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "opt-in"
+      },
+      "id": "00336765-e038-4356-844c-ea04885cce12",
+      "name": "KlickTipp5",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        700,
+        -280
       ]
     },
     {
@@ -80,26 +93,13 @@
         "resource": "opt-in",
         "operation": "get"
       },
-      "id": "6af4163a-46c4-4406-a19e-021848c857e0",
-      "name": "KlickTipp5",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1000,
-        -100
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "opt-in"
-      },
-      "id": "c22b0c54-8834-4015-b5d1-97fbbbaf9bb6",
+      "id": "27dedcfe-38f8-4892-adc2-6da57299fffc",
       "name": "KlickTipp6",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1000,
-        60
+        700,
+        -120
       ]
     },
     {
@@ -107,40 +107,39 @@
         "resource": "opt-in",
         "operation": "getRedirect"
       },
-      "id": "92d80ca9-7628-4c1d-8270-bd2e50764c37",
+      "id": "70188748-3209-492d-8e17-83385d0d5c8d",
       "name": "KlickTipp7",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1000,
-        220
+        700,
+        40
       ]
     },
     {
       "parameters": {
-        "resource": "subscriber",
-        "operation": "subscribe"
+        "resource": "field"
       },
-      "id": "d60c402a-3642-44f6-8421-ed704cb156af",
+      "id": "487f2558-c6a9-4fe4-81f0-2a3d3fc981bd",
       "name": "KlickTipp8",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        1500
+        920,
+        -280
       ]
     },
     {
       "parameters": {
         "resource": "subscriber"
       },
-      "id": "347dd8ee-8b84-443f-870f-eb4e1aaa3741",
+      "id": "93ccfcf4-03e3-40d3-b6b1-24b51cee0828",
       "name": "KlickTipp9",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        -100
+        1120,
+        -280
       ]
     },
     {
@@ -148,13 +147,55 @@
         "resource": "subscriber",
         "operation": "get"
       },
-      "id": "392397f9-880d-454c-8a89-3022c0c9aa0e",
+      "id": "ac3e1e09-7f50-4255-8711-179204c75b42",
       "name": "KlickTipp10",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        60
+        1120,
+        -120
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "subscribe"
+      },
+      "id": "4b09313a-5f8a-45b8-9509-f9fb4fba620b",
+      "name": "KlickTipp11",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        40
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "delete"
+      },
+      "id": "ee949455-ec3d-4907-bccc-234912bbc447",
+      "name": "KlickTipp12",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "unsubscribe"
+      },
+      "id": "333a21c7-ab31-4a34-a160-4021cb202967",
+      "name": "KlickTipp13",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        520
       ]
     },
     {
@@ -162,55 +203,13 @@
         "resource": "subscriber",
         "operation": "search"
       },
-      "id": "4d8644a7-f50f-4a15-99b6-8b2ad844f7e8",
-      "name": "KlickTipp11",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        700,
-        220
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signIn"
-      },
-      "id": "d59ec760-9fd4-4dda-9b33-ca21bda93b60",
-      "name": "KlickTipp12",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        700,
-        380
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signOff"
-      },
-      "id": "13ea20dd-2fa7-4471-9606-0b8d3c383553",
-      "name": "KlickTipp13",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        700,
-        540
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signOut"
-      },
-      "id": "bf84223c-9156-4664-ae73-01025cb43afb",
+      "id": "c8da4d8f-aa28-4219-8714-f2b420cba076",
       "name": "KlickTipp14",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        700
+        1120,
+        680
       ]
     },
     {
@@ -218,13 +217,27 @@
         "resource": "subscriber",
         "operation": "tag"
       },
-      "id": "7d3a83ea-a0d6-4e25-91b5-d3a1a301bdf5",
+      "id": "7c44511c-3e7f-4080-a3fb-9f3c5519cebe",
       "name": "KlickTipp15",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        860
+        1120,
+        840
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "untag"
+      },
+      "id": "38220451-5801-4ff3-9d84-47c30a6b09f8",
+      "name": "KlickTipp16",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        1020
       ]
     },
     {
@@ -232,57 +245,54 @@
         "resource": "subscriber",
         "operation": "tagged"
       },
-      "id": "ec0a6d92-622d-4cd3-b6f7-7570ed3d167f",
-      "name": "KlickTipp16",
-      "type": "CUSTOM.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        700,
-        1020
-      ],
-      "alwaysOutputData": true
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "untag",
-        "email": "tobechukwu.jeromy@domainstream.org"
-      },
-      "id": "51e6cc09-82ba-4da9-be4b-a56fa83ea25d",
+      "id": "17797951-00fa-4824-a75b-1ef12845d9b4",
       "name": "KlickTipp17",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
+        1120,
         1180
       ]
     },
     {
       "parameters": {
         "resource": "subscriber",
-        "operation": "update"
+        "operation": "signIn"
       },
-      "id": "69038870-1549-4364-af16-32b04e3dcd9b",
+      "id": "ce2dc716-233a-4043-9373-3b59b718be04",
       "name": "KlickTipp18",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
+        1120,
         1340
-      ],
-      "alwaysOutputData": true
+      ]
     },
     {
       "parameters": {
         "resource": "subscriber",
-        "operation": "unsubscribe"
+        "operation": "signOff"
       },
-      "id": "ed00e6bd-4416-4d67-a757-0b9b6b7e2bc0",
+      "id": "d12d2eb3-94a7-4661-9bf3-1613339f0d4b",
       "name": "KlickTipp19",
-      "type": "CUSTOM.klicktipp",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
+        1120,
+        1500
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "signOut"
+      },
+      "id": "5d177157-bc22-40b7-82dd-f53336d90cbb",
+      "name": "KlickTipp20",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
         1660
       ]
     },
@@ -291,39 +301,41 @@
         "resource": "subscriber",
         "operation": "resendAutoresponder"
       },
-      "id": "a2e1d9ab-f48e-49f5-a20e-e73ebb0bc2cf",
-      "name": "KlickTipp20",
-      "type": "CUSTOM.klicktipp",
+      "id": "8729037c-decc-46e8-a885-e0a0975eff04",
+      "name": "KlickTipp21",
+      "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
+        1120,
         1820
+      ]
+    },
+    {
+      "parameters": {
+        "resource": "subscriber",
+        "operation": "update"
+      },
+      "id": "f1b48e39-8b02-4fe2-abb3-7916f047e695",
+      "name": "KlickTipp22",
+      "type": "n8n-nodes-klicktipp.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        360
       ]
     }
   ],
   "pinData": {},
-  "connections": {
-    "When clicking ‘Test workflow’": {
-      "main": [
-        [
-          {
-            "node": "KlickTipp9",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    }
-  },
+  "connections": {},
   "active": false,
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "2f78e43c-c601-4342-af7e-c57729b6a44f",
+  "versionId": "e483d4b3-335b-417b-a382-10ca5fd326e8",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "d59d135498cc69bb504a352cbe510abdaa93356e0c05ef0ddd5d102de621cc99"
   },
-  "id": "L78y90DkFFxlUp3w",
+  "id": "t4X6S8S7iidYY0kQ",
   "tags": []
 }
