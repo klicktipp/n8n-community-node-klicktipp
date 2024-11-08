@@ -13,7 +13,6 @@ export const properties: INodeProperties[] = [
 		name: 'email',
 		type: 'string',
 		default: '',
-		required: true,
 		placeholder: 'Enter email address (required)',
 	},
 	{

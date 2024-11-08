@@ -7,7 +7,6 @@ export const properties: INodeProperties[] = [
 		displayName: 'Subscriber ID',
 		name: 'subscriberId',
 		type: 'string',
-		required: true,
 		default: '',
 		description: 'Enter the ID of the subscriber you want to retrieve',
 		placeholder: 'Enter Subscriber ID (required)'

@@ -8,7 +8,6 @@ export const properties: INodeProperties[] = [
 		name: 'email',
 		type: 'string',
 		default: '',
-		required: true,
 		placeholder: 'Enter email address (required)',
 	},
 	{
@@ -21,7 +20,6 @@ export const properties: INodeProperties[] = [
 		},
 		default: [],
 		description: 'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
-		required: true,
 	},
 ];
 

@@ -12,7 +12,6 @@ export const properties: INodeProperties[] = [
 			loadOptionsMethod: 'getOptInProcesses',
 		},
 		default: '',
-		required: true,
 		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 	},
 	{
@@ -21,7 +20,6 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		placeholder: 'Enter email address (required)',
 		default: '',
-		required: true,
 		description: 'Email address',
 	},
 ];
