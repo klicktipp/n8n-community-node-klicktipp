@@ -10,7 +10,7 @@ export const description: INodeTypeDescription = {
 	displayName: 'KlickTipp',
 	name: 'klicktipp',
 	group: ['transform'],
-	icon: 'file:klicktipp.svg',
+	icon: { light: 'file:klicktipp.svg', dark: 'file:klicktipp.dark.svg' },
 	version: 2,
 	subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 	description: 'Interact with KlickTipp API',
