@@ -14,7 +14,7 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'Select the subscriber to retrieve',
-		placeholder: 'Enter Subscriber ID (required)'
+		placeholder: 'Enter Subscriber ID (required)',
 	},
 	{
 		displayName: 'Email',
@@ -53,7 +53,8 @@ export const properties: INodeProperties[] = [
 							loadOptionsMethod: 'getFields',
 						},
 						default: '',
-						description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+						description:
+							'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 					},
 					{
 						displayName: 'Field Value',

@@ -9,7 +9,7 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		description: 'Enter the ID of the subscriber you want to delete',
-		placeholder: 'Enter Subscriber ID (required)'
+		placeholder: 'Enter Subscriber ID (required)',
 	},
 ];
 
