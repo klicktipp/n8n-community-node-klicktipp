@@ -13,3 +13,7 @@
 ## Version 1.0.2 (2024-11-11)
 - **New Features**:
   - Enabled support for dark and light theme icons.
+
+## Version 1.0.3 (2024-11-14)
+- **Improvements**:
+  - Improved user experience by removing the `required: true` field for the klickTippApi credential, making it more flexible.
