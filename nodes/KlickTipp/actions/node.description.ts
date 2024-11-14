@@ -22,8 +22,7 @@ export const description: INodeTypeDescription = {
 	outputs: [NodeConnectionType.Main],
 	credentials: [
 		{
-			name: 'klickTippApi',
-			required: true,
+			name: 'klickTippApi'
 		},
 	],
 	properties: [
