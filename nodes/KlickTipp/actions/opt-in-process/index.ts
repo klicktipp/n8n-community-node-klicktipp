@@ -28,7 +28,7 @@ export const description: INodeProperties[] = [
 				name: 'Opt-in Process Index',
 				value: 'index',
 				description:
-					'Returns an associative array <code>[double_optin_process_id] => [double_optin_process_name]</code> of all opt-in processes',
+					'Returns an associative array in the format <code>{ double_optin_process_id: double_optin_process_name }</code>, where each key represents the unique ID of an opt-in process, and its value is the corresponding opt-in process name',
 				action: 'Process index',
 			},
 			{

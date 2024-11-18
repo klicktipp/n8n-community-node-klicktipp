@@ -64,7 +64,7 @@ export function handleError(this: IExecuteFunctions, error: unknown): INodeExecu
 	});
 }
 
-export function handleResponse(
+export function handleObjectResponse(
 	this: IExecuteFunctions,
 	data: IDataObject,
 	index: number,
@@ -72,4 +72,24 @@ export function handleResponse(
 	return this.helpers.constructExecutionMetaData(this.helpers.returnJsonArray(data), {
 		itemData: { item: index },
 	});
+}
+
+export function handleArrayResponse(
+	this: IExecuteFunctions,
+	data: IDataObject[],
+	index: number,
+): INodeExecutionData[] {
+	return this.helpers.constructExecutionMetaData(this.helpers.returnJsonArray(data), {
+		itemData: { item: index },
+	});
+}
+
+export function objectToIdValueArray(obj: IDataObject | string[]): IDataObject[] {
+	if (Array.isArray(obj)) {
+		// Handle array of strings: map to [{ id: string }]
+		return obj.map((id) => ({ id }));
+	}
+
+	// Handle object: map to [{ id, value }]
+	return Object.entries(obj).map(([id, value]) => ({ id, value }));
 }

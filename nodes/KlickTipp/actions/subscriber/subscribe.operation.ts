@@ -2,7 +2,7 @@ import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workfl
 import { apiRequest } from '../../transport';
 import {
 	handleError,
-	handleResponse,
+	handleObjectResponse,
 	transformDataFields,
 	updateDisplayOptions,
 } from '../../utils/utilities';
@@ -116,7 +116,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 
 	try {
 		const responseData = await apiRequest.call(this, 'POST', '/subscriber', body);
-		return handleResponse.call(this, responseData, index);
+		return handleObjectResponse.call(this, responseData, index);
 	} catch (error) {
 		return handleError.call(this, error);
 	}

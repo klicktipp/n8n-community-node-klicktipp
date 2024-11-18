@@ -1,6 +1,6 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { handleError, handleResponse, updateDisplayOptions } from '../../utils/utilities';
+import { handleError, handleObjectResponse, updateDisplayOptions } from '../../utils/utilities';
 import { clearCache } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
@@ -46,7 +46,12 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	try {
 		const responseData = await apiRequest.call(this, 'POST', '/tag', body);
 		clearCache(['cachedTags']);
-		return handleResponse.call(this, responseData, index);
+
+		const enhancedData = {
+			id: responseData[0],
+		};
+
+		return handleObjectResponse.call(this, enhancedData, index);
 	} catch (error) {
 		return handleError.call(this, error);
 	}

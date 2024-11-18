@@ -41,7 +41,7 @@ export const description: INodeProperties[] = [
 				name: 'Tag Index',
 				value: 'index',
 				description:
-					'Returns an associative array <code>[tag_id] => [tag_name]</code> of all manual tags and SmartLinks',
+					'Returns an associative array in the format <code>{ tag_id: tag_name }</code>, where each key represents the unique ID of a manual tag or SmartLink, and the value is the corresponding tag name',
 				action: 'Tag index',
 			},
 			{

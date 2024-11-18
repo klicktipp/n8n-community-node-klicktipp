@@ -17,3 +17,7 @@
 ## Version 1.0.3 (2024-11-14)
 - **Improvements**:
   - Improved user experience by removing the `required: true` field for the klickTippApi credential, making it more flexible.
+
+## Version 1.0.4 (2024-11-18)
+- **Improvements**
+  - Updated the structure of the returned data across nodes to ensure consistency and better compatibility with downstream integrations

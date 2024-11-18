@@ -1,6 +1,11 @@
-import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { handleError, handleResponse, updateDisplayOptions } from '../../utils/utilities';
+import {
+	handleArrayResponse,
+	handleError,
+	objectToIdValueArray,
+	updateDisplayOptions,
+} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [];
 
@@ -24,7 +29,10 @@ export async function execute(this: IExecuteFunctions, index: number) {
 			}
 		}
 
-		return handleResponse.call(this, responseData, index);
+		// Transform the dataObject into an array of { key, value } objects
+		const transformedData: IDataObject[] = objectToIdValueArray(responseData);
+
+		return handleArrayResponse.call(this, transformedData, index);
 	} catch (error) {
 		return handleError.call(this, error);
 	}

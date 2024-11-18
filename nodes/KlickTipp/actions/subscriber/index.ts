@@ -67,7 +67,7 @@ export const description: INodeProperties[] = [
 				name: 'Subscriber Index',
 				value: 'index',
 				description:
-					'Returns an associative array <code>[ID] => [subscriber_id]</code> of all active subscribers. Use the <code>Subscriber Get</code> node to retrieve detailed information about a subscriber.',
+					'Returns an associative array in the format <code>{ subscriber_id: ID }</code>, where each key corresponds to a unique subscriber ID. Use the <code>Subscriber Get</code> node to retrieve detailed information about a subscriber.',
 				action: 'Subscriber index',
 			},
 			{
@@ -113,7 +113,7 @@ export const description: INodeProperties[] = [
 				name: 'Subscriber Tagged',
 				value: 'tagged',
 				description:
-					'Returns an associative array <code>[subscriber_id] => [subscription_timestamp]</code> of subscribers who have been tagged with a specific tag. Use the <code>Subscriber Get</code> node to retrieve detailed information about a subscriber.',
+					'Returns an associative array in the format <code>{ subscriber_id: subscription_timestamp }</code>, where each key represents the unique ID of a tagged subscriber, and the value is the timestamp when the subscription occurred. Use the <code>Subscriber Get</code> node to retrieve detailed information about a subscriber.',
 				action: 'Subscriber tagged',
 			},
 			{
