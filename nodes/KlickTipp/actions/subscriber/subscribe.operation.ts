@@ -13,7 +13,7 @@ export const properties: INodeProperties[] = [
 		name: 'email',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter email address (required)',
+		placeholder: 'Enter email address (optional)',
 	},
 	{
 		displayName: 'SMS Number',
@@ -101,16 +101,17 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const smsNumber = this.getNodeParameter('smsNumber', index) as string;
 	const fields = this.getNodeParameter('fields', index) as IDataObject;
 
-	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+	// Validate that at least one of email or smsNumber is provided
+	if (!email && !smsNumber) {
+		return handleError.call(this, 'Either an email address or a phone number is required.');
 	}
 
 	// Construct request body
 	const body: IDataObject = {
-		email,
+		...(email && { email: email.trim() }),
+		...(smsNumber && { smsnumber: smsNumber.trim() }),
 		...(listId && { listid: listId }),
 		...(tagId && { tagid: tagId }),
-		...(smsNumber && { smsnumber: smsNumber }),
 		...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
 	};
 
