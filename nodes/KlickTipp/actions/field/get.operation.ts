@@ -38,7 +38,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
   const fieldId = apiFieldId.replace(/^field/, '');
 
   if (!fieldId) {
-    return handleError.call(this, 'No field name could be derived from the provided field API ID.');
+    return handleError.call(this, 'No field ID could be extracted from the provided API field ID.');
   }
 
   try {
