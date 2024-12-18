@@ -18,7 +18,7 @@ type NodeMap = {
 		| 'tagged'
 		| 'untag'
 		| 'update';
-	field: 'index';
+	field: 'index' | 'get';
 };
 
 export type KlickTippType = AllEntities<NodeMap>;
