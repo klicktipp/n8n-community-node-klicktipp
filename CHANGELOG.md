@@ -24,4 +24,8 @@
 
 ## Version 1.0.5 (2024-12-09)
 - **Improvements**
-  - Added support for subscriptions with either email or phone number, ensuring better user flexibility.
+  - Added support for subscriptions with either email or phone number, ensuring better user flexibility
+
+## Version 1.0.6 (2024-12-18)
+- **New Features**
+  - Introduced the Field get node, enabling seamless access to custom field data for enhanced workflow capabilities.
