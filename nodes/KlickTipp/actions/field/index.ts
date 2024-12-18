@@ -1,7 +1,7 @@
 import type { INodeProperties } from 'n8n-workflow';
 
 import * as index from './index.operation';
-import * as get from './get.operaton';
+import * as get from './get.operation';
 
 export { index, get };
 
