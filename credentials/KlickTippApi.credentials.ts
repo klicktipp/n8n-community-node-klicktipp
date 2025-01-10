@@ -13,15 +13,6 @@ export class KlickTippApi implements ICredentialType {
   documentationUrl = 'https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n';
   properties: INodeProperties[] = [
     {
-      displayName: 'API Key',
-      name: 'apiKey',
-      type: 'string',
-      typeOptions: {
-        password: true,
-      },
-      default: '',
-    },
-    {
       displayName: 'Username',
       name: 'username',
       type: 'string',

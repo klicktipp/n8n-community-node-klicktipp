@@ -71,9 +71,6 @@ This package includes nodes to interact with various aspects of the KlickTipp AP
   - `Subscriber Untag`
   - `Subscriber Unsubscribe`
   - `Subscriber Delete`
-  - `Subscriber Sign-In`
-  - `Subscriber Sign-Out`
-  - `Subscriber Sign-Off`
 - **Description**: Provides full management capabilities for subscribers, such as searching, tagging, updating, and deleting subscriber data.
 
 ### Data Fields

@@ -6,9 +6,6 @@ import * as index from './index.operation';
 import * as del from './delete.operation';
 import * as get from './get.operation';
 import * as search from './search.operation';
-import * as signIn from './sign-in.operation';
-import * as signOff from './sign-off.operation';
-import * as signOut from './sign-out.operation';
 import * as tag from './tag.operation';
 import * as tagged from './tagged.operation';
 import * as untag from './untag.operation';
@@ -22,9 +19,6 @@ export {
 	del as delete,
 	search,
 	get,
-	signIn,
-	signOff,
-	signOut,
 	tag,
 	tagged,
 	untag,
@@ -78,25 +72,6 @@ export const description: INodeProperties[] = [
 				action: 'Subscriber search',
 			},
 			{
-				name: 'Subscriber Signin',
-				value: 'signIn',
-				description:
-					'Adds or updates a subscriber using an API key. The subscriber can be identified by their email address or SMS number, with optional fields.',
-				action: 'Subscriber signin',
-			},
-			{
-				name: 'Subscriber Signoff',
-				value: 'signOff',
-				description: 'Unsubscribes a subscriber using an API key',
-				action: 'Subscriber signoff',
-			},
-			{
-				name: 'Subscriber Signout',
-				value: 'signOut',
-				description: 'Removes the manual tag or SmartLink defined in the API key from a subscriber',
-				action: 'Subscriber signout',
-			},
-			{
 				name: 'Subscriber Subscribe',
 				value: 'subscribe',
 				description:
@@ -143,9 +118,6 @@ export const description: INodeProperties[] = [
 	...del.description,
 	...get.description,
 	...search.description,
-	...signIn.description,
-	...signOff.description,
-	...signOut.description,
 	...tag.description,
 	...tagged.description,
 	...untag.description,
