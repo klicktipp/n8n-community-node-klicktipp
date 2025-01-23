@@ -34,5 +34,5 @@ export const description: INodeProperties[] = [
 		default: 'index',
 	},
 	...index.description,
-	...get.description
+	...get.description,
 ];

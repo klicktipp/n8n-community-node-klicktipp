@@ -299,20 +299,6 @@
     {
       "parameters": {
         "resource": "subscriber",
-        "operation": "resendAutoresponder"
-      },
-      "id": "8729037c-decc-46e8-a885-e0a0975eff04",
-      "name": "KlickTipp21",
-      "type": "n8n-nodes-klicktipp.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1120,
-        1820
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
         "operation": "update"
       },
       "id": "f1b48e39-8b02-4fe2-abb3-7916f047e695",
