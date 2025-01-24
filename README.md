@@ -19,7 +19,6 @@ For more detailed information on the KlickTipp API, including available function
   - [Tags](#tags)
   - [Subscribers](#subscribers)
   - [Data Fields](#data-fields)
-  - [Autoresponder](#autoresponder)
 - [Credentials](#credentials)
 - [Error Handling](#error-handling)
 - [License](#license)
@@ -60,7 +59,6 @@ This package includes nodes to interact with various aspects of the KlickTipp AP
 ### Subscribers
 
 - **Nodes**:
-  - `Resend Autoresponder`
   - `Subscriber Index`
   - `Subscriber Search`
   - `Subscriber Tagged`
