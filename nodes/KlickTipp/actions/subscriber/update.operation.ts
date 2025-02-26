@@ -4,26 +4,26 @@ import { handleError, transformDataFields, updateDisplayOptions } from '../../ut
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Subscriber ID',
+		displayName: 'Contact ID',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Select the subscriber to retrieve',
-		placeholder: 'Enter Subscriber ID (required)',
+		description: 'Select the contact to retrieve',
+		placeholder: 'Enter contact ID (required)',
 	},
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter email address (required)',
+		placeholder: 'Enter email address',
 	},
 	{
-		displayName: 'SMS Number',
+		displayName: 'SMS number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter SMS number (optional)',
+		placeholder: 'Enter SMS number',
 	},
 	{
 		displayName: 'Data Fields',
@@ -80,7 +80,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const fields = this.getNodeParameter('fields', index) as IDataObject;
 
 	if (!subscriberId) {
-		return handleError.call(this, 'The subscriber ID is required.');
+		return handleError.call(this, 'Contact ID is missing');
 	}
 
 	// Construct request body

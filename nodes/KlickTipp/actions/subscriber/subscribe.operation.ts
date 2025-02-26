@@ -9,22 +9,22 @@ import {
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter email address (optional)',
+		placeholder: 'Enter email address',
 	},
 	{
-		displayName: 'SMS Number',
+		displayName: 'SMS number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter SMS number (optional)',
+		placeholder: 'Enter SMS number',
 	},
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in Process',
+		displayName: 'Opt-in process',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
@@ -36,7 +36,7 @@ export const properties: INodeProperties[] = [
 	},
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag ID',
+		displayName: 'Tag',
 		name: 'tagId',
 		type: 'options',
 		typeOptions: {
@@ -103,7 +103,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 
 	// Validate that at least one of email or smsNumber is provided
 	if (!email && !smsNumber) {
-		return handleError.call(this, 'Either an email address or a phone number is required.');
+		return handleError.call(this, 'Email or SMS number is missing');
 	}
 
 	// Construct request body

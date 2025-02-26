@@ -4,7 +4,7 @@ import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		default: '',
@@ -12,7 +12,7 @@ export const properties: INodeProperties[] = [
 	},
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag ID',
+		displayName: 'Tag',
 		name: 'tagId',
 		type: 'options',
 		typeOptions: {
@@ -38,11 +38,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const tagId = this.getNodeParameter('tagId', index) as number;
 
 	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+		return handleError.call(this, 'Email is missing');
 	}
 
 	if (!tagId) {
-		return handleError.call(this, 'The tag ID is required.');
+		return handleError.call(this, 'Tag ID is missing');
 	}
 
 	const body: IDataObject = {

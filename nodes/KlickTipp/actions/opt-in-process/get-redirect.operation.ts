@@ -5,7 +5,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in Process',
+		displayName: 'Opt-in process',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
@@ -16,7 +16,7 @@ export const properties: INodeProperties[] = [
 			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 	},
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		placeholder: 'Enter email address (required)',
@@ -39,11 +39,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const email = this.getNodeParameter('email', index) as string;
 
 	if (!listId) {
-		return handleError.call(this, 'The opt-in process ID is required.');
+		return handleError.call(this, 'Opt-in process ID is missing');
 	}
 
 	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+		return handleError.call(this, 'Email is missing');
 	}
 
 	const body: IDataObject = {

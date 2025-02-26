@@ -4,7 +4,7 @@ import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		default: '',
@@ -34,11 +34,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const email = this.getNodeParameter('email', index) as string;
 
 	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+		return handleError.call(this, 'Email is missing');
 	}
 
 	if (!apiKey) {
-		return handleError.call(this, 'The API key is required.');
+		return handleError.call(this, 'Login failed');
 	}
 
 	const body: IDataObject = {

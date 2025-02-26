@@ -18,16 +18,16 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Field Index',
+				name: 'List data fields',
 				value: 'index',
 				description:
-					'Returns an associative array in the format <code>{ field_id: field_name }</code>, where each key corresponds to the unique field ID, and its value is the associated field name',
+					'Lists the IDs and names of all data fields.',
 				action: 'Field index',
 			},
 			{
-				name: 'Field Get',
+				name: 'Get data field',
 				value: 'get',
-				description: 'Returns the name and description of a field',
+				description: 'Gets the ID and the name of a data field.',
 				action: 'Field get',
 			},
 		],

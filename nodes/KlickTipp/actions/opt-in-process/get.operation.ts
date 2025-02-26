@@ -5,7 +5,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in Process',
+		displayName: 'Opt-in process',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
@@ -30,7 +30,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const listId = this.getNodeParameter('listId', index) as string;
 
 	if (!listId) {
-		return handleError.call(this, 'The opt-in process ID is required.');
+		return handleError.call(this, 'Opt-in process ID is missing');
 	}
 
 	try {

@@ -9,18 +9,18 @@ import {
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email address',
 		name: 'email',
 		type: 'string',
 		default: '',
 		placeholder: 'Enter email address (required)',
 	},
 	{
-		displayName: 'SMS Number',
+		displayName: 'SMS number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter SMS number (optional)',
+		placeholder: 'Enter SMS number',
 	},
 	{
 		displayName: 'Data Fields',
@@ -30,7 +30,7 @@ export const properties: INodeProperties[] = [
 			multipleValues: true,
 		},
 		default: {},
-		description: 'Select the data field (optional)',
+		description: 'Select the data field',
 		options: [
 			{
 				name: 'dataFields',
@@ -85,11 +85,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const apiKey = credentials.apiKey as string;
 
 	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+		return handleError.call(this, 'Email is missing');
 	}
 
 	if (!apiKey) {
-		return handleError.call(this, 'The API key is required.');
+		return handleError.call(this, 'Login failed');
 	}
 
 	// Prepare the request body
