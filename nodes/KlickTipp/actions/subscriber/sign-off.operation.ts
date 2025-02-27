@@ -4,7 +4,7 @@ import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email address',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		default: '',

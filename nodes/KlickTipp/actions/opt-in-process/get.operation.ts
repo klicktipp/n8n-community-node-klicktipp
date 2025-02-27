@@ -5,7 +5,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in process',
+		displayName: 'Opt-in Process',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {

@@ -5,7 +5,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Data field',
+		displayName: 'Data Field',
 		name: 'apiFieldId',
 		type: 'options',
 		typeOptions: {

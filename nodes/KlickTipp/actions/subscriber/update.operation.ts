@@ -12,14 +12,14 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Enter contact ID (required)',
 	},
 	{
-		displayName: 'Email address',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		default: '',
 		placeholder: 'Enter email address',
 	},
 	{
-		displayName: 'SMS number',
+		displayName: 'SMS Number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',

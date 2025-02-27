@@ -9,14 +9,14 @@ import {
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email address',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		default: '',
 		placeholder: 'Enter email address (required)',
 	},
 	{
-		displayName: 'SMS number',
+		displayName: 'SMS Number',
 		name: 'smsNumber',
 		type: 'string',
 		default: '',

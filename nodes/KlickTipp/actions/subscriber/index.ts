@@ -43,87 +43,82 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Delete contact',
-				value: 'delete',
-				description: 'Deletes a contact.',
-				action: 'Subscriber delete',
-			},
-			{
-				name: 'Get contact',
-				value: 'get',
-				description:
-					'Returns the complete data of a contact.',
-				action: 'Subscriber get',
-			},
-			{
-				name: 'List contacts',
-				value: 'index',
-				description:
-					'Lists the IDs of all active contacts.',
-				action: 'Subscriber index',
-			},
-			{
-				name: 'Get contact ID',
-				value: 'search',
-				description:
-					'Returns the contact ID for an email address.',
-				action: 'Subscriber search',
-			},
-			{
-				name: 'Add contact via API key',
+				name: 'Add Contact via API Key',
 				value: 'signIn',
-				description:
-					'Creates or updates a contact and associates the tag linked to the API key.',
+				description: 'Creates or updates a contact and associates the tag linked to the API key',
 				action: 'Subscriber signin',
 			},
 			{
-				name: 'Unsubscribe contact via API key',
-				value: 'signOff',
-				description: 'Unsubscribes a contact via the API key and prevents further communication.',
-				action: 'Subscriber signoff',
-			},
-			{
-				name: 'Remove contact via API key',
-				value: 'signOut',
-				description: 'Removes the tag of a contact associated with the API key.',
-				action: 'Subscriber signout',
-			},
-			{
-				name: 'Add or update contact',
+				name: 'Add or Update Contact',
 				value: 'subscribe',
 				description:
 					'Adds a new contact. If a contact with the same email already exists, it will be updated.',
 				action: 'Subscriber subscribe',
 			},
 			{
-				name: 'Tag contact',
-				value: 'tag',
-				description: 'Adds one or more tags to a contact.',
-				action: 'Subscriber tag',
+				name: 'Delete Contact',
+				value: 'delete',
+				description: 'Deletes a contact',
+				action: 'Subscriber delete',
 			},
 			{
-				name: 'List tagged contacts',
+				name: 'Get Contact',
+				value: 'get',
+				description: 'Returns the complete data of a contact',
+				action: 'Subscriber get',
+			},
+			{
+				name: 'Get Contact ID',
+				value: 'search',
+				description: 'Returns the contact ID for an email address',
+				action: 'Subscriber search',
+			},
+			{
+				name: 'List Contacts',
+				value: 'index',
+				description: 'Lists the IDs of all active contacts',
+				action: 'Subscriber index',
+			},
+			{
+				name: 'List Tagged Contacts',
 				value: 'tagged',
-				description:
-					'Lists the IDs and tagging timestamps of all tagged contacts.',
+				description: 'Lists the IDs and tagging timestamps of all tagged contacts',
 				action: 'Subscriber tagged',
 			},
 			{
-				name: 'Unsubscribe contact',
+				name: 'Remove Contact via API Key',
+				value: 'signOut',
+				description: 'Removes the tag of a contact associated with the API key',
+				action: 'Subscriber signout',
+			},
+			{
+				name: 'Tag Contact',
+				value: 'tag',
+				description: 'Adds one or more tags to a contact',
+				action: 'Subscriber tag',
+			},
+			{
+				name: 'Unsubscribe Contact',
 				value: 'unsubscribe',
-				description: 'Unsubscribes a contact, preventing further communication.',
+				description: 'Unsubscribes a contact, preventing further communication',
 				action: 'Subscriber unsubscribe',
 			},
 			{
-				name: 'Untag contact',
+				name: 'Unsubscribe Contact via API Key',
+				value: 'signOff',
+				description: 'Unsubscribes a contact via the API key and prevents further communication',
+				action: 'Subscriber signoff',
+			},
+			{
+				name: 'Untag Contact',
 				value: 'untag',
-				description: 'Removes a tag from a contact.',
+				description: 'Removes a tag from a contact',
 				action: 'Subscriber untag',
 			},
 			{
-				name: 'Update contact',
+				name: 'Update Contact',
 				value: 'update',
-				description: 'Updates a contact.',
+				description: 'Updates a contact',
 				action: 'Subscriber update',
 			},
 		],
