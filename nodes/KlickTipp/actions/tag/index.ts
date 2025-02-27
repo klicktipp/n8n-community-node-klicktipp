@@ -20,34 +20,33 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Tag Create',
+				name: 'Create Tag',
 				value: 'create',
 				description: 'Creates a new manual tag',
 				action: 'Tag create',
 			},
 			{
-				name: 'Tag Delete',
+				name: 'Delete Tag',
 				value: 'delete',
-				description: 'Deletes a manual tag or SmartLink',
+				description: 'Deletes a tag',
 				action: 'Tag delete',
 			},
 			{
-				name: 'Tag Get',
+				name: 'Get Tag',
 				value: 'get',
 				description: 'Returns the name and description of a tag',
 				action: 'Tag get',
 			},
 			{
-				name: 'Tag Index',
+				name: 'List Tags',
 				value: 'index',
-				description:
-					'Returns an associative array in the format <code>{ tag_id: tag_name }</code>, where each key represents the unique ID of a manual tag or SmartLink, and the value is the corresponding tag name',
+				description: 'Lists the IDs and names of all tags',
 				action: 'Tag index',
 			},
 			{
-				name: 'Tag Update',
+				name: 'Update Tag',
 				value: 'update',
-				description: 'Updates a manual tag or SmartLink',
+				description: 'Updates a tag',
 				action: 'Tag update',
 			},
 		],

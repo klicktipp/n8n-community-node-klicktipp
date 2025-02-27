@@ -30,7 +30,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const listId = this.getNodeParameter('listId', index) as string;
 
 	if (!listId) {
-		return handleError.call(this, 'The opt-in process ID is required.');
+		return handleError.call(this, 'Opt-in process ID is missing');
 	}
 
 	try {

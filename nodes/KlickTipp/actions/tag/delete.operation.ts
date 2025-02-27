@@ -6,7 +6,7 @@ import { clearCache } from '../../utils/utilities';
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag ID',
+		displayName: 'Tag',
 		name: 'tagId',
 		type: 'options',
 		typeOptions: {
@@ -31,7 +31,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const tagId = this.getNodeParameter('tagId', index) as string;
 
 	if (!tagId) {
-		return handleError.call(this, 'The tag ID is required.');
+		return handleError.call(this, 'Tag ID is missing');
 	}
 
 	try {

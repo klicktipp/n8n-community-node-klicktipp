@@ -5,7 +5,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 export const properties: INodeProperties[] = [
 	{
 		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Field ID',
+		displayName: 'Data Field',
 		name: 'apiFieldId',
 		type: 'options',
 		typeOptions: {
@@ -31,14 +31,14 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const apiFieldId = this.getNodeParameter('apiFieldId', index) as string;
 
 	if (!apiFieldId) {
-		return handleError.call(this, 'The API field ID is required.');
+		return handleError.call(this, 'Data field ID is required');
 	}
 
 	//Extract field ID, i.e. CompanyName
 	const fieldId = apiFieldId.replace(/^field/, '');
 
 	if (!fieldId) {
-		return handleError.call(this, 'No field ID could be extracted from the provided API field ID.');
+		return handleError.call(this, 'No data field ID found');
 	}
 
 	try {

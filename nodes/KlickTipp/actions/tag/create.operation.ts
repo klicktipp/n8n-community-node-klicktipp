@@ -16,7 +16,7 @@ export const properties: INodeProperties[] = [
 		name: 'description',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter description (optional)',
+		placeholder: 'Enter description',
 	},
 ];
 
@@ -34,7 +34,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const description = this.getNodeParameter('description', index) as string;
 
 	if (!name) {
-		return handleError.call(this, 'The tag name is required.');
+		return handleError.call(this, 'Tag name is missing');
 	}
 
 	// Construct request body

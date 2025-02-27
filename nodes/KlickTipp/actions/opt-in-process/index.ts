@@ -19,24 +19,22 @@ export const description: INodeProperties[] = [
 		},
 		options: [
 			{
-				name: 'Opt-in Process Get',
+				name: 'Get Opt-in Process',
 				value: 'get',
-				description: 'Returns the name of an opt-in process',
+				description: 'Returns the complete data of an opt-in process',
 				action: 'Process get',
 			},
 			{
-				name: 'Opt-in Process Index',
-				value: 'index',
-				description:
-					'Returns an associative array in the format <code>{ double_optin_process_id: double_optin_process_name }</code>, where each key represents the unique ID of an opt-in process, and its value is the corresponding opt-in process name',
-				action: 'Process index',
+				name: 'Get Redirect URL',
+				value: 'getRedirect',
+				description: 'Gets the redirection URL for a specific opt-in process',
+				action: 'Process redirect URL',
 			},
 			{
-				name: 'Opt-in Process Redirect URL',
-				value: 'getRedirect',
-				description:
-					"Returns the URL of the opt-in confirmation page for a subscriber's opt-in process",
-				action: 'Process redirect URL',
+				name: 'List Opt-in Processes',
+				value: 'index',
+				description: 'Lists the IDs and names of all opt-in processes',
+				action: 'Process index',
 			},
 		],
 		default: 'index',
