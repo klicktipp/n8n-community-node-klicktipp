@@ -52,7 +52,7 @@ export const description: INodeProperties[] = [
 				name: 'Add or Update Contact',
 				value: 'subscribe',
 				description:
-					'Adds a new contact. If a contact with the same email already exists, it will be updated.',
+					'Adds a new contact. If a contact with the same email already exists, it will be updated',
 				action: 'Subscriber subscribe',
 			},
 			{

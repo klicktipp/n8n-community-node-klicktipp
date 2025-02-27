@@ -25,16 +25,16 @@ export const description: INodeProperties[] = [
 				action: 'Process get',
 			},
 			{
-				name: 'List Opt-in Processes',
-				value: 'index',
-				description: 'Lists the IDs and names of all opt-in processes',
-				action: 'Process index',
-			},
-			{
 				name: 'Get Redirect URL',
 				value: 'getRedirect',
 				description: 'Gets the redirection URL for a specific opt-in process',
 				action: 'Process redirect URL',
+			},
+			{
+				name: 'List Opt-in Processes',
+				value: 'index',
+				description: 'Lists the IDs and names of all opt-in processes',
+				action: 'Process index',
 			},
 		],
 		default: 'index',
