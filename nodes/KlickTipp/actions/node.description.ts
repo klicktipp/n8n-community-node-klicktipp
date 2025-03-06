@@ -38,15 +38,15 @@ export const description: INodeTypeDescription = {
 					value: 'tag',
 				},
 				{
-					name: 'Opt-in Process',
+					name: 'Opt-In Process',
 					value: 'opt-in',
 				},
 				{
-					name: 'Subscriber',
+					name: 'Contact',
 					value: 'subscriber',
 				},
 				{
-					name: 'Field',
+					name: 'Data Field',
 					value: 'field',
 				},
 			],
