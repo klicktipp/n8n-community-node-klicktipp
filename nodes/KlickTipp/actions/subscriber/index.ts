@@ -6,9 +6,6 @@ import * as index from './index.operation';
 import * as del from './delete.operation';
 import * as get from './get.operation';
 import * as search from './search.operation';
-import * as signIn from './sign-in.operation';
-import * as signOff from './sign-off.operation';
-import * as signOut from './sign-out.operation';
 import * as tag from './tag.operation';
 import * as tagged from './tagged.operation';
 import * as untag from './untag.operation';
@@ -21,9 +18,6 @@ export {
 	del as delete,
 	search,
 	get,
-	signIn,
-	signOff,
-	signOut,
 	tag,
 	tagged,
 	untag,
@@ -42,12 +36,6 @@ export const description: INodeProperties[] = [
 			},
 		},
 		options: [
-			{
-				name: 'Add Contact via API Key',
-				value: 'signIn',
-				description: 'Creates or updates a contact and associates the tag linked to the API key',
-				action: 'Add contact via api key',
-			},
 			{
 				name: 'Add or Update Contact',
 				value: 'subscribe',
@@ -86,12 +74,6 @@ export const description: INodeProperties[] = [
 				action: 'List tagged contacts',
 			},
 			{
-				name: 'Remove Contact via API Key',
-				value: 'signOut',
-				description: 'Removes the tag of a contact associated with the API key',
-				action: 'Remove contact via api key',
-			},
-			{
 				name: 'Tag Contact',
 				value: 'tag',
 				description: 'Adds one or more tags to a contact',
@@ -102,12 +84,6 @@ export const description: INodeProperties[] = [
 				value: 'unsubscribe',
 				description: 'Unsubscribes a contact, preventing further communication',
 				action: 'Unsubscribe contact',
-			},
-			{
-				name: 'Unsubscribe Contact via API Key',
-				value: 'signOff',
-				description: 'Unsubscribes a contact via the API key and prevents further communication',
-				action: 'Unsubscribe contact via api key',
 			},
 			{
 				name: 'Untag Contact',
@@ -130,9 +106,6 @@ export const description: INodeProperties[] = [
 	...del.description,
 	...get.description,
 	...search.description,
-	...signIn.description,
-	...signOff.description,
-	...signOut.description,
 	...tag.description,
 	...tagged.description,
 	...untag.description,
