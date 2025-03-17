@@ -5,10 +5,8 @@ import {
 	INodeExecutionData,
 	INodeProperties,
 } from 'n8n-workflow';
-import NodeCache from 'node-cache';
 
 import { merge, reduce, uniqBy } from 'lodash';
-import { CACHE_TTL } from '../helpers/constants';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -38,21 +36,6 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 		{} as IDataObject,
 	);
 }
-
-// Initialize the cache instance
-const cache = new NodeCache({ stdTTL: CACHE_TTL });
-
-export function clearCache(keys?: string[]) {
-	if (keys) {
-		keys.forEach((key) => cache.del(key));
-		console.log(`Cleared cache keys: ${keys.join(', ')}`);
-	} else {
-		cache.flushAll();
-		console.log('Cleared all cache entries');
-	}
-}
-
-export { cache };
 
 export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
 	const errorMessage =

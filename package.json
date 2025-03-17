@@ -62,8 +62,5 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
-  },
-  "dependencies": {
-    "node-cache": "^5.1.2"
   }
 }
