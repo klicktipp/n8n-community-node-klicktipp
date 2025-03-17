@@ -14,7 +14,7 @@ export class KlickTippTrigger implements INodeType {
 		icon: { light: 'file:klicktipp.svg', dark: 'file:klicktipp.dark.svg' },
 		group: ['trigger'],
 		version: 1,
-		description: 'Handle KlickTipp events via webhooks',
+		description: 'Triggers on a new event',
 		defaults: {
 			name: 'KlickTipp Trigger',
 		},
