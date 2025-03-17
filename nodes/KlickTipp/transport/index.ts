@@ -1,5 +1,3 @@
-import qs from 'qs';
-
 import {
 	IDataObject,
 	IExecuteFunctions,
@@ -10,6 +8,7 @@ import {
 } from 'n8n-workflow';
 import { Buffer } from 'buffer';
 import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from '../helpers/constants';
+import { toQueryString } from '../utils/utilities';
 
 async function logout(
 	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
@@ -56,10 +55,10 @@ export async function apiRequest(
 		...defaultHeaders,
 	};
 
-	// Encode data if necessary for POST/PUT
+	// Encode data if necessary for POST/PUT using the custom function
 	let requestData: string | undefined;
 	if (method === 'POST' || method === 'PUT') {
-		requestData = qs.stringify(body); // Use qs to encode the body
+		requestData = toQueryString(body);
 		headers['Content-Length'] = Buffer.byteLength(requestData).toString();
 	}
 
