@@ -11,23 +11,23 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Enter email address (required)',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag',
+		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-multi-options
+		displayName: 'Tag IDs',
 		name: 'tagId',
-		type: 'options',
+		type: 'multiOptions',
 		typeOptions: {
-			loadOptionsMethod: 'getTags',
+			loadOptionsMethod: 'getTagsWithoutPlaceholder',
 		},
-		default: '',
+		default: [],
 		description:
-			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+			'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 	},
 ];
 
 const displayOptions = {
 	show: {
-		resource: ['subscriber'],
-		operation: ['untag'],
+		resource: ['contact-tagging'],
+		operation: ['tag'],
 	},
 };
 
@@ -47,11 +47,11 @@ export async function execute(this: IExecuteFunctions, index: number) {
 
 	const body: IDataObject = {
 		email,
-		tagid: tagId,
+		tagids: tagId,
 	};
 
 	try {
-		await apiRequest.call(this, 'POST', '/subscriber/untag', body);
+		await apiRequest.call(this, 'POST', '/subscriber/tag', body);
 		return this.helpers.returnJsonArray({ success: true });
 	} catch (error) {
 		return handleError.call(this, error);

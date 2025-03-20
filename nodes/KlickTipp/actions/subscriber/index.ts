@@ -6,9 +6,7 @@ import * as index from './index.operation';
 import * as del from './delete.operation';
 import * as get from './get.operation';
 import * as search from './search.operation';
-import * as tag from './tag.operation';
 import * as tagged from './tagged.operation';
-import * as untag from './untag.operation';
 import * as update from './update.operation';
 
 export {
@@ -18,9 +16,7 @@ export {
 	del as delete,
 	search,
 	get,
-	tag,
 	tagged,
-	untag,
 	update,
 };
 
@@ -74,22 +70,10 @@ export const description: INodeProperties[] = [
 				action: 'List tagged contacts',
 			},
 			{
-				name: 'Tag Contact',
-				value: 'tag',
-				description: 'Adds one or more tags to a contact',
-				action: 'Tag contact',
-			},
-			{
 				name: 'Unsubscribe Contact',
 				value: 'unsubscribe',
 				description: 'Unsubscribes a contact, preventing further communication',
 				action: 'Unsubscribe contact',
-			},
-			{
-				name: 'Untag Contact',
-				value: 'untag',
-				description: 'Removes a tag from a contact',
-				action: 'Untag contact',
 			},
 			{
 				name: 'Update Contact',
@@ -106,8 +90,6 @@ export const description: INodeProperties[] = [
 	...del.description,
 	...get.description,
 	...search.description,
-	...tag.description,
 	...tagged.description,
-	...untag.description,
 	...update.description,
 ];
