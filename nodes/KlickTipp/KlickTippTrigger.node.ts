@@ -1,3 +1,4 @@
+/* eslint-disable n8n-nodes-base/node-filename-against-convention */
 import type {
 	IDataObject,
 	IWebhookFunctions,
@@ -19,6 +20,7 @@ export class KlickTippTrigger implements INodeType {
 			name: 'KlickTipp Trigger',
 		},
 		inputs: [],
+		/* eslint-disable n8n-nodes-base/node-class-description-outputs-wrong */
 		outputs: [NodeConnectionType.Main],
 		credentials: [
 			{

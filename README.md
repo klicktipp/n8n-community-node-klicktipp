@@ -6,8 +6,8 @@ What is the KlickTipp Marketing Suite?
 
 <a href="https://www.klicktipp.com/de?source=n8n" title="E-Mail-Marketing" target="_blank" rel="noopener noreferrer">KlickTipp Marketing Suite</a> is a digital marketing platform that empowers creators and small businesses to generate leads and turn them into passionate customers. It boosts growth with GDPR-compliant tools for email and SMS marketing, marketing automation, landing pages, and conversion rate optimization.
 
-This package provides a set of nodes for interacting with the KlickTipp API, allowing you to manage subscribers, tags, subscription processes, and more directly from n8n.
-For more detailed information on the KlickTipp API, including available functions for managing subscribers, tags, fields, and more, please refer to <a href="https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n" target="_blank" rel="noopener" title="E-Mail-Marketing API">official KlickTipp API client documentation</a>.
+This package provides a set of nodes for interacting with the KlickTipp API, allowing you to manage contacts, tags, subscription processes, and more directly from n8n.
+For more detailed information on the KlickTipp API, including available functions for managing contacts, tags, fields, and more, please refer to <a href="https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n" target="_blank" rel="noopener" title="E-Mail-Marketing API">official KlickTipp API client documentation</a>.
 
 ---
 
@@ -15,10 +15,12 @@ For more detailed information on the KlickTipp API, including available function
 
 - [Installation](#installation)
 - [Nodes Overview](#nodes-overview)
-  - [Opt-in Process](#opt-in-process)
-  - [Tags](#tags)
-  - [Subscribers](#subscribers)
-  - [Data Fields](#data-fields)
+	- [Contact](#contact)
+  - [Contact Tagging](#contact-tagging)
+  - [Data Field](#data-field)
+  - [Opt-In Process](#opt-in-process)
+  - [Tag](#tag)
+	- [Triggers](#triggers)
 - [Credentials](#credentials)
 - [Error Handling](#error-handling)
 - [License](#license)
@@ -38,43 +40,55 @@ npm install n8n-nodes-klicktipp
 
 This package includes nodes to interact with various aspects of the KlickTipp API:
 
+### Contact
+
+- **Nodes**:
+  - `Add or update contact`
+  - `Delete contact`
+  - `Get contact`
+  - `Get contact id`
+  - `List contacts`
+  - `List tagged contacts`
+  - `Unsubscribe contact`
+  - `Update contact`
+- **Description**: Provides management capabilities for contacts, such as searching, updating, and deleting contact data.
+
+### Contact Tagging
+
+- **Nodes**:
+  - `Tag contact`
+  - `Untag contact`
+- **Description**: Provides management capabilities for contacts tagging.
+
+### Data Field
+
+- **Nodes**: 
+  - `Get data field`
+	- `List data fields`
+- **Description**: Manages data fields, including retrieving all available data fields for contacts, and obtaining data field information.
+
 ### Opt-in Process
 
 - **Nodes**:
-  - `Opt-in Process Index`
-  - `Opt-in Process Get`
-  - `Opt-in Process Redirect URL`
+  - `Get opt-in process`
+  - `Get redirect url`
+  - `list opt in process`
 - **Description**: Manages opt-in processes, including listing all processes, retrieving details of a specific process, and obtaining redirect URLs.
 
-### Tags
+### Tag
 
 - **Nodes**:
-  - `Tag Index`
-  - `Tag Get`
-  - `Tag Create`
-  - `Tag Update`
-  - `Tag Delete`
+  - `Create tag`
+	- `Delete tag`
+  - `Get tag`
+  - `List tags`
+  - `Update tag`
 - **Description**: Manages tags within KlickTipp, enabling operations to list, create, update, and delete tags.
 
-### Subscribers
+### Triggers
 
-- **Nodes**:
-  - `Subscriber Index`
-  - `Subscriber Search`
-  - `Subscriber Tagged`
-  - `Subscriber Get`
-  - `Subscriber Subscribe`
-  - `Subscriber Update`
-  - `Subscriber Tag`
-  - `Subscriber Untag`
-  - `Subscriber Unsubscribe`
-  - `Subscriber Delete`
-- **Description**: Provides full management capabilities for subscribers, such as searching, tagging, updating, and deleting subscriber data.
-
-### Data Fields
-
-- **Node**: `Field Index`
-- **Description**: Retrieves all available data fields for subscribers.
+- **Node**: `On new KlickTipp event`
+- **Description**: Triggers on a new event.
 
 ---
 
