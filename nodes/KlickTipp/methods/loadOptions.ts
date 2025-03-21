@@ -1,7 +1,6 @@
 import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
 import { apiRequest } from '../transport';
 import { IResponse } from '../helpers/interfaces';
-import { cache } from '../utils/utilities';
 import { isEmpty, isObject } from 'lodash';
 
 /**
@@ -18,11 +17,10 @@ function addPlaceholder(
 }
 
 /**
- * Utility function to get data from cache or API and transform it to INodePropertyOptions format.
+ * Utility function to get data from the API and transform it to INodePropertyOptions format.
  */
-async function getCachedOptions(
+async function getOptions(
 	this: ILoadOptionsFunctions,
-	cacheKey: string,
 	endpoint: string,
 	placeholder?: string,
 	defaultName = 'Unnamed',
@@ -35,15 +33,6 @@ async function getCachedOptions(
 		throw new Error('Credentials ID is missing.');
 	}
 
-	const cacheKeyWithCredentials = `${cacheKey}_${credentialsId}`;
-
-	// Check the cache for existing data
-	let options = cache.get<INodePropertyOptions[]>(cacheKeyWithCredentials);
-	if (options) {
-		console.log(`Served from cache: ${cacheKeyWithCredentials}`);
-		return addPlaceholder(options, placeholder);
-	}
-
 	// Fetch data from the API
 	const responseData: IResponse = await apiRequest.call(this, 'GET', endpoint);
 
@@ -53,32 +42,29 @@ async function getCachedOptions(
 	}
 
 	// Map the API response to INodePropertyOptions format
-	options = Object.entries(responseData).map(([id, name]) => ({
+	const options = Object.entries(responseData).map(([id, name]) => ({
 		name: name || defaultName,
 		value: id,
 	}));
 
-	// Cache the options and add placeholder if needed
-	cache.set(cacheKeyWithCredentials, options);
 	return addPlaceholder(options, placeholder);
 }
 
 export async function getTags(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(this, 'cachedTags', '/tag', 'Please select a tag');
+	return getOptions.call(this, '/tag', 'Please select a tag');
 }
 
 export async function getTagsWithoutPlaceholder(
 	this: ILoadOptionsFunctions,
 ): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(this, 'cachedTags', '/tag');
+	return getOptions.call(this, '/tag');
 }
 
 export async function getOptInProcesses(
 	this: ILoadOptionsFunctions,
 ): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(
+	return getOptions.call(
 		this,
-		'cachedOptInProcesses',
 		'/list',
 		'Please select the opt-in process',
 		'Predefined double opt-in process',
@@ -86,5 +72,5 @@ export async function getOptInProcesses(
 }
 
 export async function getFields(this: ILoadOptionsFunctions): Promise<INodePropertyOptions[]> {
-	return getCachedOptions.call(this, 'cachedDataFields', '/field', 'Please select a field');
+	return getOptions.call(this, '/field', 'Please select a field');
 }
