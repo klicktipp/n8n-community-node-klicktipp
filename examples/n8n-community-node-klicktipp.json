@@ -1,14 +1,14 @@
 {
-  "name": "KlickTipp Workflow",
+  "name": "My workflow",
   "nodes": [
     {
       "parameters": {},
-      "id": "3a409800-ebf4-4df0-b61d-6b5fb7bcd346",
+      "id": "b6e83953-1ff8-4c7d-bea3-5962ae4ff8ee",
       "name": "When clicking ‘Test workflow’",
       "type": "n8n-nodes-base.manualTrigger",
       "position": [
-        220,
-        160
+        -260,
+        440
       ],
       "typeVersion": 1
     },
@@ -16,76 +16,76 @@
       "parameters": {
         "operation": "create"
       },
-      "id": "8c45d193-5f04-496d-b1c5-e7da809fd6c7",
+      "id": "add61f3a-aa2c-4ba1-be7b-86166ec2250b",
       "name": "KlickTipp",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        480,
-        -120
+        960,
+        0
       ]
     },
     {
       "parameters": {
         "operation": "get"
       },
-      "id": "a14918c3-eaf3-4d90-b3ee-dea60a1a4ffa",
+      "id": "06f3ba18-eee8-4a7a-9aee-10df0c74c778",
       "name": "KlickTipp1",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        480,
-        40
+        960,
+        320
       ]
     },
     {
       "parameters": {},
-      "id": "5cae05aa-cb87-4ab8-8a75-e1ad28649162",
+      "id": "78e3236f-e371-4936-a746-d687e7500a63",
       "name": "KlickTipp2",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        480,
-        -280
+        960,
+        480
       ]
     },
     {
       "parameters": {
         "operation": "update"
       },
-      "id": "c14477ff-3c49-4da3-9d1e-c6bc08b42c1f",
+      "id": "3fcf2dac-0858-4ee3-affa-b484ba8d882a",
       "name": "KlickTipp3",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        480,
-        200
+        960,
+        640
       ]
     },
     {
       "parameters": {
         "operation": "delete"
       },
-      "id": "133229ed-e136-422d-a3b1-008f47667b21",
+      "id": "79ea6f8f-ede2-4e41-8a3e-2a1f8a0d7871",
       "name": "KlickTipp4",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        480,
-        380
+        960,
+        160
       ]
     },
     {
       "parameters": {
         "resource": "opt-in"
       },
-      "id": "00336765-e038-4356-844c-ea04885cce12",
+      "id": "511cbd4d-8b07-4204-a252-9a9e786fcf55",
       "name": "KlickTipp5",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        -280
+        720,
+        320
       ]
     },
     {
@@ -93,13 +93,13 @@
         "resource": "opt-in",
         "operation": "get"
       },
-      "id": "27dedcfe-38f8-4892-adc2-6da57299fffc",
+      "id": "0e253f7b-27d5-444e-bbae-524cb4aa3dbf",
       "name": "KlickTipp6",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        -120
+        720,
+        0
       ]
     },
     {
@@ -107,67 +107,67 @@
         "resource": "opt-in",
         "operation": "getRedirect"
       },
-      "id": "70188748-3209-492d-8e17-83385d0d5c8d",
+      "id": "8d6c1389-2c56-4430-b3f3-7d3ca877e85c",
       "name": "KlickTipp7",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        700,
-        40
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "field"
-      },
-      "id": "487f2558-c6a9-4fe4-81f0-2a3d3fc981bd",
-      "name": "KlickTipp8",
-      "type": "n8n-nodes-klicktipp.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        920,
-        -280
+        720,
+        160
       ]
     },
     {
       "parameters": {
         "resource": "subscriber"
       },
-      "id": "93ccfcf4-03e3-40d3-b6b1-24b51cee0828",
+      "id": "4a698480-4881-4193-a76b-75ae37dfadc9",
       "name": "KlickTipp9",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        -280
-      ]
+        0,
+        640
+      ],
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
     },
     {
       "parameters": {
         "resource": "subscriber",
-        "operation": "get"
+        "operation": "get",
+        "subscriberId": "149980124"
       },
-      "id": "ac3e1e09-7f50-4255-8711-179204c75b42",
+      "id": "47b4f98d-f28c-4df6-b102-533426575cdd",
       "name": "KlickTipp10",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        -120
-      ]
+        0,
+        320
+      ],
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
     },
     {
       "parameters": {
         "resource": "subscriber",
         "operation": "subscribe"
       },
-      "id": "4b09313a-5f8a-45b8-9509-f9fb4fba620b",
+      "id": "03c5cc98-969b-42ad-ab6c-4ab258e73937",
       "name": "KlickTipp11",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        40
+        0,
+        0
       ]
     },
     {
@@ -175,13 +175,13 @@
         "resource": "subscriber",
         "operation": "delete"
       },
-      "id": "ee949455-ec3d-4907-bccc-234912bbc447",
+      "id": "4f78730d-908f-4781-a5ea-3d1e029b6b36",
       "name": "KlickTipp12",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        200
+        0,
+        160
       ]
     },
     {
@@ -189,13 +189,13 @@
         "resource": "subscriber",
         "operation": "unsubscribe"
       },
-      "id": "333a21c7-ab31-4a34-a160-4021cb202967",
+      "id": "2e255e56-1b01-42f7-9258-a6b19c6fb69d",
       "name": "KlickTipp13",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        520
+        0,
+        960
       ]
     },
     {
@@ -203,41 +203,51 @@
         "resource": "subscriber",
         "operation": "search"
       },
-      "id": "c8da4d8f-aa28-4219-8714-f2b420cba076",
+      "id": "48806866-347d-424a-8171-5f5b12129d81",
       "name": "KlickTipp14",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        680
+        0,
+        480
       ]
     },
     {
       "parameters": {
         "resource": "subscriber",
-        "operation": "tag"
+        "operation": "tag",
+        "email": "updatedmysupermailfortest+00001@gmail.com",
+        "tagId": [
+          "12054769"
+        ]
       },
-      "id": "7c44511c-3e7f-4080-a3fb-9f3c5519cebe",
+      "id": "599f32ee-c74b-49af-b197-3306cb609854",
       "name": "KlickTipp15",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        840
-      ]
+        240,
+        0
+      ],
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
     },
     {
       "parameters": {
         "resource": "subscriber",
         "operation": "untag"
       },
-      "id": "38220451-5801-4ff3-9d84-47c30a6b09f8",
+      "id": "1600f52b-dbf1-4257-b6ea-70878e660955",
       "name": "KlickTipp16",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        1020
+        240,
+        180
       ]
     },
     {
@@ -245,55 +255,13 @@
         "resource": "subscriber",
         "operation": "tagged"
       },
-      "id": "17797951-00fa-4824-a75b-1ef12845d9b4",
+      "id": "930aa996-541d-4e06-b4d1-e8b0a4325e7a",
       "name": "KlickTipp17",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        1180
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signIn"
-      },
-      "id": "ce2dc716-233a-4043-9373-3b59b718be04",
-      "name": "KlickTipp18",
-      "type": "n8n-nodes-klicktipp.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1120,
-        1340
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signOff"
-      },
-      "id": "d12d2eb3-94a7-4661-9bf3-1613339f0d4b",
-      "name": "KlickTipp19",
-      "type": "n8n-nodes-klicktipp.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1120,
-        1500
-      ]
-    },
-    {
-      "parameters": {
-        "resource": "subscriber",
-        "operation": "signOut"
-      },
-      "id": "5d177157-bc22-40b7-82dd-f53336d90cbb",
-      "name": "KlickTipp20",
-      "type": "n8n-nodes-klicktipp.klicktipp",
-      "typeVersion": 2,
-      "position": [
-        1120,
-        1660
+        0,
+        800
       ]
     },
     {
@@ -301,14 +269,71 @@
         "resource": "subscriber",
         "operation": "update"
       },
-      "id": "f1b48e39-8b02-4fe2-abb3-7916f047e695",
+      "id": "0fd8b7e1-4150-4267-bd14-b59c36e07a8e",
       "name": "KlickTipp22",
       "type": "n8n-nodes-klicktipp.klicktipp",
       "typeVersion": 2,
       "position": [
-        1120,
-        360
+        0,
+        1120
       ]
+    },
+    {
+      "parameters": {
+        "resource": "field"
+      },
+      "type": "CUSTOM.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        480,
+        180
+      ],
+      "id": "ff564aac-2f05-4c9d-ab8b-f0b3bc09e422",
+      "name": "KlickTipp18",
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "field",
+        "operation": "get"
+      },
+      "type": "CUSTOM.klicktipp",
+      "typeVersion": 2,
+      "position": [
+        480,
+        0
+      ],
+      "id": "534c5bb7-731c-4712-8853-6fe62a5dbe30",
+      "name": "KlickTipp19",
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
+    },
+    {
+      "parameters": {},
+      "type": "CUSTOM.klicktippTrigger",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        0
+      ],
+      "id": "726d6d8a-450a-412a-ae70-0f6e33b25b33",
+      "name": "KlickTipp Trigger",
+      "webhookId": "f9e45e34-e6b7-4303-aa50-630d1958c7db",
+      "credentials": {
+        "klickTippApi": {
+          "id": "Sb3ew2DD33Jjdvv3",
+          "name": "KlickTipp account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -317,11 +342,11 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "e483d4b3-335b-417b-a382-10ca5fd326e8",
+  "versionId": "64593da5-1f7e-4a55-be3e-5cac73a2cf93",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "d59d135498cc69bb504a352cbe510abdaa93356e0c05ef0ddd5d102de621cc99"
+    "instanceId": "f30231e0c9a3536428bd5a0584c20930c128b1a5ce83f256be7e895f6390ef32"
   },
-  "id": "t4X6S8S7iidYY0kQ",
+  "id": "NBhbUwhxWqQf7Uem",
   "tags": []
 }
