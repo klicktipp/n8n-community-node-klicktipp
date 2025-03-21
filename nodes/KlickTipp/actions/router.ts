@@ -7,6 +7,7 @@ import * as optIn from './opt-in-process';
 import * as tag from './tag';
 import * as subscriber from './subscriber';
 import * as field from './field';
+import * as contactTagging from './contact-tagging';
 
 export async function router(this: IExecuteFunctions) {
 	const items = this.getInputData();
@@ -36,6 +37,9 @@ export async function router(this: IExecuteFunctions) {
 					break;
 				case 'field':
 					responseData = await field[KlickTipp.operation].execute.call(this, i);
+					break;
+				case 'contact-tagging':
+					responseData = await contactTagging[KlickTipp.operation].execute.call(this, i);
 					break;
 				default:
 					throw new NodeOperationError(this.getNode(), `The resource "${resource}" is not known`);

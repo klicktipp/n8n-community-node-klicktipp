@@ -33,3 +33,11 @@
 ## Version 1.0.7 (2025-01-24)
 - **Changes**
   - Removed the Autoresponder node.
+
+## Version 1.0.8 (2025-03-21)
+- **New Features**
+	- Added "KlickTipp Trigger" node. 
+- **Changes**
+  - Created "Contact Tagging" resource for "Tag Contact" and "Untag Contact" nodes.
+	- Updated the wording in nodes: names, descriptions, parameters, placeholders, error handling.
+	- Removed API Key from credentials, removed Sing-in, Sign-off and Sign-out nodes.

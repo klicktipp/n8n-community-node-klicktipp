@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-klicktipp",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "KlickTipp API integration node for n8n",
   "keywords": [
     "n8n-community-node-package",
@@ -44,7 +44,8 @@
       "dist/credentials/KlickTippApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/KlickTipp/KlickTipp.node.js"
+      "dist/nodes/KlickTipp/KlickTipp.node.js",
+      "dist/nodes/KlickTipp/KlickTippTrigger.node.js"
     ]
   },
   "devDependencies": {

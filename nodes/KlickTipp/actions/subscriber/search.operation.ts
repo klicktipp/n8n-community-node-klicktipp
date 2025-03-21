@@ -4,7 +4,7 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Email',
+		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',
 		default: '',
@@ -25,7 +25,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const email = this.getNodeParameter('email', index) as string;
 
 	if (!email) {
-		return handleError.call(this, 'The email address is required.');
+		return handleError.call(this, 'Email is missing');
 	}
 
 	try {
