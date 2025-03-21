@@ -9,16 +9,7 @@ import * as search from './search.operation';
 import * as tagged from './tagged.operation';
 import * as update from './update.operation';
 
-export {
-	subscribe,
-	unsubscribe,
-	index,
-	del as delete,
-	search,
-	get,
-	tagged,
-	update,
-};
+export { subscribe, unsubscribe, index, del as delete, search, get, tagged, update };
 
 export const description: INodeProperties[] = [
 	{

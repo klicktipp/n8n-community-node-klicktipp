@@ -3,10 +3,7 @@ import type { INodeProperties } from 'n8n-workflow';
 import * as tag from './tag.operation';
 import * as untag from './untag.operation';
 
-export {
-	tag,
-	untag,
-};
+export { tag, untag };
 
 export const description: INodeProperties[] = [
 	{

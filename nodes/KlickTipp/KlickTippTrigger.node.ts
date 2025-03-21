@@ -34,11 +34,12 @@ export class KlickTippTrigger implements INodeType {
 				httpMethod: 'POST',
 				responseMode: 'onReceived',
 				path: 'webhook',
-			}
+			},
 		],
 		properties: [
 			{
-				displayName: 'For more information on creating a webhook in KlickTipp, see the online <a href="https://www.klicktipp.com/de/support/wissensdatenbank/outbound-erstellen-und-nutzen/" target="_blank">Help</a>.',
+				displayName:
+					'For more information on creating a webhook in KlickTipp, see the online <a href="https://www.klicktipp.com/de/support/wissensdatenbank/outbound-erstellen-und-nutzen/" target="_blank">Help</a>.',
 				name: 'webhookSetup',
 				type: 'notice',
 				default: '',
