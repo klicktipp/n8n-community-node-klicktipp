@@ -5,6 +5,7 @@ import * as tag from './tag';
 import * as optIn from './opt-in-process';
 import * as subscriber from './subscriber';
 import * as field from './field';
+import * as contactTagging from './contact-tagging';
 
 export const description: INodeTypeDescription = {
 	displayName: 'KlickTipp',
@@ -34,20 +35,24 @@ export const description: INodeTypeDescription = {
 			default: 'tag',
 			options: [
 				{
-					name: 'Tag',
-					value: 'tag',
-				},
-				{
-					name: 'Opt-in Process',
-					value: 'opt-in',
-				},
-				{
-					name: 'Subscriber',
+					name: 'Contact',
 					value: 'subscriber',
 				},
 				{
-					name: 'Field',
+					name: 'Contact Tagging',
+					value: 'contact-tagging',
+				},
+				{
+					name: 'Data Field',
 					value: 'field',
+				},
+				{
+					name: 'Opt-In Process',
+					value: 'opt-in',
+				},
+				{
+					name: 'Tag',
+					value: 'tag',
 				},
 			],
 		},
@@ -55,5 +60,6 @@ export const description: INodeTypeDescription = {
 		...optIn.description,
 		...subscriber.description,
 		...field.description,
+		...contactTagging.description,
 	],
 };

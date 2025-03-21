@@ -10,14 +10,10 @@ type NodeMap = {
 		| 'delete'
 		| 'get'
 		| 'search'
-		| 'signIn'
-		| 'signOff'
-		| 'signOut'
-		| 'tag'
 		| 'tagged'
-		| 'untag'
 		| 'update';
 	field: 'index' | 'get';
+	['contact-tagging']: 'tag' | 'untag';
 };
 
 export type KlickTippType = AllEntities<NodeMap>;

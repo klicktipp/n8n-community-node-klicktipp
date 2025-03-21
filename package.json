@@ -44,7 +44,8 @@
       "dist/credentials/KlickTippApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/KlickTipp/KlickTipp.node.js"
+      "dist/nodes/KlickTipp/KlickTipp.node.js",
+      "dist/nodes/KlickTipp/KlickTippTrigger.node.js"
     ]
   },
   "devDependencies": {

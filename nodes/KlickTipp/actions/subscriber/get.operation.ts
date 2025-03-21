@@ -4,12 +4,12 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Subscriber ID',
+		displayName: 'Contact ID',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Enter the ID of the subscriber you want to retrieve',
-		placeholder: 'Enter Subscriber ID (required)',
+		description: 'Enter the ID of the contact you want to retrieve',
+		placeholder: 'Enter contact ID (required)',
 	},
 ];
 
@@ -26,7 +26,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const subscriberId = this.getNodeParameter('subscriberId', index) as string;
 
 	if (!subscriberId) {
-		return handleError.call(this, 'The subscriber ID is required.');
+		return handleError.call(this, 'Contact ID is missing');
 	}
 
 	try {
