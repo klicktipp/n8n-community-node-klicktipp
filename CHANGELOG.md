@@ -41,3 +41,7 @@
   - Created "Contact Tagging" resource for "Tag Contact" and "Untag Contact" nodes.
 	- Updated the wording in nodes: names, descriptions, parameters, placeholders, error handling.
 	- Removed API Key from credentials, removed Sing-in, Sign-off and Sign-out nodes.
+
+## Version 1.0.9 (2025-03-28)
+- **Changes**
+    - Removed unused runtime dependencies to comply with n8n core integration requirements.
