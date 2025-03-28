@@ -5,10 +5,8 @@ import {
 	INodeExecutionData,
 	INodeProperties,
 } from 'n8n-workflow';
-import NodeCache from 'node-cache';
 
 import { merge, reduce, uniqBy } from 'lodash';
-import { CACHE_TTL } from '../helpers/constants';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -38,21 +36,6 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 		{} as IDataObject,
 	);
 }
-
-// Initialize the cache instance
-const cache = new NodeCache({ stdTTL: CACHE_TTL });
-
-export function clearCache(keys?: string[]) {
-	if (keys) {
-		keys.forEach((key) => cache.del(key));
-		console.log(`Cleared cache keys: ${keys.join(', ')}`);
-	} else {
-		cache.flushAll();
-		console.log('Cleared all cache entries');
-	}
-}
-
-export { cache };
 
 export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
 	const errorMessage =
@@ -92,4 +75,25 @@ export function objectToIdValueArray(obj: IDataObject | string[]): IDataObject[]
 
 	// Handle object: map to [{ id, value }]
 	return Object.entries(obj).map(([id, value]) => ({ id, value }));
+}
+
+/**
+ * Custom function to convert an object into an URL-encoded query string.
+ * This recursively handles nested objects.
+ */
+export function toQueryString(obj: IDataObject, prefix?: string): string {
+	const str: string[] = [];
+	for (const key in obj) {
+		if (Object.prototype.hasOwnProperty.call(obj, key)) {
+			const k = prefix ? `${prefix}[${key}]` : key;
+			const value = obj[key];
+			if (value !== null && typeof value === 'object') {
+				// Recursively stringify nested objects
+				str.push(toQueryString(value as IDataObject, k));
+			} else {
+				str.push(encodeURIComponent(k) + '=' + encodeURIComponent(String(value)));
+			}
+		}
+	}
+	return str.join('&');
 }
