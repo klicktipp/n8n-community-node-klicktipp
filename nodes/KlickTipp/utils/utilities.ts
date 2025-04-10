@@ -110,3 +110,23 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 	}
 	return str.join('&');
 }
+
+/**
+ * Transforms keys in the response object that start with "field" based on the provided fieldMappings.
+ * @param responseData - The original response object that contains field keys
+ * @param fieldMappings - The mapping object with keys as field ids and values as user-friendly labels
+ * @returns The transformed response object with user-friendly field labels instead of ids
+ */
+export function transformFieldNames(
+	responseData: IDataObject,
+	fieldMappings: { [key: string]: string },
+): IDataObject {
+	for (const key in responseData) {
+		// If the key starts with "field" and a mapping exists, add a new key with the user-friendly label
+		if (key.startsWith('field') && fieldMappings[key]) {
+			responseData[fieldMappings[key]] = responseData[key];
+			delete responseData[key];
+		}
+	}
+	return responseData;
+}
