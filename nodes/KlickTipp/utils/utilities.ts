@@ -40,24 +40,20 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 }
 
 export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
-  let errorMessage: string;
+	let errorMessage: string;
 
-  if (
-    error &&
-    error instanceof Error &&
-    typeof (error as any).cause?.error?.error === 'number'
-  ) {
-    errorMessage = adjustErrorMessage((error as any).cause.error.error);
-  } else if (typeof error === 'string') {
-    errorMessage = error;
-  } else {
-    errorMessage = error instanceof Error ? error.message : 'Undefined error';
-  }
+	if (error && error instanceof Error && typeof (error as any).cause?.error?.error === 'number') {
+		errorMessage = adjustErrorMessage((error as any).cause.error.error);
+	} else if (typeof error === 'string') {
+		errorMessage = error;
+	} else {
+		errorMessage = error instanceof Error ? error.message : 'Undefined error';
+	}
 
-  return this.helpers.returnJsonArray({
-    success: false,
-    error: errorMessage,
-  });
+	return this.helpers.returnJsonArray({
+		success: false,
+		error: errorMessage,
+	});
 }
 
 export function handleObjectResponse(
@@ -113,18 +109,28 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 
 /**
  * Transforms keys in the response object that start with "field" based on the provided fieldMappings.
- * @param responseData - The original response object that contains field keys
- * @param fieldMappings - The mapping object with keys as field ids and values as user-friendly labels
- * @returns The transformed response object with user-friendly field labels instead of ids
+ * For custom fields (where the part after "field" is numeric only), the new key will have the format "Label (id)".
+ * For standard fields (with text after "field"), the new key will simply be the label.
+ *
+ * @param responseData - The original response object that contains field keys.
+ * @param fieldMappings - The mapping object with keys as field ids and values as user-friendly labels.
+ * @returns The transformed response object with updated field keys.
  */
 export function transformFieldNames(
 	responseData: IDataObject,
 	fieldMappings: { [key: string]: string },
 ): IDataObject {
 	for (const key in responseData) {
-		// If the key starts with "field" and a mapping exists, add a new key with the user-friendly label
 		if (key.startsWith('field') && fieldMappings[key]) {
-			responseData[fieldMappings[key]] = responseData[key];
+			let newKey: string;
+			// Check if the field is a custom field: key "field" followed only by numbers
+			if (/^field\d+$/.test(key)) {
+				newKey = `${fieldMappings[key]} (${key})`;
+			} else {
+				// For standard fields (e.g., fieldCity), just use the label
+				newKey = fieldMappings[key];
+			}
+			responseData[newKey] = responseData[key];
 			delete responseData[key];
 		}
 	}
