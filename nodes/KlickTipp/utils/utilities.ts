@@ -106,33 +106,3 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 	}
 	return str.join('&');
 }
-
-/**
- * Transforms keys in the response object that start with "field" based on the provided fieldMappings.
- * For custom fields (where the part after "field" is numeric only), the new key will have the format "Label (id)".
- * For standard fields (with text after "field"), the new key will simply be the label.
- *
- * @param responseData - The original response object that contains field keys.
- * @param fieldMappings - The mapping object with keys as field ids and values as user-friendly labels.
- * @returns The transformed response object with updated field keys.
- */
-export function transformFieldNames(
-	responseData: IDataObject,
-	fieldMappings: { [key: string]: string },
-): IDataObject {
-	for (const key in responseData) {
-		if (key.startsWith('field') && fieldMappings[key]) {
-			let newKey: string;
-			// Check if the field is a custom field: key "field" followed only by numbers
-			if (/^field\d+$/.test(key)) {
-				newKey = `${fieldMappings[key]} (${key})`;
-			} else {
-				// For standard fields (e.g., fieldCity), just use the label
-				newKey = fieldMappings[key];
-			}
-			responseData[newKey] = responseData[key];
-			delete responseData[key];
-		}
-	}
-	return responseData;
-}
