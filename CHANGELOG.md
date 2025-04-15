@@ -45,3 +45,7 @@
 ## Version 1.0.9 (2025-03-28)
 - **Changes**
     - Removed unused runtime dependencies to comply with n8n core integration requirements.
+
+## Version 1.0.10 (2025-04-15)
+- **Changes**
+    - Removed unnecessary `Buffer` import to resolve linter issues for n8n Cloud compatibility.

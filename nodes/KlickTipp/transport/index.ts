@@ -6,7 +6,7 @@ import {
 	IPollFunctions,
 	IRequestOptions,
 } from 'n8n-workflow';
-import { Buffer } from 'buffer';
+
 import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from '../helpers/constants';
 import { toQueryString } from '../utils/utilities';
 
