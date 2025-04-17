@@ -52,6 +52,6 @@
 
 ## Version 1.0.11 (2025-04-17)
 - **Improvements**
-    - Added sorting by label for options in drop-down
-		- Added help banner for "Add or Update Contact" node
-		- Added functionality of displaying error messages from KlickTipp API
+    - Added sorting by label for options in drop-down.
+		- Added help banner for "Add or Update Contact" node.
+		- Added functionality of displaying error messages from KlickTipp API.
