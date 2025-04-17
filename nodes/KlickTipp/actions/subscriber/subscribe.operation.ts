@@ -9,6 +9,13 @@ import {
 
 export const properties: INodeProperties[] = [
 	{
+		displayName:
+			'If a contact with the same email address or SMS number already exists, it will be updated.',
+		name: 'info',
+		type: 'notice',
+		default: '',
+	},
+	{
 		displayName: 'Email Address',
 		name: 'email',
 		type: 'string',

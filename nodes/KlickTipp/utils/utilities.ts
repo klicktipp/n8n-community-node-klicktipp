@@ -8,6 +8,8 @@ import {
 
 import { merge, reduce, uniqBy } from 'lodash';
 
+import adjustErrorMessage from '../helpers/adjustErrorMessage';
+
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
 	properties: INodeProperties[],
@@ -38,8 +40,15 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 }
 
 export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
-	const errorMessage =
-		typeof error === 'string' ? error : (error as Error).message || 'Undefined error';
+	let errorMessage: string;
+
+	if (error && error instanceof Error && typeof (error as any).cause?.error?.error === 'number') {
+		errorMessage = adjustErrorMessage((error as any).cause.error.error);
+	} else if (typeof error === 'string') {
+		errorMessage = error;
+	} else {
+		errorMessage = error instanceof Error ? error.message : 'Undefined error';
+	}
 
 	return this.helpers.returnJsonArray({
 		success: false,

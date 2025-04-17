@@ -47,6 +47,8 @@ async function getOptions(
 		value: id,
 	}));
 
+	options.sort((a, b) => a.name.localeCompare(b.name));
+
 	return addPlaceholder(options, placeholder);
 }
 
