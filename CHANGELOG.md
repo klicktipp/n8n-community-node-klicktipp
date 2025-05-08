@@ -55,3 +55,7 @@
     - Added sorting by label for options in drop-down.
 		- Added help banner for "Add or Update Contact" node.
 		- Added functionality of displaying error messages from KlickTipp API.
+
+## Version 1.0.12 (2025-05-08)
+- **Improvements**
+    - Enabled KlickTipp node to be used as an AI tool.

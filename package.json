@@ -1,6 +1,6 @@
 {
   "name": "n8n-nodes-klicktipp",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "KlickTipp API integration node for n8n",
   "keywords": [
     "n8n-community-node-package",

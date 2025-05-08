@@ -15,6 +15,7 @@ export const description: INodeTypeDescription = {
 	version: 2,
 	subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
 	description: 'Interact with KlickTipp API',
+	usableAsTool: true,
 	defaults: {
 		name: 'KlickTipp',
 	},
