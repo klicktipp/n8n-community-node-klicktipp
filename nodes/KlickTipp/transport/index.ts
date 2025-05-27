@@ -63,7 +63,6 @@ export async function apiRequest(
 	const requestOptions: IRequestOptions = {
 		headers,
 		method,
-		body: requestBody,
 		qs: query,
 		uri: uri || `${BASE_URL}/${endpoint}`,
 		useQuerystring: false,
@@ -71,6 +70,10 @@ export async function apiRequest(
 		rejectUnauthorized: verifySSL,
 		...option,
 	};
+
+	if (isForm) {
+		requestOptions.body = requestBody;
+	}
 
 	try {
 		// Perform the main API request
