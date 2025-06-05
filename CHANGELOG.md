@@ -59,3 +59,7 @@
 ## Version 1.0.12 (2025-05-27)
 - **Bugfix**
     - Fixed an issue where form-encoded requests were not correctly constructed, leading to 406 errors from the KlickTipp API.
+
+## Version 1.0.13 (2025-06-05)
+- **Improvements**
+    - Enabled KlickTipp node to be used as an AI tool.
