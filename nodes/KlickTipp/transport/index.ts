@@ -48,34 +48,31 @@ export async function apiRequest(
 	verifySSL: boolean = true,
 ) {
 	query = query || {};
+	const isForm = (method === 'POST' || method === 'PUT') && Object.keys(body).length > 0;
+	const requestBody = isForm ? toQueryString(body) : body;
 
 	// Build headers
 	const headers: IDataObject = {
-		'Content-Type': 'application/x-www-form-urlencoded',
 		...defaultHeaders,
+		...(isForm && {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Length': Buffer.byteLength(requestBody as string).toString(),
+		}),
 	};
 
-	// Encode data if necessary for POST/PUT using the custom function
-	let requestData: string | undefined;
-	if (method === 'POST' || method === 'PUT') {
-		requestData = toQueryString(body);
-		headers['Content-Length'] = Buffer.byteLength(requestData).toString();
-	}
-
-	const options: IRequestOptions = {
+	const requestOptions: IRequestOptions = {
 		headers,
 		method,
-		body,
 		qs: query,
 		uri: uri || `${BASE_URL}/${endpoint}`,
 		useQuerystring: false,
 		json: true,
-		...option,
 		rejectUnauthorized: verifySSL,
+		...option,
 	};
 
-	if (Object.keys(body).length === 0) {
-		delete options.body;
+	if (isForm) {
+		requestOptions.body = requestBody;
 	}
 
 	try {
@@ -83,7 +80,7 @@ export async function apiRequest(
 		return await this.helpers.requestWithAuthentication.call(
 			this,
 			KLICKTIPP_API_CREDENTIAL_NAME,
-			options,
+			requestOptions,
 		);
 	} finally {
 		// Perform logout request in the finally block to ensure it always runs
