@@ -23,6 +23,21 @@ export function updateDisplayOptions(
 }
 
 export function transformDataFields(dataFields: IDataObject[]): IDataObject {
+	// If we encounter the same field id twice - throw error
+	const seen = new Set<string>();
+
+	for (const field of dataFields) {
+		const fieldId = field.fieldId as string;
+		if (!fieldId) continue;
+
+		if (seen.has(fieldId)) {
+			throw new Error(
+				`Duplicate field "${fieldId}" - each Data Field may be used only once.`,
+			);
+		}
+		seen.add(fieldId);
+	}
+
 	// Remove duplicates based on fieldId
 	const uniqueFields = uniqBy(dataFields, 'fieldId');
 

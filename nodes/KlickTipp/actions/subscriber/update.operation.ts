@@ -82,6 +82,7 @@ export const properties: INodeProperties[] = [
 						name: 'fieldValue',
 						type: 'string',
 						default: '',
+						required: true,
 						description: 'Enter the value for the selected field',
 					},
 				],
@@ -134,11 +135,22 @@ export async function execute(this: IExecuteFunctions, index: number) {
 	const smsNumber = this.getNodeParameter('smsNumber', index) as string;
 	const fields = this.getNodeParameter('fields', index) as IDataObject;
 
+	let transformedFields: IDataObject | undefined;
+
+	if (fields?.dataFields) {
+		try {
+			transformedFields = transformDataFields(fields.dataFields as IDataObject[]);
+		} catch (error) {
+			// forward the “Duplicate field …” message
+			return handleError.call(this, error);
+		}
+	}
+
 	// Construct request body
 	const body: IDataObject = {
 		...(email && { newemail: email }),
 		...(smsNumber && { newsmsnumber: smsNumber }),
-		...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
+		...(transformedFields && { fields: transformedFields }),
 	};
 
 	try {

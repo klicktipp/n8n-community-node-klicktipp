@@ -84,6 +84,7 @@ export const properties: INodeProperties[] = [
 						name: 'fieldValue',
 						type: 'string',
 						default: '',
+						required: true,
 						description: 'Enter the value for the selected field',
 					},
 				],
@@ -113,13 +114,24 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		return handleError.call(this, 'Email or SMS number is missing');
 	}
 
+	let transformedFields: IDataObject | undefined;
+
+	if (fields?.dataFields) {
+		try {
+			transformedFields = transformDataFields(fields.dataFields as IDataObject[]);
+		} catch (error) {
+			// forward the “Duplicate field …” message
+			return handleError.call(this, error);
+		}
+	}
+
 	// Construct request body
 	const body: IDataObject = {
 		...(email && { email: email.trim() }),
 		...(smsNumber && { smsnumber: smsNumber.trim() }),
 		...(listId && { listid: listId }),
 		...(tagId && { tagid: tagId }),
-		...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
+		...(transformedFields && { fields: transformedFields }),
 	};
 
 	try {
