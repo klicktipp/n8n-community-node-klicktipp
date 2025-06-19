@@ -70,6 +70,7 @@ export const properties: INodeProperties[] = [
 						displayName: 'Field Name',
 						name: 'fieldId',
 						type: 'options',
+						required: true,
 						typeOptions: {
 							loadOptionsMethod: 'getFields',
 						},
