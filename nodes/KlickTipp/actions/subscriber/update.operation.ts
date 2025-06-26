@@ -83,7 +83,6 @@ export const properties: INodeProperties[] = [
 						name: 'fieldValue',
 						type: 'string',
 						default: '',
-						required: true,
 						description: 'Enter the value for the selected field',
 					},
 				],
