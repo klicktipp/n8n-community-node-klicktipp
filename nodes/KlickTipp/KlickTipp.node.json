@@ -1,12 +1,12 @@
 {
 	"node": "n8n-nodes-klicktipp.klickTipp",
-	"nodeVersion": "1.0.13",
+	"nodeVersion": "1.0.14",
 	"codexVersion": "1.0.0",
 	"categories": ["KlickTipp", "Integration", "API"],
 	"resources": {
 		"credentialDocumentation": [
 			{
-				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n"
+				"url": "https://www.klicktipp.com/de/support/wissensdatenbank/integration-in-n8n"
 			}
 		],
 		"primaryDocumentation": [

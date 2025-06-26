@@ -63,3 +63,7 @@
 ## Version 1.0.13 (2025-06-05)
 - **Improvements**
     - Enabled KlickTipp node to be used as an AI tool.
+
+## Version 1.0.14 (2025-06-26)
+- **Bugfix**
+    - Changed the link to credential documentation.
