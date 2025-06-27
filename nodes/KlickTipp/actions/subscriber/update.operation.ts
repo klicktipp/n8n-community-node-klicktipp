@@ -4,41 +4,47 @@ import { handleError, transformDataFields, updateDisplayOptions } from '../../ut
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Search for ID by email',
-		name: 'searchForIdByEmail',
-		type: 'boolean',
-		default: false,
-		description: 'Toggle this to search for a Contact ID using an Email Address',
-	},
-	{
-		displayName: 'Lookup Email Address',
-		name: 'lookupEmail',
-		type: 'string',
-		default: '',
-		placeholder: 'Enter email address (required)',
-		description: 'Email address to search for the Contact ID',
-		displayOptions: {
-			show: {
-				searchForIdByEmail: [true],
+		displayName: 'Identify contact by',
+		name: 'identifierType',
+		type: 'options',
+		options: [
+			{
+				name: 'Contact ID',
+				value: 'id',
 			},
-		},
+			{
+				name: 'Email Address',
+				value: 'email',
+			},
+		],
+		default: 'id',
 	},
 	{
 		displayName: 'Contact ID',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Select the contact to retrieve',
 		placeholder: 'Enter contact ID (required)',
-		// Hide Contact ID input if email search is enabled.
 		displayOptions: {
-			hide: {
-				searchForIdByEmail: [true],
+			show: {
+				identifierType: ['id'],
 			},
 		},
 	},
 	{
 		displayName: 'Email Address',
+		name: 'lookupEmail',
+		type: 'string',
+		default: '',
+		placeholder: 'Enter email address (required)',
+		displayOptions: {
+			show: {
+				identifierType: ['email'],
+			},
+		},
+	},
+	{
+		displayName: 'New Email Address',
 		name: 'email',
 		type: 'string',
 		default: '',
@@ -101,28 +107,29 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
+	const identifierType = this.getNodeParameter('identifierType', index) as string;
 	let subscriberId: string;
-	const searchForId = this.getNodeParameter('searchForIdByEmail', index, false) as boolean;
 
-	// If the user toggles on "Search for ID by email", lookup the subscriber ID by email.
-	if (searchForId) {
+	if (identifierType === 'email') {
 		const lookupEmail = this.getNodeParameter('lookupEmail', index) as string;
+
 		if (!lookupEmail) {
-			return handleError.call(this, 'Lookup email is missing, required for search');
+			return handleError.call(this, 'Email address is missing');
 		}
+
 		try {
-			const responseData = await apiRequest.call(this, 'POST', '/subscriber/search', { email: lookupEmail });
-			// Assuming API returns an array with the first element as the Contact ID.
-			if (Array.isArray(responseData) && responseData.length > 0) {
-				subscriberId = responseData[0];
+			const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email: lookupEmail });
+
+			if (Array.isArray(response) && response.length > 0) {
+				subscriberId = response[0];
 			} else {
-				return handleError.call(this, 'No contact found for the provided lookup email');
+				return handleError.call(this, 'No contact found for the provided email');
 			}
 		} catch (error) {
 			return handleError.call(this, error);
 		}
 	} else {
-		// Otherwise, get the Contact ID entered manually.
+		// identifierType === 'id'
 		subscriberId = this.getNodeParameter('subscriberId', index) as string;
 	}
 
