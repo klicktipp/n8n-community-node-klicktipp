@@ -4,24 +4,20 @@ import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Search for ID by email',
-		name: 'searchForIdByEmail',
-		type: 'boolean',
-		default: false,
-		description: 'Toggle this to search for a Contact ID using an Email Address',
-	},
-	{
-		displayName: 'Lookup Email Address',
-		name: 'lookupEmail',
-		type: 'string',
-		default: '',
-		placeholder: 'Enter email address (required)',
-		description: 'Email address to search for the Contact ID',
-		displayOptions: {
-			show: {
-				searchForIdByEmail: [true],
+		displayName: 'Identify contact by',
+		name: 'identifierType',
+		type: 'options',
+		options: [
+			{
+				name: 'Contact ID',
+				value: 'id',
 			},
-		},
+			{
+				name: 'Email Address',
+				value: 'email',
+			},
+		],
+		default: 'id',
 	},
 	{
 		displayName: 'Contact ID',
@@ -29,11 +25,21 @@ export const properties: INodeProperties[] = [
 		type: 'string',
 		default: '',
 		placeholder: 'Enter contact ID (required)',
-		description: 'Enter the ID of the contact you want to delete',
-		// Hide Contact ID input if email search is enabled.
 		displayOptions: {
-			hide: {
-				searchForIdByEmail: [true],
+			show: {
+				identifierType: ['id'],
+			},
+		},
+	},
+	{
+		displayName: 'Email Address',
+		name: 'lookupEmail',
+		type: 'string',
+		default: '',
+		placeholder: 'Enter email address (required)',
+		displayOptions: {
+			show: {
+				identifierType: ['email'],
 			},
 		},
 	},
@@ -49,20 +55,21 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-	const searchForId = this.getNodeParameter('searchForIdByEmail', index, false) as boolean;
+	const identifierType = this.getNodeParameter('identifierType', index) as string;
 	let subscriberId: string;
 
-	// When search is enabled, look up the subscriberId by email.
-	if (searchForId) {
-		const lookupEmail = this.getNodeParameter('lookupEmail', index) as string;
-		if (!lookupEmail) {
-			return handleError.call(this, 'Lookup email address is missing, required for search');
+	if (identifierType === 'email') {
+		const email = this.getNodeParameter('lookupEmail', index) as string;
+
+		if (!email) {
+			return handleError.call(this, 'Email address is missing');
 		}
+
 		try {
-			const responseData = await apiRequest.call(this, 'POST', '/subscriber/search', { email: lookupEmail });
-			// Check if the response contains a valid ID:
-			if (Array.isArray(responseData) && responseData.length > 0) {
-				subscriberId = responseData[0];
+			const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email });
+
+			if (Array.isArray(response) && response.length > 0) {
+				subscriberId = response[0];
 			} else {
 				return handleError.call(this, 'No contact found for the provided email');
 			}
@@ -70,7 +77,7 @@ export async function execute(this: IExecuteFunctions, index: number) {
 			return handleError.call(this, error);
 		}
 	} else {
-		// When search is not enabled, get the subscriberId directly from the input.
+		// identifierType === 'id'
 		subscriberId = this.getNodeParameter('subscriberId', index) as string;
 	}
 
