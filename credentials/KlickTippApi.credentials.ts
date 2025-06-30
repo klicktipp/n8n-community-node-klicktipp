@@ -10,7 +10,7 @@ import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from "../nodes/KlickTipp/help
 export class KlickTippApi implements ICredentialType {
   name = KLICKTIPP_API_CREDENTIAL_NAME;
   displayName = 'KlickTipp API';
-  documentationUrl = 'https://www.klicktipp.com/de/support/wissensdatenbank/integration-in-n8n';
+  documentationUrl = 'https://www.klicktipp.com/support/knowledge-base/install-klicktipp-node-n8n?source=n8n';
   properties: INodeProperties[] = [
     {
       displayName: 'Username',

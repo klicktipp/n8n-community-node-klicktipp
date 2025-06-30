@@ -7,7 +7,7 @@ What is the KlickTipp Marketing Suite?
 <a href="https://www.klicktipp.com/de?source=n8n" title="E-Mail-Marketing" target="_blank" rel="noopener noreferrer">KlickTipp Marketing Suite</a> is a digital marketing platform that empowers creators and small businesses to generate leads and turn them into passionate customers. It boosts growth with GDPR-compliant tools for email and SMS marketing, marketing automation, landing pages, and conversion rate optimization.
 
 This package provides a set of nodes for interacting with the KlickTipp API, allowing you to manage contacts, tags, subscription processes, and more directly from n8n.
-For more detailed information on the KlickTipp API, including available functions for managing contacts, tags, fields, and more, please refer to <a href="https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n" target="_blank" rel="noopener" title="E-Mail-Marketing API">official KlickTipp API client documentation</a>.
+For more detailed information on the KlickTipp API—covering functions for managing contacts, tags, fields, and more—please refer to the <a href="https://www.klicktipp.com/de/support/wissensdatenbank/application-programming-interface-api?source=n8n" target="_blank" rel="noopener" title="E-Mail-Marketing API">official KlickTipp API client documentation</a> and the <a href="https://www.klicktipp.com/support/knowledge-base/install-klicktipp-node-n8n?source=n8n" target="_blank" rel="noopener" title="Install KlickTipp Node for n8n">installation guide for the KlickTipp node in n8n</a>.
 
 ---
 
