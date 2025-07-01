@@ -4,7 +4,7 @@ import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Identify contact by',
+		displayName: 'Identify Contact By',
 		name: 'identifierType',
 		type: 'options',
 		options: [
