@@ -4,7 +4,7 @@ import { handleError, transformDataFields, updateDisplayOptions } from '../../ut
 
 export const properties: INodeProperties[] = [
 	{
-		displayName: 'Identify contact by',
+		displayName: 'Identify Contact By',
 		name: 'identifierType',
 		type: 'options',
 		options: [
