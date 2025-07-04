@@ -9,6 +9,7 @@ import {
 
 import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from '../helpers/constants';
 import { toQueryString } from '../utils/utilities';
+import pkg from '../../../package.json';
 
 async function logout(
 	this: IExecuteFunctions | ILoadOptionsFunctions | IPollFunctions,
@@ -54,6 +55,9 @@ export async function apiRequest(
 	// Build headers
 	const headers: IDataObject = {
 		...defaultHeaders,
+		'Client-Identifier': 'n8n-KlickTipp',
+		'Connector-Version': `${pkg.version}`,
+		'NodeJS-Version': process.versions.node,
 		...(isForm && {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Content-Length': Buffer.byteLength(requestBody as string).toString(),
