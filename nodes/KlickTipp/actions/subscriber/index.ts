@@ -43,10 +43,10 @@ export const description: INodeProperties[] = [
 				action: 'Get contact',
 			},
 			{
-				name: 'Get Contact ID',
+				name: 'Search Contact ID',
 				value: 'search',
 				description: 'Returns the contact ID for an email address',
-				action: 'Get contact id',
+				action: 'Search contact id',
 			},
 			{
 				name: 'List Contacts',
@@ -55,10 +55,10 @@ export const description: INodeProperties[] = [
 				action: 'List contacts',
 			},
 			{
-				name: 'List Tagged Contacts',
+				name: 'Search Tagged Contacts',
 				value: 'tagged',
-				description: 'Lists the IDs and tagging timestamps of all tagged contacts',
-				action: 'List tagged contacts',
+				description: 'Returns the IDs and tagging timestamps of all tagged contacts',
+				action: 'Search tagged contacts',
 			},
 			{
 				name: 'Unsubscribe Contact',
