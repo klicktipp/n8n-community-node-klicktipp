@@ -8,6 +8,7 @@ import {
 
 import { merge, reduce, uniqBy } from 'lodash';
 
+import { apiRequest } from '../transport';
 import adjustErrorMessage from '../helpers/adjustErrorMessage';
 
 export function updateDisplayOptions(
@@ -105,4 +106,30 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 		}
 	}
 	return str.join('&');
+}
+
+
+export async function resolveSubscriberId(
+	this: IExecuteFunctions,
+	index: number,
+): Promise<string> {
+
+	const identifierType = this.getNodeParameter('identifierType', index) as string;
+
+	/* ─── look-up by plain ID ──────────────────────────── */
+	if (identifierType === 'id') {
+		const id = this.getNodeParameter('subscriberId', index) as string;
+		if (!id) throw new Error('Contact ID is missing');
+		return id;
+	}
+
+	/* ─── look-up by e-mail ─────────────────────────────── */
+	const email = this.getNodeParameter('lookupEmail', index) as string;
+	if (!email) throw new Error('Email address is missing');
+
+	const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email });
+
+	if (Array.isArray(response) && response.length) return response[0] as string;
+
+	throw new Error('No contact found for the provided email');
 }
