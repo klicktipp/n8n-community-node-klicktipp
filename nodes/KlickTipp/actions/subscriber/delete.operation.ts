@@ -1,15 +1,47 @@
 import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { handleError, updateDisplayOptions } from '../../utils/utilities';
+import { handleError, updateDisplayOptions, resolveSubscriberId } from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
+	{
+		displayName: 'Identify Contact By',
+		name: 'identifierType',
+		type: 'options',
+		options: [
+			{
+				name: 'Contact ID',
+				value: 'id',
+			},
+			{
+				name: 'Email Address',
+				value: 'email',
+			},
+		],
+		default: 'id',
+	},
 	{
 		displayName: 'Contact ID',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Enter the ID of the contact you want to delete',
 		placeholder: 'Enter contact ID (required)',
+		displayOptions: {
+			show: {
+				identifierType: ['id'],
+			},
+		},
+	},
+	{
+		displayName: 'Email Address',
+		name: 'lookupEmail',
+		type: 'string',
+		default: '',
+		placeholder: 'Enter email address (required)',
+		displayOptions: {
+			show: {
+				identifierType: ['email'],
+			},
+		},
 	},
 ];
 
@@ -23,13 +55,9 @@ const displayOptions = {
 export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
-	const subscriberId = this.getNodeParameter('subscriberId', index) as string;
-
-	if (!subscriberId) {
-		return handleError.call(this, 'Contact ID is missing');
-	}
-
 	try {
+		const subscriberId = await resolveSubscriberId.call(this, index);
+
 		await apiRequest.call(this, 'DELETE', `/subscriber/${subscriberId}`);
 		return this.helpers.returnJsonArray({ success: true });
 	} catch (error) {

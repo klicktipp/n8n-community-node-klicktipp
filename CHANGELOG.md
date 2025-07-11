@@ -71,3 +71,9 @@
 ## Version 1.0.15 (2025-06-30)
 - **Bugfix**
     - Updated the documentation link
+
+## Version 1.0.16 (2025-07-11)
+- **New Features**
+	- Added ability to update/delete/get contact by email
+- **Improvements**
+  - Changed trigger description
