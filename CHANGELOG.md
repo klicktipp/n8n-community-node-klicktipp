@@ -77,3 +77,7 @@
 	- Added ability to update/delete/get contact by email
 - **Improvements**
   - Changed trigger description
+
+## Version 1.0.17 (2025-07-11)
+- **Improvements**
+  - Changed node names and descriptions
