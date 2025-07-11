@@ -81,3 +81,7 @@
 ## Version 1.0.17 (2025-07-11)
 - **Improvements**
   - Changed node names and descriptions
+
+## Version 1.0.18 (2025-07-11)
+- **Bugfix**
+  - Fixed error with nodes order
