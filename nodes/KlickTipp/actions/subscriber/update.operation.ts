@@ -1,6 +1,11 @@
 import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { handleError, transformDataFields, updateDisplayOptions, resolveSubscriberId } from '../../utils/utilities';
+import {
+	handleError,
+	transformDataFields,
+	updateDisplayOptions,
+	resolveSubscriberId,
+} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	{

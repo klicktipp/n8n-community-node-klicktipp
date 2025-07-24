@@ -4,12 +4,13 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
+	NodeOperationError,
 } from 'n8n-workflow';
 
 import { merge, reduce, uniqBy } from 'lodash';
 
 import { apiRequest } from '../transport';
-import adjustErrorMessage from '../helpers/adjustErrorMessage';
+import getKlickTippErrorMessage from '../helpers/getKlickTippErrorMessage';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -40,21 +41,27 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 	);
 }
 
-export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
-	let errorMessage: string;
+export function handleError(this: IExecuteFunctions, error: unknown): never {
+	const isApiError = error && typeof error === 'object' && 'httpCode' in error;
 
-	if (error && error instanceof Error && typeof (error as any).cause?.error?.error === 'number') {
-		errorMessage = adjustErrorMessage((error as any).cause.error.error);
-	} else if (typeof error === 'string') {
-		errorMessage = error;
-	} else {
-		errorMessage = error instanceof Error ? error.message : 'Undefined error';
+	if (error instanceof NodeOperationError) {
+		throw error;
 	}
 
-	return this.helpers.returnJsonArray({
-		success: false,
-		error: errorMessage,
-	});
+	if (isApiError) {
+		const message = getKlickTippErrorMessage(error);
+		throw new NodeOperationError(this.getNode(), message, { description: message });
+	}
+
+	if (typeof error === 'string') {
+		throw new NodeOperationError(this.getNode(), error);
+	}
+
+	if (error instanceof Error) {
+		throw new NodeOperationError(this.getNode(), error.message);
+	}
+
+	throw new NodeOperationError(this.getNode(), 'Undefined error');
 }
 
 export function handleObjectResponse(
@@ -108,12 +115,7 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 	return str.join('&');
 }
 
-
-export async function resolveSubscriberId(
-	this: IExecuteFunctions,
-	index: number,
-): Promise<string> {
-
+export async function resolveSubscriberId(this: IExecuteFunctions, index: number): Promise<string> {
 	const identifierType = this.getNodeParameter('identifierType', index) as string;
 
 	/* ─── look-up by plain ID ──────────────────────────── */

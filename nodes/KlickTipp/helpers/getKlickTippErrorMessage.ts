@@ -37,4 +37,34 @@ function adjustErrorMessage(error: number): string {
 	}
 }
 
-export default adjustErrorMessage;
+function getKlickTippErrorMessage(error: any): string {
+	// Nested numeric code inside cause.error
+	const nested = error?.cause?.error;
+	if (nested && typeof nested === 'object') {
+		const numeric = nested.code ?? nested.error;
+		if (typeof numeric === 'number') {
+			return adjustErrorMessage(numeric);
+		}
+	}
+
+	// Description that is not a number (e.g. "No such contact.")
+	if (typeof error.description === 'string' && isNaN(parseInt(error.description, 10))) {
+		return error.description;
+	}
+
+	// Description that is a number (or starts with one)
+	if (typeof error.description === 'string') {
+		const code = parseInt(error.description, 10);
+		if (!isNaN(code)) {
+			return adjustErrorMessage(code);
+		}
+	}
+
+	// Fallback to HTTP status code
+	const httpCode =
+		typeof error.httpCode === 'string' ? parseInt(error.httpCode, 10) : error.httpCode;
+
+	return adjustErrorMessage(httpCode);
+}
+
+export default getKlickTippErrorMessage;
