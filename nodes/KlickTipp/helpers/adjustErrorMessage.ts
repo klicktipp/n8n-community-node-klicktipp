@@ -1,4 +1,4 @@
-export function adjustErrorMessage(error: number): string {
+function adjustErrorMessage(error: number): string {
 	switch (error) {
 		case 4:
 			return 'The email address is unsubscribed. You cannot re-subscribe an email address if the contact has unsubscribed.';
