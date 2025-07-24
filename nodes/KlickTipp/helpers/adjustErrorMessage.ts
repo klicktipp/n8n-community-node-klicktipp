@@ -1,4 +1,4 @@
-function adjustErrorMessage(error: number): string {
+export function adjustErrorMessage(error: number): string {
 	switch (error) {
 		case 4:
 			return 'The email address is unsubscribed. You cannot re-subscribe an email address if the contact has unsubscribed.';
@@ -37,34 +37,4 @@ function adjustErrorMessage(error: number): string {
 	}
 }
 
-function getKlickTippErrorMessage(error: any): string {
-	// Nested numeric code inside cause.error
-	const nested = error?.cause?.error;
-	if (nested && typeof nested === 'object') {
-		const numeric = nested.code ?? nested.error;
-		if (typeof numeric === 'number') {
-			return adjustErrorMessage(numeric);
-		}
-	}
-
-	// Description that is not a number (e.g. "No such contact.")
-	if (typeof error.description === 'string' && isNaN(parseInt(error.description, 10))) {
-		return error.description;
-	}
-
-	// Description that is a number (or starts with one)
-	if (typeof error.description === 'string') {
-		const code = parseInt(error.description, 10);
-		if (!isNaN(code)) {
-			return adjustErrorMessage(code);
-		}
-	}
-
-	// Fallback to HTTP status code
-	const httpCode =
-		typeof error.httpCode === 'string' ? parseInt(error.httpCode, 10) : error.httpCode;
-
-	return adjustErrorMessage(httpCode);
-}
-
-export default getKlickTippErrorMessage;
+export default adjustErrorMessage;

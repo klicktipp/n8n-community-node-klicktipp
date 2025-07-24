@@ -10,7 +10,7 @@ import {
 import { merge, reduce, uniqBy } from 'lodash';
 
 import { apiRequest } from '../transport';
-import getKlickTippErrorMessage from '../helpers/getKlickTippErrorMessage';
+import adjustErrorMessage from '../helpers/adjustErrorMessage';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -41,27 +41,35 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 	);
 }
 
-export function handleError(this: IExecuteFunctions, error: unknown): never {
-	const isApiError = error && typeof error === 'object' && 'httpCode' in error;
+export function handleError(this: IExecuteFunctions, error: any): never {
+	const cause = (error as any)?.cause?.error;
+	let message = 'Undefined error';
 
-	if (error instanceof NodeOperationError) {
-		throw error;
+	// KlickTipp API sometimes returns either `code` or `error`
+	if (cause && typeof cause === 'object') {
+		const code = (cause as any).code ?? (cause as any).error;
+
+		if (code != null) {
+			message = adjustErrorMessage(code);
+		}
 	}
 
-	if (isApiError) {
-		const message = getKlickTippErrorMessage(error);
-		throw new NodeOperationError(this.getNode(), message, { description: message });
+	// Sometimes it is an array of plain text errors
+	if (Array.isArray(cause) && cause.length > 0) {
+		//Stripping the HTML tags
+		message = String(cause[0]).replace(/<[^>]*>/g, '');
 	}
 
 	if (typeof error === 'string') {
-		throw new NodeOperationError(this.getNode(), error);
+		message = error;
 	}
 
-	if (error instanceof Error) {
-		throw new NodeOperationError(this.getNode(), error.message);
+	// A regular error instance (no nested cause)
+	if (error instanceof Error && !cause) {
+		message = error.message;
 	}
 
-	throw new NodeOperationError(this.getNode(), 'Undefined error');
+	throw new NodeOperationError(this.getNode(), message);
 }
 
 export function handleObjectResponse(
