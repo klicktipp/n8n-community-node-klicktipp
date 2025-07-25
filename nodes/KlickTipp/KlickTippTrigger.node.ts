@@ -15,7 +15,8 @@ export class KlickTippTrigger implements INodeType {
 		icon: { light: 'file:klicktipp.svg', dark: 'file:klicktipp.dark.svg' },
 		group: ['trigger'],
 		version: 1,
-		description: 'Triggers when a webhook event occurs in KlickTipp, such as a tag being added, an email being opened or sent, a link clicked, an SMS sent, and more.',
+		description:
+			'Triggers when a webhook event occurs in KlickTipp, such as a tag being added, an email being opened or sent, a link clicked, an SMS sent, and more.',
 		defaults: {
 			name: 'KlickTipp Trigger',
 		},

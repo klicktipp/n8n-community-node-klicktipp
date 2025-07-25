@@ -1,4 +1,4 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties, NodeApiError } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
 import {
 	handleArrayResponse,
@@ -26,6 +26,6 @@ export async function execute(this: IExecuteFunctions, index: number) {
 
 		return handleArrayResponse.call(this, transformedData, index);
 	} catch (error) {
-		return handleError.call(this, error);
+		return handleError.call(this, error as NodeApiError);
 	}
 }
