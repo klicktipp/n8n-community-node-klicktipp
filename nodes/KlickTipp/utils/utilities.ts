@@ -114,7 +114,7 @@ export async function resolveSubscriberId(
 	index: number,
 ): Promise<string> {
 
-	const identifierType = this.getNodeParameter('identifierType', index) as string;
+	const identifierType = this.getNodeParameter('identifierType', index, 'id') as string;
 
 	/* ─── look-up by plain ID ──────────────────────────── */
 	if (identifierType === 'id') {
