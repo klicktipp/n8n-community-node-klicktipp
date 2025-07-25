@@ -4,6 +4,7 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
+	NodeApiError,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -11,6 +12,7 @@ import { merge, reduce, uniqBy } from 'lodash';
 
 import { apiRequest } from '../transport';
 import adjustErrorMessage from '../helpers/adjustErrorMessage';
+import extractKlickTippCode from '../helpers/extractKlickTippCode';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -41,35 +43,20 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 	);
 }
 
-export function handleError(this: IExecuteFunctions, error: any): never {
-	const cause = (error as any)?.cause?.error;
-	let message = 'Undefined error';
-
-	// KlickTipp API sometimes returns either `code` or `error`
-	if (cause && typeof cause === 'object') {
-		const code = (cause as any).code ?? (cause as any).error;
-
-		if (code != null) {
-			message = adjustErrorMessage(code);
-		}
-	}
-
-	// Sometimes it is an array of plain text errors
-	if (Array.isArray(cause) && cause.length > 0) {
-		//Stripping the HTML tags
-		message = String(cause[0]).replace(/<[^>]*>/g, '');
-	}
-
+export function handleError(this: IExecuteFunctions, error: NodeApiError | string): never {
+	/* A plain string was thrown */
 	if (typeof error === 'string') {
-		message = error;
+		throw new NodeOperationError(this.getNode(), error);
 	}
 
-	// A regular error instance (no nested cause)
-	if (error instanceof Error && !cause) {
-		message = error.message;
+	const klickTippCode = extractKlickTippCode(error.messages);
+
+	if (klickTippCode) {
+		const message = adjustErrorMessage(klickTippCode);
+		error.description = message;
 	}
 
-	throw new NodeOperationError(this.getNode(), message);
+	throw error;
 }
 
 export function handleObjectResponse(

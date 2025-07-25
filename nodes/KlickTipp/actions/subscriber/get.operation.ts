@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeProperties, NodeApiError } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
 import {
 	handleError,
@@ -67,6 +67,6 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		const responseData = await apiRequest.call(this, 'GET', `/subscriber/${subscriberId}`);
 		return handleObjectResponse.call(this, responseData, index);
 	} catch (error) {
-		return handleError.call(this, error);
+		return handleError.call(this, error as NodeApiError);
 	}
 }
