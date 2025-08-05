@@ -24,7 +24,7 @@
 
 ## Version 1.0.5 (2024-12-09)
 - **Improvements**
-  - Added support for subscriptions with either email or phone number, ensuring better user flexibility
+  - Added support for subscriptions with either email or phone number, ensuring better user flexibility.
 
 ## Version 1.0.6 (2024-12-18)
 - **New Features**
@@ -70,18 +70,23 @@
 
 ## Version 1.0.15 (2025-06-30)
 - **Bugfix**
-    - Updated the documentation link
+    - Updated the documentation link.
 
 ## Version 1.0.16 (2025-07-11)
 - **New Features**
-	- Added ability to update/delete/get contact by email
+	- Added ability to update/delete/get contact by email.
 - **Improvements**
-  - Changed trigger description
+  - Changed trigger description.
 
 ## Version 1.0.17 (2025-07-11)
 - **Improvements**
-  - Changed node names and descriptions
+  - Changed node names and descriptions.
 
 ## Version 1.0.18 (2025-07-11)
 - **Bugfix**
-  - Fixed error with nodes order
+  - Fixed error with nodes order.
+
+## Version 1.0.19 (2025-08-05)
+- **Improvements**
+	- Made email as a default value for select in update/delete/get contact nodes.
+	- Improved the error handling logic.
