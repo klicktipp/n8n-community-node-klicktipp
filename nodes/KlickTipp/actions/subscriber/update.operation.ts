@@ -1,6 +1,11 @@
-import type { IDataObject, IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IDataObject, IExecuteFunctions, INodeProperties, NodeApiError } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
-import { handleError, transformDataFields, updateDisplayOptions, resolveSubscriberId } from '../../utils/utilities';
+import {
+	handleError,
+	transformDataFields,
+	updateDisplayOptions,
+	resolveSubscriberId,
+} from '../../utils/utilities';
 
 export const properties: INodeProperties[] = [
 	/* ---------- v1  (ID only) ---------------------------------- */
@@ -146,6 +151,6 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		await apiRequest.call(this, 'PUT', `/subscriber/${subscriberId}`, body);
 		return this.helpers.returnJsonArray({ success: true });
 	} catch (error) {
-		return handleError.call(this, error);
+		return handleError.call(this, error as NodeApiError);
 	}
 }

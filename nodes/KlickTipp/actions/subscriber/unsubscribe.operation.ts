@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeProperties } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeProperties, NodeApiError } from 'n8n-workflow';
 import { apiRequest } from '../../transport';
 import { handleError, updateDisplayOptions } from '../../utils/utilities';
 
@@ -32,6 +32,6 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		await apiRequest.call(this, 'POST', '/subscriber/unsubscribe', { email });
 		return this.helpers.returnJsonArray({ success: true });
 	} catch (error) {
-		return handleError.call(this, error);
+		return handleError.call(this, error as NodeApiError);
 	}
 }
