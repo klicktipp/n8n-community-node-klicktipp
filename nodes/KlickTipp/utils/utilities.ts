@@ -49,10 +49,10 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 		throw new NodeOperationError(this.getNode(), error);
 	}
 
-	const klickTippCode = extractKlickTippCode(error.messages);
+	const klickTippError = extractKlickTippCode(error.messages);
 
-	if (klickTippCode) {
-		const message = adjustErrorMessage(klickTippCode);
+	if (klickTippError) {
+		const message = adjustErrorMessage(klickTippError.error, klickTippError.code);
 		error.description = message;
 	}
 

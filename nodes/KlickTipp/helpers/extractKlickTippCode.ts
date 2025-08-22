@@ -1,32 +1,37 @@
 /**
- * Extract a numeric KlickTipp error code from a messages[] array.
- * Priority: `code` the `error`.
- *
- * @param messages - The array returned by the KlickTipp API (`messages` field).
- * @returns The numeric error code, or `undefined` if none found.
+ * Extract a numeric KlickTipp error and code from a messages[] array.
+ * @param messages - The array returned by the KlickTipp API (`messages` field)
+ * @returns The numeric error and optional code
  *
  * @example
- * extractCode(['406 - {"error":10,"code":11}']); -> 11
+ * extractKlickTippError(['406 - {"error":10,"code":11}']); -> { error: 10, code: 11 }
  */
 
 import { toNumber, isFinite } from 'lodash';
 
-function extractKlickTippCode(messages: string[]): number | undefined {
+interface KlickTippError {
+	error: number;
+	code?: number;
+}
+
+export function extractKlickTippError(messages: string[]): KlickTippError | undefined {
 	const jsonRegex = /\{.*\}/; // first {...} block in the string
 
 	for (const entry of messages) {
 		const match = jsonRegex.exec(entry); // e.g. {"error":10,"code":11}
 
-		if (!match) {
-			continue;
-		}
+		if (!match) continue;
 
 		try {
-			const { code, error } = JSON.parse(match[0]);
-			const codeNumber = toNumber(code ?? error); // prefer code, fall back to error
+			const { error, code } = JSON.parse(match[0]);
+			const errorNumber = toNumber(error);
+			const codeNumber = toNumber(code);
 
-			if (isFinite(codeNumber)) {
-				return codeNumber;
+			if (isFinite(errorNumber)) {
+				return {
+					error: errorNumber,
+					code: isFinite(codeNumber) ? codeNumber : undefined,
+				};
 			}
 		} catch {
 			console.log('extract KlickTipp code: skipped malformed JSON:', entry);
@@ -35,4 +40,4 @@ function extractKlickTippCode(messages: string[]): number | undefined {
 	return undefined;
 }
 
-export default extractKlickTippCode;
+export default extractKlickTippError;
