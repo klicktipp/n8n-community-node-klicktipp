@@ -90,3 +90,7 @@
 - **Improvements**
 	- Made email as a default value for select in update/delete/get contact nodes.
 	- Improved the error handling logic.
+
+## Version 1.0.20 (2025-09-08)
+- **Improvements**
+	- Improved the error handling logic for "Add or Update Contact" node.
