@@ -94,3 +94,7 @@
 ## Version 1.0.20 (2025-09-08)
 - **Improvements**
 	- Improved the error handling logic for "Add or Update Contact" node.
+
+## Version 1.0.21 (2025-09-16)
+- **Bugfix**
+	- Improved the error handling logic for "Update Contact", "Get Contact", "Delete Contact" node.
