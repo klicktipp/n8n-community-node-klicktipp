@@ -121,17 +121,21 @@ export async function resolveSubscriberId(
 	/* ─── look-up by plain ID ──────────────────────────── */
 	if (identifierType === 'id') {
 		const id = this.getNodeParameter('subscriberId', index) as string;
-		if (!id) throw new Error('Contact ID is missing');
+		if (!id) {
+			return handleError.call(this, 'Contact ID is missing');
+		}
 		return id;
 	}
 
 	/* ─── look-up by e-mail ─────────────────────────────── */
 	const email = this.getNodeParameter('lookupEmail', index) as string;
-	if (!email) throw new Error('Email address is missing');
+	if (!email) {
+		return handleError.call(this, 'Email is missing');
+	}
 
 	const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email });
 
 	if (Array.isArray(response) && response.length) return response[0] as string;
 
-	throw new Error('No contact found for the provided email');
+	return handleError.call(this, 'No contact found for the provided email');
 }
