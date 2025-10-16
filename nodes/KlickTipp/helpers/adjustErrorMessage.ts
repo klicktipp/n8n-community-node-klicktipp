@@ -20,7 +20,7 @@ function adjustErrorMessage(error: number, code?: number): string {
 		case 6:
 			return 'There was an error sending the confirmation email.';
 		case 7:
-			return 'Email address not found.';
+			return 'Invalid value in custom field. The provided value is not valid for the field type.';
 		case 8:
 			return 'Invalid value in custom field. The provided value is not valid for the field type.';
 		case 9:
