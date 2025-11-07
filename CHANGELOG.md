@@ -102,3 +102,7 @@
 ## Version 1.0.22 (2025-10-16)
 - **Bugfix**
 	- Improved the error handling logic.
+
+## Version 1.0.23 (2025-11-07)
+- **Improvements**
+	- Enrichment of requests.
