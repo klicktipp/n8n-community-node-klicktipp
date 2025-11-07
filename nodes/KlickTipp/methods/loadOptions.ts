@@ -1,4 +1,5 @@
 import type { ILoadOptionsFunctions, INodePropertyOptions } from 'n8n-workflow';
+import { NodeOperationError } from 'n8n-workflow';
 import { apiRequest } from '../transport';
 import { IResponse } from '../helpers/interfaces';
 import { isEmpty, isObject } from 'lodash';
@@ -30,7 +31,7 @@ async function getOptions(
 	const credentialsId = node.credentials?.klickTippApi?.id;
 
 	if (!credentialsId) {
-		throw new Error('Credentials ID is missing.');
+    throw new NodeOperationError(node, 'Credentials ID is missing.');
 	}
 
 	// Fetch data from the API
@@ -38,7 +39,7 @@ async function getOptions(
 
 	// Handle unexpected response formats
 	if (!isObject(responseData) || isEmpty(responseData)) {
-		throw new Error(`Unexpected response format for ${endpoint}`);
+		throw new NodeOperationError(node, `Unexpected response format for ${endpoint}`);
 	}
 
 	// Map the API response to INodePropertyOptions format

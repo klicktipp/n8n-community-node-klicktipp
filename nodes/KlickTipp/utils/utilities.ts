@@ -4,12 +4,15 @@ import {
 	IExecuteFunctions,
 	INodeExecutionData,
 	INodeProperties,
+	NodeApiError,
+	NodeOperationError,
 } from 'n8n-workflow';
 
 import { merge, reduce, uniqBy } from 'lodash';
 
 import { apiRequest } from '../transport';
 import adjustErrorMessage from '../helpers/adjustErrorMessage';
+import extractKlickTippCode from '../helpers/extractKlickTippCode';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -40,21 +43,20 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 	);
 }
 
-export function handleError(this: IExecuteFunctions, error: unknown): INodeExecutionData[] {
-	let errorMessage: string;
-
-	if (error && error instanceof Error && typeof (error as any).cause?.error?.error === 'number') {
-		errorMessage = adjustErrorMessage((error as any).cause.error.error);
-	} else if (typeof error === 'string') {
-		errorMessage = error;
-	} else {
-		errorMessage = error instanceof Error ? error.message : 'Undefined error';
+export function handleError(this: IExecuteFunctions, error: NodeApiError | string): never {
+	/* A plain string was thrown */
+	if (typeof error === 'string') {
+		throw new NodeOperationError(this.getNode(), error);
 	}
 
-	return this.helpers.returnJsonArray({
-		success: false,
-		error: errorMessage,
-	});
+	const klickTippError = extractKlickTippCode(error.messages);
+
+	if (klickTippError) {
+		const message = adjustErrorMessage(klickTippError.error, klickTippError.code);
+		error.description = message;
+	}
+
+	throw error;
 }
 
 export function handleObjectResponse(
@@ -114,22 +116,26 @@ export async function resolveSubscriberId(
 	index: number,
 ): Promise<string> {
 
-	const identifierType = this.getNodeParameter('identifierType', index) as string;
+	const identifierType = this.getNodeParameter('identifierType', index, 'id') as string;
 
 	/* ─── look-up by plain ID ──────────────────────────── */
 	if (identifierType === 'id') {
 		const id = this.getNodeParameter('subscriberId', index) as string;
-		if (!id) throw new Error('Contact ID is missing');
+		if (!id) {
+			return handleError.call(this, 'Contact ID is missing');
+		}
 		return id;
 	}
 
 	/* ─── look-up by e-mail ─────────────────────────────── */
 	const email = this.getNodeParameter('lookupEmail', index) as string;
-	if (!email) throw new Error('Email address is missing');
+	if (!email) {
+		return handleError.call(this, 'Email is missing');
+	}
 
 	const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email });
 
 	if (Array.isArray(response) && response.length) return response[0] as string;
 
-	throw new Error('No contact found for the provided email');
+	return handleError.call(this, 'No contact found for the provided email');
 }
