@@ -46,4 +46,4 @@ jobs:
         run: pnpm prepublishOnly
 
       - name: Publish to npm (Trusted Publishing via OIDC)
-        run: pnpm publish --access public
+        run: pnpm publish --no-git-checks --access public
