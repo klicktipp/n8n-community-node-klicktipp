@@ -22,7 +22,6 @@ For more detailed information on the KlickTipp API—covering functions for mana
   - [Tag](#tag)
   - [Triggers](#triggers)
 - [Credentials](#credentials)
-- [Error Handling](#error-handling)
 - [License](#license)
 - [Example Workflows](#example-workflows)
 
@@ -70,9 +69,9 @@ This package includes nodes to interact with various aspects of the KlickTipp AP
 ### Opt-in Process
 
 - **Nodes**:
-  - `Get opt-in process`
-  - `Search redirect url`
-  - `list opt in process`
+  - `Get Opt-in process`
+  - `Search redirect URL`
+  - `List Opt-in processes`
 - **Description**: Manages opt-in processes, including listing all processes, retrieving details of a specific process, and obtaining redirect URLs.
 
 ### Tag

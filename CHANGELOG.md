@@ -106,3 +106,7 @@
 ## Version 1.0.23 (2025-11-07)
 - **Improvements**
 	- Enrichment of requests.
+
+## Version 1.0.24 (2025-11-10)
+- **Documentation**
+    - Fix README typos and formatting.
