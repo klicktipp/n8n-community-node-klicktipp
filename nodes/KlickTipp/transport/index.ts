@@ -5,6 +5,7 @@ import {
 	ILoadOptionsFunctions,
 	IPollFunctions,
 	IRequestOptions,
+	NodeOperationError,
 } from 'n8n-workflow';
 
 import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from '../helpers/constants';
@@ -79,6 +80,17 @@ export async function apiRequest(
 		requestOptions.body = requestBody;
 	}
 
+	// Fetch credentials once; fail fast with a friendly message.
+	let creds: IDataObject;
+	try {
+		creds = await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME) as IDataObject;
+	} catch {
+		throw new NodeOperationError(
+			this.getNode(),
+			'KlickTipp credentials are required but not configured.',
+		);
+	}
+
 	try {
 		// Perform the main API request
 		return await this.helpers.requestWithAuthentication.call(
@@ -87,9 +99,7 @@ export async function apiRequest(
 			requestOptions,
 		);
 	} finally {
-		// Perform logout request in the finally block to ensure it always runs
-		const credentials = await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME);
-		await logout.call(this, KLICKTIPP_API_CREDENTIAL_NAME, credentials, verifySSL);
+		await logout.call(this, KLICKTIPP_API_CREDENTIAL_NAME, creds, verifySSL);
 	}
 }
 
