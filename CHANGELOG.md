@@ -109,4 +109,8 @@
 
 ## Version 1.0.24 (2025-11-10)
 - **Documentation**
-    - Fix README typos and formatting.
+  - Fix README typos and formatting.
+
+## Version 1.0.25 (2025-11-18)
+- **Improvements**
+  - Added path for "KlickTipp Trigger" node.
