@@ -114,3 +114,7 @@
 ## Version 1.0.25 (2025-11-18)
 - **Improvements**
   - Added path for "KlickTipp Trigger" node.
+
+## Version 1.0.26 (2025-11-21)
+- **Bugfix**
+  - Improved the error handling logic for credentials usage.
