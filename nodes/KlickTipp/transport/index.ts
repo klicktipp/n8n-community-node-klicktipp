@@ -4,7 +4,7 @@ import {
 	IHttpRequestMethods,
 	ILoadOptionsFunctions,
 	IPollFunctions,
-	IRequestOptions,
+	IHttpRequestOptions,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -22,11 +22,11 @@ async function logout(
 		return;
 	}
 
-	const logoutOptions: IRequestOptions = {
+	const logoutOptions: IHttpRequestOptions = {
 		method: 'POST',
-		uri: `${BASE_URL}/account/logout`,
+		url: `${BASE_URL}/account/logout`,
 		json: true,
-		rejectUnauthorized: verifySSL,
+		skipSslCertificateValidation: !verifySSL,
 	};
 
 	try {
@@ -65,14 +65,13 @@ export async function apiRequest(
 		}),
 	};
 
-	const requestOptions: IRequestOptions = {
+	const requestOptions: IHttpRequestOptions = {
 		headers,
 		method,
 		qs: query,
-		uri: uri || `${BASE_URL}/${endpoint}`,
-		useQuerystring: false,
+		url: uri || `${BASE_URL}/${endpoint}`,
 		json: true,
-		rejectUnauthorized: verifySSL,
+		skipSslCertificateValidation: !verifySSL,
 		...option,
 	};
 
