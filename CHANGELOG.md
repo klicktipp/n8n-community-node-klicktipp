@@ -118,3 +118,8 @@
 ## Version 1.0.26 (2025-11-21)
 - **Bugfix**
   - Improved the error handling logic for credentials usage.
+
+## Version 1.0.27 (2025-11-25)
+- **Improvements**
+  - Replaced "IRequestOptions" with "IHttpRequestOptions".
+	- Removed console.log in extractKlickTippCode.ts.
