@@ -25,6 +25,7 @@ async function logout(
 	const logoutOptions: IHttpRequestOptions = {
 		method: 'POST',
 		url: `${BASE_URL}/account/logout`,
+		json: true,
 		skipSslCertificateValidation: !verifySSL,
 	};
 
@@ -69,6 +70,7 @@ export async function apiRequest(
 		method,
 		qs: query,
 		url: uri || `${BASE_URL}/${endpoint}`,
+		json: true,
 		skipSslCertificateValidation: !verifySSL,
 		...option,
 	};
