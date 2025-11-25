@@ -34,7 +34,7 @@ export function extractKlickTippError(messages: string[]): KlickTippError | unde
 				};
 			}
 		} catch {
-			console.log('extract KlickTipp code: skipped malformed JSON:', entry);
+			// silent fallback (extract KlickTipp code: skipped malformed JSON)
 		}
 	}
 	return undefined;
