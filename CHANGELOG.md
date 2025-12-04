@@ -123,3 +123,7 @@
 - **Improvements**
   - Replaced "IRequestOptions" with "IHttpRequestOptions".
 	- Removed console.log in extractKlickTippCode.ts.
+
+## Version 1.0.28 (2025-12-04)
+- **Improvements**
+  - Updated description for "Delete tag" node.
