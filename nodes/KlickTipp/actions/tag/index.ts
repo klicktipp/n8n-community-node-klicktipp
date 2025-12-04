@@ -28,7 +28,7 @@ export const description: INodeProperties[] = [
 			{
 				name: 'Delete Tag',
 				value: 'delete',
-				description: 'Deletes a tag',
+				description: 'Deletes a tag and removes it from all contacts',
 				action: 'Delete tag',
 			},
 			{
