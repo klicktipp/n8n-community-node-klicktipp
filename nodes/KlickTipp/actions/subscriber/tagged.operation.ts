@@ -20,6 +20,33 @@ export const properties: INodeProperties[] = [
 		description:
 			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
 	},
+	{
+		displayName: 'Subscription Status',
+		name: 'subscriptionStatus',
+		type: 'multiOptions',
+		options: [
+			{ name: 'Pending', value: 'pending' },
+			{ name: 'Subscribed', value: 'subscribed' },
+			{ name: 'Unsubscribed', value: 'unsubscribed' },
+		],
+		default: [],
+		required: false,
+		description: 'Filter contacts by subscription status. You can select multiple values.',
+	},
+	{
+		displayName: 'Bounce Status',
+		name: 'bounceStatus',
+		type: 'multiOptions',
+		options: [
+			{ name: 'Hard bounce', value: 'hardbounce' },
+			{ name: 'Soft bounce', value: 'softbounce' },
+			{ name: 'Spam bounce', value: 'spambounce' },
+			{ name: 'No bounce', value: 'nobounce' },
+		],
+		default: [],
+		required: false,
+		description: 'Filter contacts by bounce status. You can select multiple values.',
+	},
 ];
 
 const displayOptions = {
@@ -38,10 +65,26 @@ export async function execute(this: IExecuteFunctions, index: number) {
 		return handleError.call(this, 'Tag ID is missing');
 	}
 
+	const subscriptionStatus = this.getNodeParameter('subscriptionStatus', index, []) as string[];
+	const bounceStatus = this.getNodeParameter('bounceStatus', index, []) as string[];
+
+  const uniq = (arr: string[]) => [...new Set((arr || []).filter(Boolean))];
+
+  const statusCsv = uniq(subscriptionStatus).join(',');
+  const bounceCsv = uniq(bounceStatus).join(',');
+
+	const query: Record<string, string> = {};
+	if (statusCsv) query.status = statusCsv;
+	if (bounceCsv) query.bounceStatus = bounceCsv;
+
 	try {
-		const responseData = await apiRequest.call(this, 'POST', '/subscriber/tagged', {
-			tagid: tagId,
-		});
+		const responseData = await apiRequest.call(
+			this,
+			'POST',
+			'subscriber/tagged',
+			{ tagid: tagId },
+			query,
+		);
 
 		const transformedData = objectToIdValueArray(responseData);
 
