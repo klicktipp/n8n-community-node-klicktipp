@@ -19,7 +19,7 @@ export const properties: INodeProperties[] = [
 		],
 		default: [],
 		required: false,
-		description: 'Filter contacts by subscription status. You can select multiple values.',
+		description: 'Filter contacts by their subscription status. You can select one or multiple values to narrow down the results. If no value is selected, the filter defaults to Subscribed, meaning only contacts with an active subscription are included.',
 	},
 	{
 		displayName: 'Bounce Status',
@@ -33,7 +33,7 @@ export const properties: INodeProperties[] = [
 		],
 		default: [],
 		required: false,
-		description: 'Filter contacts by bounce status. You can select multiple values.',
+		description: 'Filter contacts by their bounce status. You can select one or multiple values. If no value is selected, the filter defaults to Soft Bounce, Spam Bounce, and No Bounce.',
 	},
 ];
 
