@@ -12,7 +12,8 @@ import { merge, reduce, uniqBy } from 'lodash';
 
 import { apiRequest } from '../transport';
 import adjustErrorMessage from '../helpers/adjustErrorMessage';
-import extractKlickTippCode from '../helpers/extractKlickTippCode';
+import extractKlickTippError from '../helpers/extractKlickTippCode';
+import buildValidationMessage from '../helpers/buildValidationMessage';
 
 export function updateDisplayOptions(
 	displayOptions: IDisplayOptions,
@@ -44,16 +45,27 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 }
 
 export function handleError(this: IExecuteFunctions, error: NodeApiError | string): never {
-	/* A plain string was thrown */
+	// A plain string was thrown
 	if (typeof error === 'string') {
 		throw new NodeOperationError(this.getNode(), error);
 	}
 
-	const klickTippError = extractKlickTippCode(error.messages);
+	const klickTippError = extractKlickTippError(error.messages);
 
 	if (klickTippError) {
-		const message = adjustErrorMessage(klickTippError.error, klickTippError.code);
-		error.description = message;
+		// 1) Prefer new validation message: field + name + reason
+		const validationMessage = buildValidationMessage(
+			klickTippError.field,
+			klickTippError.name,
+			klickTippError.reason,
+		);
+
+		if (validationMessage) {
+			error.description = validationMessage;
+		} else if (typeof klickTippError.error === 'number') {
+			// 2) Legacy fallback
+			error.description = adjustErrorMessage(klickTippError.error, klickTippError.code);
+		}
 	}
 
 	throw error;
