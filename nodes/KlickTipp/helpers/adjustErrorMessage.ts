@@ -1,4 +1,6 @@
-function adjustErrorMessage(error: number, code?: number): string {
+import { INodeParameters } from "n8n-workflow";
+
+function adjustErrorMessage(error: number, code?: number, parameters?: INodeParameters): string {
 	// Messages for error 10 codes
 	const error10Messages: Record<number, string> = {
 		4: 'The email address is unsubscribed. You cannot re-subscribe an email address if the contact has unsubscribed.',
@@ -12,6 +14,16 @@ function adjustErrorMessage(error: number, code?: number): string {
 		32: 'You must specify either an email address or a SMS number.',
 	};
 
+	if (error === 7) {
+		// Check if it's a "Tag contact" module
+		if (parameters?.tagId) {
+			return 'Email address not found.';
+		}
+
+		// Default for a "Update contact" module
+		return 'Invalid value in custom field. The provided value is not valid for the field type.';
+	}
+
 	switch (error) {
 		case 4:
 			return 'The email address is unsubscribed. You cannot re-subscribe an email address if the contact has unsubscribed.';
@@ -19,8 +31,6 @@ function adjustErrorMessage(error: number, code?: number): string {
 			return 'Invalid email address.';
 		case 6:
 			return 'There was an error sending the confirmation email.';
-		case 7:
-			return 'Invalid value in custom field. The provided value is not valid for the field type.';
 		case 8:
 			return 'Invalid value in custom field. The provided value is not valid for the field type.';
 		case 9:

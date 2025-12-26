@@ -64,7 +64,7 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 			error.description = validationMessage;
 		} else if (typeof klickTippError.error === 'number') {
 			// 2) Legacy fallback
-			error.description = adjustErrorMessage(klickTippError.error, klickTippError.code);
+			error.description = adjustErrorMessage(klickTippError.error, klickTippError.code, this.getNode().parameters);
 		}
 	}
 
