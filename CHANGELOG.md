@@ -127,3 +127,7 @@
 ## Version 1.0.28 (2025-12-04)
 - **Improvements**
   - Updated description for "Delete tag" node.
+
+## Version 1.0.29 (2026-01-05)
+- **New Features**
+  - Added filtering options for "List Contacts" and "search Tagged Contacts" nodes.
