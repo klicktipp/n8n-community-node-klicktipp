@@ -15,7 +15,7 @@ function adjustErrorMessage(error: number, code?: number, parameters?: INodePara
 	};
 
 	if (error === 7) {
-		// Check if it's a "Tag contact" module
+		// Check if it's a "Tag/Untag contact contact" module
 		if (parameters?.tagId) {
 			return 'Email address not found.';
 		}
