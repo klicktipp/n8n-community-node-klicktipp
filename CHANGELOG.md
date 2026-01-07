@@ -44,29 +44,29 @@
 
 ## Version 1.0.9 (2025-03-28)
 - **Changes**
-    - Removed unused runtime dependencies to comply with n8n core integration requirements.
+  - Removed unused runtime dependencies to comply with n8n core integration requirements.
 
 ## Version 1.0.10 (2025-04-15)
 - **Changes**
-    - Removed unnecessary `Buffer` import to resolve linter issues for n8n Cloud compatibility.
+  - Removed unnecessary `Buffer` import to resolve linter issues for n8n Cloud compatibility.
 
 ## Version 1.0.11 (2025-04-17)
 - **Improvements**
-    - Added sorting by label for options in drop-down.
-		- Added help banner for "Add or Update Contact" node.
-		- Added functionality of displaying error messages from KlickTipp API.
+  - Added sorting by label for options in drop-down.
+	- Added help banner for "Add or Update Contact" node.
+	- Added functionality of displaying error messages from KlickTipp API.
 
 ## Version 1.0.12 (2025-05-27)
 - **Bugfix**
-    - Fixed an issue where form-encoded requests were not correctly constructed, leading to 406 errors from the KlickTipp API.
+  - Fixed an issue where form-encoded requests were not correctly constructed, leading to 406 errors from the KlickTipp API.
 
 ## Version 1.0.13 (2025-06-05)
 - **Improvements**
-    - Enabled KlickTipp node to be used as an AI tool.
+  - Enabled KlickTipp node to be used as an AI tool.
 
 ## Version 1.0.14 (2025-06-26)
 - **Bugfix**
-    - Changed the link to credential documentation.
+  - Changed the link to credential documentation.
 
 ## Version 1.0.15 (2025-06-30)
 - **Bugfix**
@@ -127,3 +127,11 @@
 ## Version 1.0.28 (2025-12-04)
 - **Improvements**
   - Updated description for "Delete tag" node.
+
+## Version 1.0.29 (2026-01-05)
+- **New Features**
+  - Added filtering options for "List Contacts" and "Search Tagged Contacts" nodes.
+
+## Version 1.0.30 (2026-01-05)
+- **Bugfix**
+  - Fixed ESLint errors.

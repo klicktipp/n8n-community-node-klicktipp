@@ -7,7 +7,33 @@ import {
 	updateDisplayOptions,
 } from '../../utils/utilities';
 
-export const properties: INodeProperties[] = [];
+export const properties: INodeProperties[] = [
+	{
+		displayName: 'Subscription Status',
+		name: 'subscriptionStatus',
+		type: 'multiOptions',
+		options: [
+			{ name: 'Pending', value: 'pending' },
+			{ name: 'Subscribed', value: 'subscribed' },
+			{ name: 'Unsubscribed', value: 'unsubscribed' },
+		],
+		default: [],
+		description: 'Filter contacts by their subscription status. You can select one or multiple values to narrow down the results. If no value is selected, the filter defaults to Subscribed, meaning only contacts with an active subscription are included.',
+	},
+	{
+		displayName: 'Bounce Status',
+		name: 'bounceStatus',
+		type: 'multiOptions',
+		options: [
+			{ name: 'Hard Bounce', value: 'hardbounce' },
+			{ name: 'Soft Bounce', value: 'softbounce' },
+			{ name: 'Spam Bounce', value: 'spambounce' },
+			{ name: 'No Bounce', value: 'nobounce' },
+		],
+		default: [],
+		description: 'Filter contacts by their bounce status. You can select one or multiple values. If no value is selected, the filter defaults to Soft Bounce, Spam Bounce, and No Bounce.',
+	},
+];
 
 const displayOptions = {
 	show: {
@@ -20,7 +46,25 @@ export const description = updateDisplayOptions(displayOptions, properties);
 
 export async function execute(this: IExecuteFunctions, index: number) {
 	try {
-		const responseData = await apiRequest.call(this, 'GET', `/subscriber`);
+		const subscriptionStatus = this.getNodeParameter('subscriptionStatus', index, []) as string[];
+		const bounceStatus = this.getNodeParameter('bounceStatus', index, []) as string[];
+
+		const uniq = (arr: string[]) => [...new Set((arr || []).filter(Boolean))];
+
+		const statusCsv = uniq(subscriptionStatus).join(',');
+		const bounceCsv = uniq(bounceStatus).join(',');
+
+		const query: Record<string, string> = {};
+		if (statusCsv) query.status = statusCsv;
+		if (bounceCsv) query.bounceStatus = bounceCsv;
+
+		const responseData = await apiRequest.call(
+			this,
+			'GET',
+			`subscriber`,
+			{},
+			query
+		);
 
 		const formattedData = objectToIdValueArray(responseData);
 
