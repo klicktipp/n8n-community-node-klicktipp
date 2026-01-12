@@ -25,6 +25,10 @@ async function logout(
 	const logoutOptions: IHttpRequestOptions = {
 		method: 'POST',
 		url: `${BASE_URL}/account/logout`,
+		headers: {
+			Cookie: `${session.sessionName}=${session.sessionId}`,
+			Accept: 'application/json',
+		},
 		json: true,
 		skipSslCertificateValidation: !verifySSL,
 	};
