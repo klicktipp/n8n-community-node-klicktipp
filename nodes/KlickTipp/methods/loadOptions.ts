@@ -31,7 +31,7 @@ async function getOptions(
 	const credentialsId = node.credentials?.klickTippApi?.id;
 
 	if (!credentialsId) {
-    throw new NodeOperationError(node, 'Credentials ID is missing.');
+		throw new NodeOperationError(node, 'Credentials ID is missing.');
 	}
 
 	// Fetch data from the API

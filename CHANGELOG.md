@@ -135,3 +135,9 @@
 ## Version 1.0.30 (2026-01-05)
 - **Bugfix**
   - Fixed ESLint errors.
+
+## Version 1.0.31 (2026-01-12)
+- **Improvements**
+	- Improved the error handling logic.
+- **New Features**
+  - Added connection test.

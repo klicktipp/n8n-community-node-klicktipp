@@ -25,6 +25,10 @@ async function logout(
 	const logoutOptions: IHttpRequestOptions = {
 		method: 'POST',
 		url: `${BASE_URL}/account/logout`,
+		headers: {
+			Cookie: `${session.sessionName}=${session.sessionId}`,
+			Accept: 'application/json',
+		},
 		json: true,
 		skipSslCertificateValidation: !verifySSL,
 	};
@@ -82,7 +86,7 @@ export async function apiRequest(
 	// Fetch credentials once; fail fast with a friendly message.
 	let creds: IDataObject;
 	try {
-		creds = await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME) as IDataObject;
+		creds = (await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME)) as IDataObject;
 	} catch {
 		throw new NodeOperationError(
 			this.getNode(),
