@@ -1,4 +1,8 @@
-function buildValidationMessage(field?: string, name?: string, reason?: string): string | undefined {
+function buildValidationMessage(
+	field?: string,
+	name?: string,
+	reason?: string,
+): string | undefined {
 	const f = (field ?? '').trim();
 	const n = (name ?? '').trim();
 	const r = (reason ?? '').trim();

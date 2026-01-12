@@ -1,4 +1,4 @@
-import { INodeParameters } from "n8n-workflow";
+import { INodeParameters } from 'n8n-workflow';
 
 function adjustErrorMessage(error: number, code?: number, parameters?: INodeParameters): string {
 	// Messages for error 10 codes

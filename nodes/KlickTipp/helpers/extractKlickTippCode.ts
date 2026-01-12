@@ -3,10 +3,10 @@ import { toNumber, isFinite } from 'lodash';
 interface KlickTippError {
 	error?: number;
 	code?: number;
-	field?: string;  // UI field label (e.g. "Lead Value", "Birthday") - may be empty
-	name?: string;   // technical field key (e.g. "fieldLeadValue", "fieldBirthday", "email")
+	field?: string; // UI field label (e.g. "Lead Value", "Birthday") - may be empty
+	name?: string; // technical field key (e.g. "fieldLeadValue", "fieldBirthday", "email")
 	reason?: string; // e.g. "must be a numeric value"
-	raw?: unknown;   // optional: keep parsed JSON for debugging
+	raw?: unknown; // optional: keep parsed JSON for debugging
 }
 
 export function extractKlickTippError(messages: string[]): KlickTippError | undefined {

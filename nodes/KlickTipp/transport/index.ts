@@ -86,7 +86,7 @@ export async function apiRequest(
 	// Fetch credentials once; fail fast with a friendly message.
 	let creds: IDataObject;
 	try {
-		creds = await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME) as IDataObject;
+		creds = (await this.getCredentials(KLICKTIPP_API_CREDENTIAL_NAME)) as IDataObject;
 	} catch {
 		throw new NodeOperationError(
 			this.getNode(),

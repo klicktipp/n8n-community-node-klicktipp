@@ -64,7 +64,11 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 			error.description = validationMessage;
 		} else if (typeof klickTippError.error === 'number') {
 			// 2) Legacy fallback
-			error.description = adjustErrorMessage(klickTippError.error, klickTippError.code, this.getNode().parameters);
+			error.description = adjustErrorMessage(
+				klickTippError.error,
+				klickTippError.code,
+				this.getNode().parameters,
+			);
 		}
 	}
 
@@ -122,12 +126,7 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 	return str.join('&');
 }
 
-
-export async function resolveSubscriberId(
-	this: IExecuteFunctions,
-	index: number,
-): Promise<string> {
-
+export async function resolveSubscriberId(this: IExecuteFunctions, index: number): Promise<string> {
 	const identifierType = this.getNodeParameter('identifierType', index, 'id') as string;
 
 	/* ─── look-up by plain ID ──────────────────────────── */
