@@ -34,7 +34,11 @@ async function logout(
 	};
 
 	try {
-		await this.helpers.requestWithAuthentication.call(this, authenticationMethod, logoutOptions);
+		await this.helpers.httpRequestWithAuthentication.call(
+			this,
+			authenticationMethod,
+			logoutOptions,
+		);
 		this.logger.info('Logout succeeded.');
 	} catch (error) {
 		this.logger.error(`Logout failed: ${error instanceof Error ? error.message : String(error)}`);
@@ -62,7 +66,6 @@ export async function apiRequest(
 		...defaultHeaders,
 		'Client-Identifier': 'n8n-KlickTipp',
 		'Connector-Version': `${pkg.version}`,
-		'NodeJS-Version': process.versions.node,
 		...(isForm && {
 			'Content-Type': 'application/x-www-form-urlencoded',
 			'Content-Length': Buffer.byteLength(requestBody as string).toString(),
@@ -96,7 +99,7 @@ export async function apiRequest(
 
 	try {
 		// Perform the main API request
-		return await this.helpers.requestWithAuthentication.call(
+		return await this.helpers.httpRequestWithAuthentication.call(
 			this,
 			KLICKTIPP_API_CREDENTIAL_NAME,
 			requestOptions,
