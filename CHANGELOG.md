@@ -145,3 +145,7 @@
 ## Version 1.0.32 (2026-02-03)
 - **Improvements**
 	- Updated error messages.
+
+## Version 1.0.33 (2026-02-06)
+- **Bugfix**
+  - Fixed ESLint errors.
