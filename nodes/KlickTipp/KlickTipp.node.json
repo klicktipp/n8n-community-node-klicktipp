@@ -1,6 +1,6 @@
 {
 	"node": "n8n-nodes-klicktipp.klickTipp",
-	"nodeVersion": "1.0.33",
+	"nodeVersion": "1.0.34",
 	"codexVersion": "1.0.0",
 	"categories": ["KlickTipp", "Integration", "API"],
 	"resources": {
