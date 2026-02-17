@@ -149,3 +149,7 @@
 ## Version 1.0.33 (2026-02-06)
 - **Bugfix**
   - Fixed ESLint errors.
+
+## Version 1.0.34 (2026-02-17)
+- **Improvements**
+  - Updated readme and added operations file to improve LLM support.
