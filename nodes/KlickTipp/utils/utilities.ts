@@ -57,6 +57,7 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 		const validationMessage = buildValidationMessage(
 			klickTippError.field,
 			klickTippError.name,
+			klickTippError.fieldValue,
 			klickTippError.reason,
 		);
 
