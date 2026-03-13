@@ -29,25 +29,16 @@ export class KlickTippApi implements ICredentialType {
 			default: '',
 		},
 		{
-			displayName: 'Session ID',
-			name: 'sessionId',
+			displayName: 'Session Cookie',
+			name: 'sessionCookie',
 			type: 'hidden',
 			typeOptions: {
 				expirable: true,
+				password: true,
 			},
 			default: '',
-		},
-		{
-			displayName: 'Session Name',
-			name: 'sessionName',
-			type: 'hidden',
-			typeOptions: {
-				expirable: true,
-			},
-			default: '',
-		},
+		}
 	];
-
 
 	test = {
 		request: {
@@ -72,17 +63,17 @@ export class KlickTippApi implements ICredentialType {
 			json: true,
 		});
 
-		// Extract session ID and session name from the response
-		const { sessid, session_name } = loginResponse;
+		const { sessid, session_name } = loginResponse as {
+			sessid?: string;
+			session_name?: string;
+		};
 
 		if (!sessid || !session_name) {
 			throw new Error('Login failed: Invalid credentials or missing session data.');
 		}
 
-		// Return both sessionId and sessionName to be stored in the credentials
 		return {
-			sessionId: sessid,
-			sessionName: session_name,
+			sessionCookie: `${session_name}=${sessid}`,
 		};
 	}
 
@@ -91,7 +82,7 @@ export class KlickTippApi implements ICredentialType {
 		type: 'generic',
 		properties: {
 			headers: {
-				Cookie: '={{ $credentials.sessionName + "=" + $credentials.sessionId }}',
+				Cookie: '={{$credentials.sessionCookie}}',
 			},
 		},
 	};

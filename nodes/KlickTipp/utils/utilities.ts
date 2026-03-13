@@ -151,3 +151,9 @@ export async function resolveSubscriberId(this: IExecuteFunctions, index: number
 
 	return handleError.call(this, 'No contact found for the provided email');
 }
+
+export function buildUrl(baseUrl: string, path: string) {
+	const normalizedBase = baseUrl.endsWith('/') ? baseUrl.slice(0, -1) : baseUrl;
+	const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+	return `${normalizedBase}${normalizedPath}`;
+}
