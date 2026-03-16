@@ -126,23 +126,82 @@ export function toQueryString(obj: IDataObject, prefix?: string): string {
 	return str.join('&');
 }
 
+function getRawParameterValue(
+	this: IExecuteFunctions,
+	parameterName: 'subscriberId' | 'lookupEmail',
+): unknown {
+	return this.getNode().parameters?.[parameterName];
+}
+
+function containsVariableReference(value: unknown): boolean {
+	return (
+		typeof value === 'string' &&
+		(value.trim().startsWith('=') || /\{\{[\s\S]*\}\}/.test(value))
+	);
+}
+
+function validateSubscriberIdentifier(
+	this: IExecuteFunctions,
+	parameterName: 'subscriberId' | 'lookupEmail',
+	value: string,
+): string {
+	const normalizedValue = value.trim();
+	const rawValue = getRawParameterValue.call(this, parameterName);
+
+	if (!normalizedValue) {
+		if (parameterName === 'subscriberId') {
+			return handleError.call(this, 'Contact Identifier (ID or Key) is missing');
+		}
+
+		return handleError.call(this, 'Email is missing');
+	}
+
+	if (containsVariableReference(rawValue)) {
+		return normalizedValue;
+	}
+
+	if (parameterName === 'lookupEmail') {
+		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+		if (!emailPattern.test(normalizedValue)) {
+			return handleError.call(
+				this,
+				'Valid email address required. Example: jsmith@example.com',
+			);
+		}
+
+		return normalizedValue;
+	}
+
+	if (/\s/.test(normalizedValue)) {
+		return handleError.call(
+			this,
+			'Contact Identifier (ID or Key) must not contain whitespace',
+		);
+	}
+
+	return normalizedValue;
+}
+
 export async function resolveSubscriberId(this: IExecuteFunctions, index: number): Promise<string> {
 	const identifierType = this.getNodeParameter('identifierType', index, 'id') as string;
 
 	/* ─── look-up by plain ID ──────────────────────────── */
 	if (identifierType === 'id') {
-		const id = this.getNodeParameter('subscriberId', index) as string;
-		if (!id) {
-			return handleError.call(this, 'Contact ID is missing');
-		}
+		const id = validateSubscriberIdentifier.call(
+			this,
+			'subscriberId',
+			this.getNodeParameter('subscriberId', index) as string,
+		);
 		return id;
 	}
 
 	/* ─── look-up by e-mail ─────────────────────────────── */
-	const email = this.getNodeParameter('lookupEmail', index) as string;
-	if (!email) {
-		return handleError.call(this, 'Email is missing');
-	}
+	const email = validateSubscriberIdentifier.call(
+		this,
+		'lookupEmail',
+		this.getNodeParameter('lookupEmail', index) as string,
+	);
 
 	const response = await apiRequest.call(this, 'POST', '/subscriber/search', { email });
 
