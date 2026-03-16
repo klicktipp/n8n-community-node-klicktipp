@@ -156,4 +156,8 @@
 
 ## Version 1.0.35 (2026-03-13)
 - **Bugfix**
-    - Fixed an issue with refreshing cookies.
+  - Fixed an issue with refreshing cookies.
+
+## Version 1.0.36 (2026-03-16)
+- **Improvements**
+	- Updated error messages: added field value.
