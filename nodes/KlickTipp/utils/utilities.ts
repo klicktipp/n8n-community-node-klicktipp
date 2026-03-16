@@ -50,13 +50,21 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 		throw new NodeOperationError(this.getNode(), error);
 	}
 
-	const klickTippError = extractKlickTippError(error.messages);
+	const contextData = (error as NodeApiError & { context?: { data?: unknown } }).context?.data;
+	const klickTippMessages = [...error.messages];
+
+	if (contextData && typeof contextData === 'object' && !Array.isArray(contextData)) {
+		klickTippMessages.unshift(JSON.stringify(contextData));
+	}
+
+	const klickTippError = extractKlickTippError(klickTippMessages);
 
 	if (klickTippError) {
 		// 1) Prefer new validation message: field + name + reason
 		const validationMessage = buildValidationMessage(
 			klickTippError.field,
 			klickTippError.name,
+			klickTippError.fieldValue,
 			klickTippError.reason,
 		);
 
