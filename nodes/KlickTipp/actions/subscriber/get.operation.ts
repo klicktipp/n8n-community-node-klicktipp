@@ -10,11 +10,11 @@ import {
 export const properties: INodeProperties[] = [
 	/* ---------- v1  (ID only) ---------------------------------- */
 	{
-		displayName: 'Contact ID',
+		displayName: 'Contact Identifier (ID or Key)',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		placeholder: 'Enter contact ID (required)',
+		placeholder: 'Enter contact ID or Key (required)',
 		description: 'ID of the contact to retrieve',
 		displayOptions: { show: { '@version': [1] } },
 	},
@@ -25,7 +25,7 @@ export const properties: INodeProperties[] = [
 		name: 'identifierType',
 		type: 'options',
 		options: [
-			{ name: 'Contact ID', value: 'id' },
+			{ name: 'Contact Identifier (ID or Key)', value: 'id' },
 			{ name: 'Email Address', value: 'email' },
 		],
 		default: 'id',
@@ -38,7 +38,7 @@ export const properties: INodeProperties[] = [
 		name: 'identifierType',
 		type: 'options',
 		options: [
-			{ name: 'Contact ID', value: 'id' },
+			{ name: 'Contact Identifier (ID or Key)', value: 'id' },
 			{ name: 'Email Address', value: 'email' },
 		],
 		default: 'email',
@@ -47,12 +47,12 @@ export const properties: INodeProperties[] = [
 
 	/* ID field for v2 + v3 (shown only when “ID” is chosen) ------ */
 	{
-		displayName: 'Contact ID',
+		displayName: 'Contact Identifier (ID or Key)',
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Enter the ID of the contact you want to retrieve',
-		placeholder: 'Enter contact ID (required)',
+		description: 'Enter the Contact ID or Contact Key. The Contact Key may appear as a URL parameter in redirect links generated using the email editor placeholder, or custom confirmation/thank-you pages',
+		placeholder: 'Enter contact ID or Key (required)',
 		displayOptions: {
 			show: { '@version': [2, 3], identifierType: ['id'] },
 		},
@@ -64,6 +64,7 @@ export const properties: INodeProperties[] = [
 		name: 'lookupEmail',
 		type: 'string',
 		default: '',
+		description: 'Enter the Email address. This is used to look up the Contact ID automatically',
 		placeholder: 'Enter email address (required)',
 		displayOptions: {
 			show: { '@version': [2, 3], identifierType: ['email'] },
