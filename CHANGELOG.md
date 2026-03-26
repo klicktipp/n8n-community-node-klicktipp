@@ -166,3 +166,7 @@
 - **Improvements**
 	- Updated option name in select "Contact ID" -> "Contact Identifier (ID or Key)" in update/delete/get contact nodes.
 	- Added hints for select options in update/delete/get contact nodes.
+
+## Version 1.0.38 (2026-03-26)
+- **Bugfix**
+	- Updated router to avoid stack overflow when returning large result sets.
