@@ -45,7 +45,9 @@ export async function router(this: IExecuteFunctions) {
 					throw new NodeOperationError(this.getNode(), `The resource "${resource}" is not known`);
 			}
 
-			returnData.push(...responseData);
+			for (const item of responseData) {
+				returnData.push(item);
+			}
 		} catch (error) {
 			if (this.continueOnFail()) {
 				const executionErrorData = this.helpers.constructExecutionMetaData(
