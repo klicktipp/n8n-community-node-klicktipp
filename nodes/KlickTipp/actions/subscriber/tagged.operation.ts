@@ -30,8 +30,13 @@ export const properties: INodeProperties[] = [
 			{ name: 'Unsubscribed', value: 'unsubscribed' },
 		],
 		default: [],
-		description:
+	},
+	{
+		displayName:
 			'Filter contacts by their subscription status. You can select one or multiple values to narrow down the results. If no value is selected, the filter defaults to Subscribed, meaning only contacts with an active subscription are included.',
+		name: 'infoSubscriptionStatus',
+		type: 'notice',
+		default: '',
 	},
 	{
 		displayName: 'Bounce Status',
@@ -43,10 +48,15 @@ export const properties: INodeProperties[] = [
 			{ name: 'Spam Bounce', value: 'spambounce' },
 			{ name: 'No Bounce', value: 'nobounce' },
 		],
-		default: [],
-		description:
-			'Filter contacts by their bounce status. You can select one or multiple values. If no value is selected, the filter defaults to Soft Bounce, Spam Bounce, and No Bounce.',
+		default: []
 	},
+	{
+		displayName:
+			'Filter contacts by their bounce status. You can select one or multiple values. If no value is selected, the filter defaults to Soft Bounce, Spam Bounce, and No Bounce.',
+		name: 'infoBounceStatus',
+		type: 'notice',
+		default: '',
+	}
 ];
 
 const displayOptions = {
