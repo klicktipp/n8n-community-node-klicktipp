@@ -170,3 +170,7 @@
 ## Version 1.0.38 (2026-03-26)
 - **Bugfix**
 	- Updated router to avoid stack overflow when returning large result sets.
+
+## Version 1.0.39 (2026-03-31)
+- **Improvements**
+	- Changed hint display for "List Contacts" and "Search Tagged Contacts" nodes.
