@@ -56,12 +56,65 @@ export class KlickTippTrigger implements INodeType {
 				type: 'notice',
 				default: '',
 			},
+			{
+				displayName: 'Enable Body Auth',
+				name: 'enableBodyAuth',
+				type: 'boolean',
+				default: false,
+				description: 'Whether to validate a secret value from the incoming webhook body',
+			},
+			{
+				displayName: 'Credential for Auth',
+				name: 'authFieldName',
+				type: 'string',
+				default: 'Authorization',
+				description: 'Body field name that KlickTipp sends with the webhook request',
+				displayOptions: {
+					show: {
+						enableBodyAuth: [true],
+					},
+				},
+			},
+			{
+				displayName: 'Auth Value',
+				name: 'authValue',
+				type: 'string',
+				typeOptions: {
+					password: true,
+				},
+				default: '',
+				description: 'Expected secret value for the configured body field',
+				displayOptions: {
+					show: {
+						enableBodyAuth: [true],
+					},
+				},
+			},
 		],
 	};
 
 	// Handles the POST webhook request from KlickTipp.
 	async webhook(this: IWebhookFunctions): Promise<IWebhookResponseData> {
 		const req = this.getRequestObject();
+		const enableBodyAuth = this.getNodeParameter('enableBodyAuth', false) as boolean;
+
+		if (enableBodyAuth) {
+			const fieldName = String(this.getNodeParameter('authFieldName', 'Authorization')).trim();
+			const expectedValue = String(this.getNodeParameter('authValue', ''));
+			const receivedValue = fieldName ? req.body?.[fieldName] : undefined;
+
+			if (!fieldName || receivedValue !== expectedValue) {
+				const res = this.getResponseObject();
+				res.status(401).json({
+					message: 'Unauthorized webhook request',
+				});
+
+				return {
+					noWebhookResponse: true,
+				};
+			}
+		}
+
 		return {
 			workflowData: [this.helpers.returnJsonArray(req.body as IDataObject)],
 		};

@@ -170,6 +170,14 @@ To authenticate with the KlickTipp API, configure your API credentials:
 
 Once set up, these credentials will be used across all KlickTipp nodes in the package.
 
+For the **KlickTipp Trigger**, you can also optionally enable body authentication directly in the node:
+
+- **Enable Body Auth**: Turns request validation on
+- **Credential for Auth**: The body field name sent by KlickTipp, for example `Authorization`
+- **Auth Value**: The expected secret value stored as a masked input
+
+When body auth is enabled, the trigger validates the incoming webhook body before the workflow starts. If the field is missing or the value does not match, the request is rejected and the workflow does not run.
+
 ---
 
 ## Compatibility
