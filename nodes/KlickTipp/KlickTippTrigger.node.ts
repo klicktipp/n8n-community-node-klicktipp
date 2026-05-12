@@ -57,18 +57,18 @@ export class KlickTippTrigger implements INodeType {
 				default: '',
 			},
 			{
-				displayName: 'Enable Body Auth',
+				displayName: 'Authentication via body',
 				name: 'enableBodyAuth',
 				type: 'boolean',
 				default: false,
 				description: 'Whether to validate a secret value from the incoming webhook body',
 			},
 			{
-				displayName: 'Credential for Auth',
+				displayName: 'Name',
 				name: 'authFieldName',
 				type: 'string',
 				default: 'Authorization',
-				description: 'Please add that as a parameter in the KlickTipp webhook',
+				description: 'Expected name for the configured parameter',
 				displayOptions: {
 					show: {
 						enableBodyAuth: [true],
@@ -76,7 +76,7 @@ export class KlickTippTrigger implements INodeType {
 				},
 			},
 			{
-				displayName: 'Auth Value',
+				displayName: 'Value',
 				name: 'authValue',
 				type: 'string',
 				typeOptions: {
@@ -84,6 +84,17 @@ export class KlickTippTrigger implements INodeType {
 				},
 				default: '',
 				description: 'Expected secret value for the configured parameter',
+				displayOptions: {
+					show: {
+						enableBodyAuth: [true],
+					},
+				},
+			},
+			{
+				displayName: 'Please add that as a parameter in the KlickTipp webhook',
+				name: 'bodyAuthSetup',
+				type: 'notice',
+				default: '',
 				displayOptions: {
 					show: {
 						enableBodyAuth: [true],
