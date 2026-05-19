@@ -76,7 +76,7 @@ export class KlickTippTrigger implements INodeType {
 			},
 			{
 				displayName: 'Parameter Key',
-				name: 'authFieldName',
+				name: 'authParameterKey',
 				type: 'string',
 				default: 'Authorization',
 				description: 'Enter the exact body parameter key configured in KlickTipp. Usually: Authorization.',
@@ -88,7 +88,7 @@ export class KlickTippTrigger implements INodeType {
 			},
 			{
 				displayName: 'Parameter Value',
-				name: 'authValue',
+				name: 'authParameterValue',
 				type: 'string',
 				typeOptions: {
 					password: true,
@@ -122,11 +122,13 @@ export class KlickTippTrigger implements INodeType {
 		const authentication = this.getNodeParameter('authentication', 'no') as string;
 
 		if (authentication === 'yes') {
-			const fieldName = String(this.getNodeParameter('authFieldName', 'Authorization')).trim();
-			const expectedValue = String(this.getNodeParameter('authValue', ''));
-			const receivedValue = fieldName ? req.body?.[fieldName] : undefined;
+			const parameterKey = String(
+				this.getNodeParameter('authParameterKey', 'Authorization'),
+			).trim();
+			const expectedValue = String(this.getNodeParameter('authParameterValue', ''));
+			const receivedValue = parameterKey ? req.body?.[parameterKey] : undefined;
 
-			if (!fieldName || receivedValue !== expectedValue) {
+			if (!parameterKey || receivedValue !== expectedValue) {
 				const res = this.getResponseObject();
 				res.status(401).json({
 					message: 'Unauthorized webhook request',
