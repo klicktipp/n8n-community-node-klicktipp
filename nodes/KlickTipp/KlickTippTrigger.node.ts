@@ -57,47 +57,59 @@ export class KlickTippTrigger implements INodeType {
 				default: '',
 			},
 			{
-				displayName: 'Authentication via body',
-				name: 'enableBodyAuth',
-				type: 'boolean',
-				default: false,
-				description: 'Whether to validate a secret value from the incoming webhook body',
+				displayName: 'Authentication',
+				name: 'authentication',
+				type: 'options',
+				noDataExpression: true,
+				default: 'no',
+				description: 'Choose "Yes" only if your KlickTipp webhook sends auth in the POST body as a static parameter. Choose "No" if no auth is required.',
+				options: [
+					{
+						name: 'No',
+						value: 'no',
+					},
+					{
+						name: 'Yes',
+						value: 'yes',
+					},
+				],
 			},
 			{
-				displayName: 'Name',
+				displayName: 'Parameter Key',
 				name: 'authFieldName',
 				type: 'string',
 				default: 'Authorization',
-				description: 'Expected name for the configured parameter',
+				description: 'Enter the exact body parameter key configured in KlickTipp. Usually: Authorization.',
 				displayOptions: {
 					show: {
-						enableBodyAuth: [true],
+						authentication: ['yes'],
 					},
 				},
 			},
 			{
-				displayName: 'Value',
+				displayName: 'Parameter Value',
 				name: 'authValue',
 				type: 'string',
 				typeOptions: {
 					password: true,
 				},
 				default: '',
-				description: 'Expected secret value for the configured parameter',
+				description: 'Paste the webhook token exactly as stored in KlickTipp. Do not add "Bearer", quotes, or extra spaces.',
 				displayOptions: {
 					show: {
-						enableBodyAuth: [true],
+						authentication: ['yes'],
 					},
 				},
 			},
 			{
-				displayName: 'Please add that as a parameter in the KlickTipp webhook',
+				displayName:
+					'In KlickTipp, create/edit your webhook, set the HTTP method to POST, enable "Add static value", and add the same key-value pair as a static POST body parameter. If this is missing, body authentication will fail.',
 				name: 'bodyAuthSetup',
 				type: 'notice',
 				default: '',
 				displayOptions: {
 					show: {
-						enableBodyAuth: [true],
+						authentication: ['yes'],
 					},
 				},
 			},
@@ -107,9 +119,9 @@ export class KlickTippTrigger implements INodeType {
 	// Handles the POST webhook request from KlickTipp.
 	async webhook(this: IWebhookFunctions): Promise<IWebhookResponseData> {
 		const req = this.getRequestObject();
-		const enableBodyAuth = this.getNodeParameter('enableBodyAuth', false) as boolean;
+		const authentication = this.getNodeParameter('authentication', 'no') as string;
 
-		if (enableBodyAuth) {
+		if (authentication === 'yes') {
 			const fieldName = String(this.getNodeParameter('authFieldName', 'Authorization')).trim();
 			const expectedValue = String(this.getNodeParameter('authValue', ''));
 			const receivedValue = fieldName ? req.body?.[fieldName] : undefined;
