@@ -170,6 +170,25 @@ To authenticate with the KlickTipp API, configure your API credentials:
 
 Once set up, these credentials will be used across all KlickTipp nodes in the package.
 
+For the **KlickTipp Trigger**, you can also optionally configure body authentication directly in the node:
+
+- **Authentication**
+  Default: `No`
+  Choose `Yes` only if your KlickTipp webhook sends auth in the POST body as a static parameter. Choose `No` if no auth is required.
+- **Parameter Key**
+  Default: `Authorization`
+  Enter the exact body parameter key configured in KlickTipp. Usually: `Authorization`.
+- **Parameter Value**
+  Default: empty
+  Paste the webhook token exactly as stored in KlickTipp. Do not add `Bearer`, quotes, or extra spaces.
+
+Info:
+In KlickTipp, create or edit your webhook, set the HTTP method to `POST`, enable `Add static value`, and add the same key-value pair as a static POST body parameter. If this is missing, body authentication will fail.
+
+`Parameter Key`, `Parameter Value`, and the info box are shown only when `Authentication` is set to `Yes`.
+
+When `Authentication` is set to `Yes`, the trigger validates the incoming webhook body before the workflow starts. If the field is missing or the value does not match, the request is rejected and the workflow does not run.
+
 ---
 
 ## Compatibility

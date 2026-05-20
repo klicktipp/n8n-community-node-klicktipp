@@ -174,3 +174,7 @@
 ## Version 1.0.39 (2026-03-31)
 - **Improvements**
 	- Changed hint display for "List Contacts" and "Search Tagged Contacts" nodes.
+
+## Version 1.0.40 (2026-05-20)
+- **New Features**
+	- Added simple auth for trigger.

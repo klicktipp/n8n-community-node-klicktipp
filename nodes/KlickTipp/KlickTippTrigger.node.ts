@@ -56,12 +56,90 @@ export class KlickTippTrigger implements INodeType {
 				type: 'notice',
 				default: '',
 			},
+			{
+				displayName: 'Authentication',
+				name: 'authentication',
+				type: 'options',
+				noDataExpression: true,
+				default: 'no',
+				description: 'Choose "Yes" only if your KlickTipp webhook sends auth in the POST body as a static parameter. Choose "No" if no auth is required.',
+				options: [
+					{
+						name: 'No',
+						value: 'no',
+					},
+					{
+						name: 'Yes',
+						value: 'yes',
+					},
+				],
+			},
+			{
+				displayName: 'Parameter Key',
+				name: 'authParameterKey',
+				type: 'string',
+				default: 'Authorization',
+				description: 'Enter the exact body parameter key configured in KlickTipp. Usually: Authorization.',
+				displayOptions: {
+					show: {
+						authentication: ['yes'],
+					},
+				},
+			},
+			{
+				displayName: 'Parameter Value',
+				name: 'authParameterValue',
+				type: 'string',
+				typeOptions: {
+					password: true,
+				},
+				default: '',
+				description: 'Paste the webhook token exactly as stored in KlickTipp. Do not add "Bearer", quotes, or extra spaces.',
+				displayOptions: {
+					show: {
+						authentication: ['yes'],
+					},
+				},
+			},
+			{
+				displayName:
+					'In KlickTipp, create/edit your webhook, set the HTTP method to POST, enable "Add static value", and add the same key-value pair as a static POST body parameter. If this is missing, body authentication will fail.',
+				name: 'bodyAuthSetup',
+				type: 'notice',
+				default: '',
+				displayOptions: {
+					show: {
+						authentication: ['yes'],
+					},
+				},
+			},
 		],
 	};
 
 	// Handles the POST webhook request from KlickTipp.
 	async webhook(this: IWebhookFunctions): Promise<IWebhookResponseData> {
 		const req = this.getRequestObject();
+		const authentication = this.getNodeParameter('authentication', 'no') as string;
+
+		if (authentication === 'yes') {
+			const parameterKey = String(
+				this.getNodeParameter('authParameterKey', 'Authorization'),
+			).trim();
+			const expectedValue = String(this.getNodeParameter('authParameterValue', ''));
+			const receivedValue = parameterKey ? req.body?.[parameterKey] : undefined;
+
+			if (!parameterKey || receivedValue !== expectedValue) {
+				const res = this.getResponseObject();
+				res.status(401).json({
+					message: 'Unauthorized webhook request',
+				});
+
+				return {
+					noWebhookResponse: true,
+				};
+			}
+		}
+
 		return {
 			workflowData: [this.helpers.returnJsonArray(req.body as IDataObject)],
 		};
