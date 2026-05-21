@@ -45,5 +45,10 @@ jobs:
       - name: Build the Package
         run: pnpm prepublishOnly
 
-      - name: Publish to npm (Trusted Publishing via OIDC)
+      - name: Publish stable release to npm (Trusted Publishing via OIDC)
+        if: ${{ !contains(github.ref_name, '-') }}
         run: pnpm publish --no-git-checks --access public
+
+      - name: Publish beta release to npm (Trusted Publishing via OIDC)
+        if: ${{ contains(github.ref_name, '-beta.') }}
+        run: pnpm publish --no-git-checks --access public --tag beta
