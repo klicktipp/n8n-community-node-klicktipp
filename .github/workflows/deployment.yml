@@ -40,7 +40,7 @@ jobs:
           fi
 
       - name: Install Dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
       - name: Build the Package
         run: pnpm prepublishOnly

@@ -38,7 +38,7 @@ export const properties: INodeProperties[] = [
 			loadOptionsMethod: 'getOptInProcesses',
 		},
 		description:
-			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 	},
 	{
@@ -51,7 +51,7 @@ export const properties: INodeProperties[] = [
 		},
 		default: '',
 		description:
-			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 	{
 		displayName: 'Data Fields',
@@ -78,7 +78,7 @@ export const properties: INodeProperties[] = [
 						},
 						default: '',
 						description:
-							'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>',
+							'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 					},
 					{
 						displayName: 'Field Value',
