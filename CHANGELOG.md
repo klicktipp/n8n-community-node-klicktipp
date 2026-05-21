@@ -178,3 +178,7 @@
 ## Version 1.0.40 (2026-05-20)
 - **New Features**
 	- Added simple auth for trigger.
+
+## Version 1.0.41 (2026-05-21)
+- **Bugfix**
+	- Corrected n8n expressions docs URLs in dynamic field descriptions to fix publish-time lint errors.
