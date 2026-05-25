@@ -182,3 +182,7 @@
 ## Version 1.0.41 (2026-05-21)
 - **Bugfix**
 	- Corrected n8n expressions docs URLs in dynamic field descriptions to fix publish-time lint errors.
+
+## Version 1.0.42-beta.0 (2026-05-25)
+- **Fixed**
+	- Replaced deprecated TypeScript `moduleResolution: "node"` with `node16` to keep the build compatible with newer TypeScript versions.
