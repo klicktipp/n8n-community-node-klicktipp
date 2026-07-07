@@ -12,13 +12,13 @@ function adjustErrorMessage(error: number, code?: number, parameters?: INodePara
 	};
 
 	if (error === 7) {
-		// Check if it's a "Tag/Untag contact contact" module
-		if (parameters?.tagId) {
-			return 'Subscriber email not found.';
+    // Check if it's "Update contact" module
+		if (parameters?.subscriberId || parameters?.identifierType) {
+			return 'Field validation failed.';
 		}
 
-		// Default for a "Update contact" module
-		return 'Field validation failed.';
+		// Default for tag/untag/unsubscribe modules
+		return 'Subscriber email not found.';
 	}
 
 	switch (error) {
