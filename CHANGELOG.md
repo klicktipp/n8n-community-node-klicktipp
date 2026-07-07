@@ -186,3 +186,7 @@
 ## Version 1.0.42 (2026-07-07)
 - **Bugfix**
 	- Improved the error handling logic for error 7.
+
+## Version 1.0.43 (2026-07-07)
+- **Bugfix**
+  - Fixed ESLint errors.
