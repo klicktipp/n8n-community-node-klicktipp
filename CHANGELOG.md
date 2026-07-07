@@ -182,3 +182,7 @@
 ## Version 1.0.41 (2026-05-21)
 - **Bugfix**
 	- Corrected n8n expressions docs URLs in dynamic field descriptions to fix publish-time lint errors.
+
+## Version 1.0.42 (2026-07-07)
+- **Bugfix**
+	- Improved the error handling logic for error 7.
