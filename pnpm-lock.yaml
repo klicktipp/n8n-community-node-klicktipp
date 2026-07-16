@@ -21,8 +21,8 @@ importers:
         specifier: ^8.56.0
         version: 8.57.1
       eslint-plugin-n8n-nodes-base:
-        specifier: 1.16.6
-        version: 1.16.6(eslint@8.57.1)(typescript@5.8.3)
+        specifier: 1.16.7
+        version: 1.16.7(eslint@8.57.1)(typescript@5.8.3)
       gulp:
         specifier: ^4.0.2
         version: 4.0.2
@@ -630,8 +630,8 @@ packages:
   eslint-config-riot@1.0.0:
     resolution: {integrity: sha512-NB/L/1Y30qyJcG5xZxCJKW/+bqyj+llbcCwo9DEz8bESIP0SLTOQ8T1DWCCFc+wJ61AMEstj4511PSScqMMfCw==}
 
-  eslint-plugin-n8n-nodes-base@1.16.6:
-    resolution: {integrity: sha512-heQzTeNmCTxElMLrtRAeWtreaXe9QlKEhZNRQfedtE6k15I0acNyfGvPfXwRfShAWJsAsuJYYHRtEPypeB7kyA==}
+  eslint-plugin-n8n-nodes-base@1.16.7:
+    resolution: {integrity: sha512-lKo+stn4t2jXX/ZdmJv2ClUQnRZLwSOyqfqsYgD6I/wYwy9bqA6mna4CEzdQNFVg5f3/RODpd/JQMiITARY92g==}
     engines: {node: '>=20.15', pnpm: '>=9.6'}
 
   eslint-scope@7.2.2:
@@ -2804,7 +2804,7 @@ snapshots:
 
   eslint-config-riot@1.0.0: {}
 
-  eslint-plugin-n8n-nodes-base@1.16.6(eslint@8.57.1)(typescript@5.8.3):
+  eslint-plugin-n8n-nodes-base@1.16.7(eslint@8.57.1)(typescript@5.8.3):
     dependencies:
       '@typescript-eslint/utils': 8.59.3(eslint@8.57.1)(typescript@5.8.3)
       camel-case: 4.1.2
