@@ -48,7 +48,7 @@
     ]
   },
   "devDependencies": {
-    "@n8n/node-cli": "0.48.5",
+    "@n8n/node-cli": "0.48.6",
     "@types/lodash": "^4.17.13",
     "@types/node": "^22.8.6",
     "eslint": "9.29.0",
