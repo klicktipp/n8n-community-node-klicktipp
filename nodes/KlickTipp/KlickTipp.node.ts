@@ -10,7 +10,12 @@ import { description } from './actions/node.description';
 import { router } from './actions/router';
 
 export class KlickTipp implements INodeType {
-	description: INodeTypeDescription;
+	description: INodeTypeDescription = {
+		...description,
+		icon: { light: 'file:klicktipp.svg', dark: 'file:klicktipp.dark.svg' },
+		subtitle: '={{$parameter["resource"] + ": " + $parameter["operation"]}}',
+		usableAsTool: true,
+	};
 
 	constructor(baseDescription: INodeTypeBaseDescription) {
 		this.description = {

@@ -5,6 +5,8 @@ import {
 	ILoadOptionsFunctions,
 	IPollFunctions,
 	IHttpRequestOptions,
+	JsonObject,
+	NodeApiError,
 	NodeOperationError,
 } from 'n8n-workflow';
 
@@ -93,6 +95,6 @@ export async function apiRequest(
 		if (error.httpCode === '403') {
 			return await doRequest(true);
 		}
-		throw error;
+		throw new NodeApiError(this.getNode(), error as JsonObject);
 	}
 }

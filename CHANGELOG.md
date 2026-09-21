@@ -190,3 +190,7 @@
 ## Version 1.0.43 (2026-07-07)
 - **Bugfix**
   - Fixed ESLint errors.
+
+## Version 1.0.44 (2026-09-20)
+- **Bugfix**
+    - Resolved n8n community-node review findings.

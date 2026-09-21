@@ -30,26 +30,26 @@ export const properties: INodeProperties[] = [
 		placeholder: 'Enter SMS number',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in Process',
+		displayName: 'Opt-In Process Name or ID',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
 			loadOptionsMethod: 'getOptInProcesses',
 		},
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 		default: '',
 	},
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag',
+		displayName: 'Tag Name or ID',
 		name: 'tagId',
 		type: 'options',
 		typeOptions: {
 			loadOptionsMethod: 'getTags',
 		},
 		default: '',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 	{
 		displayName: 'Data Fields',
@@ -66,8 +66,7 @@ export const properties: INodeProperties[] = [
 				displayName: 'Data Field',
 				values: [
 					{
-						// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-						displayName: 'Field Name',
+						displayName: 'Field Name or ID',
 						name: 'fieldId',
 						type: 'options',
 						required: true,
@@ -75,7 +74,8 @@ export const properties: INodeProperties[] = [
 							loadOptionsMethod: 'getFields',
 						},
 						default: '',
-						description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+						description:
+							'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 					},
 					{
 						displayName: 'Field Value',

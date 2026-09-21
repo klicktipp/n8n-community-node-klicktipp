@@ -17,7 +17,7 @@ export const properties: INodeProperties[] = [
 			{ name: 'Subscribed', value: 'subscribed' },
 			{ name: 'Unsubscribed', value: 'unsubscribed' },
 		],
-		default: []
+		default: [],
 	},
 	{
 		displayName:

@@ -1,4 +1,4 @@
-import type { IExecuteFunctions, INodeExecutionData } from 'n8n-workflow';
+import type { IExecuteFunctions, INodeExecutionData, JsonObject } from 'n8n-workflow';
 import { NodeApiError, NodeOperationError } from 'n8n-workflow';
 
 import type { KlickTippType } from './node.type';
@@ -57,14 +57,7 @@ export async function router(this: IExecuteFunctions) {
 				returnData.push(...executionErrorData);
 				continue;
 			}
-			//NodeApiError will be missing the itemIndex, add it
-			if (error instanceof NodeApiError && error?.context?.itemIndex === undefined) {
-				if (error.context === undefined) {
-					error.context = {};
-				}
-				error.context.itemIndex = i;
-			}
-			throw error;
+			throw new NodeApiError(this.getNode(), error as JsonObject, { itemIndex: i });
 		}
 	}
 	return [returnData];

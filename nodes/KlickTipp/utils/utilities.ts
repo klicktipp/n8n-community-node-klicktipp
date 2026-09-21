@@ -143,8 +143,7 @@ function getRawParameterValue(
 
 function containsVariableReference(value: unknown): boolean {
 	return (
-		typeof value === 'string' &&
-		(value.trim().startsWith('=') || /\{\{[\s\S]*\}\}/.test(value))
+		typeof value === 'string' && (value.trim().startsWith('=') || /\{\{[\s\S]*\}\}/.test(value))
 	);
 }
 
@@ -172,20 +171,14 @@ function validateSubscriberIdentifier(
 		const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 		if (!emailPattern.test(normalizedValue)) {
-			return handleError.call(
-				this,
-				'Valid email address required. Example: jsmith@example.com',
-			);
+			return handleError.call(this, 'Valid email address required. Example: jsmith@example.com');
 		}
 
 		return normalizedValue;
 	}
 
 	if (/\s/.test(normalizedValue)) {
-		return handleError.call(
-			this,
-			'Contact Identifier (ID or Key) must not contain whitespace',
-		);
+		return handleError.call(this, 'Contact Identifier (ID or Key) must not contain whitespace');
 	}
 
 	return normalizedValue;

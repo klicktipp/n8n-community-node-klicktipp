@@ -4,15 +4,15 @@ import { handleError, handleObjectResponse, updateDisplayOptions } from '../../u
 
 export const properties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Opt-in Process',
+		displayName: 'Opt-In Process Name or ID',
 		name: 'listId',
 		type: 'options',
 		typeOptions: {
 			loadOptionsMethod: 'getOptInProcesses',
 		},
 		default: '',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 ];
 

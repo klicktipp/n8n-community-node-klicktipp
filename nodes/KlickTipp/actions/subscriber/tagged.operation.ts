@@ -9,15 +9,15 @@ import {
 
 export const properties: INodeProperties[] = [
 	{
-		// eslint-disable-next-line n8n-nodes-base/node-param-display-name-wrong-for-dynamic-options
-		displayName: 'Tag',
+		displayName: 'Tag Name or ID',
 		name: 'tagId',
 		type: 'options',
 		typeOptions: {
 			loadOptionsMethod: 'getTags',
 		},
 		default: '',
-		description: 'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code-examples/expressions/">expression</a>. Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>.',
+		description:
+			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
 	},
 	{
 		displayName: 'Subscription Status',
@@ -47,7 +47,7 @@ export const properties: INodeProperties[] = [
 			{ name: 'Spam Bounce', value: 'spambounce' },
 			{ name: 'No Bounce', value: 'nobounce' },
 		],
-		default: []
+		default: [],
 	},
 	{
 		displayName:
@@ -55,7 +55,7 @@ export const properties: INodeProperties[] = [
 		name: 'infoBounceStatus',
 		type: 'notice',
 		default: '',
-	}
+	},
 ];
 
 const displayOptions = {

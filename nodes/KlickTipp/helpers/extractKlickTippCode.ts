@@ -18,14 +18,15 @@ export function extractKlickTippError(messages: string[]): KlickTippError | unde
 		if (!match) continue;
 
 		try {
-			const parsed = JSON.parse(match[0]) as any;
+			const parsed = JSON.parse(match[0]) as Record<string, unknown>;
 
 			const errorNumber = isFinite(toNumber(parsed?.error)) ? toNumber(parsed.error) : undefined;
 			const codeNumber = isFinite(toNumber(parsed?.code)) ? toNumber(parsed.code) : undefined;
 
 			const field = typeof parsed?.field === 'string' ? parsed.field.trim() : undefined;
 			const name = typeof parsed?.name === 'string' ? parsed.name.trim() : undefined;
-			const fieldValue = typeof parsed?.field_value === 'string' ? parsed.field_value.trim() : undefined;
+			const fieldValue =
+				typeof parsed?.field_value === 'string' ? parsed.field_value.trim() : undefined;
 			const reason = typeof parsed?.reason === 'string' ? parsed.reason.trim() : undefined;
 
 			// Return if we have either validation info or numeric error

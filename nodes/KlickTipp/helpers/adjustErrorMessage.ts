@@ -12,7 +12,7 @@ function adjustErrorMessage(error: number, code?: number, parameters?: INodePara
 	};
 
 	if (error === 7) {
-    // Check if it's "Update contact" module
+		// Check if it's "Update contact" module
 		if (parameters?.subscriberId || parameters?.identifierType) {
 			return 'Field validation failed.';
 		}

@@ -51,7 +51,8 @@ export const properties: INodeProperties[] = [
 		name: 'subscriberId',
 		type: 'string',
 		default: '',
-		description: 'Enter the Contact ID or Contact Key. The Contact Key may appear as a URL parameter in redirect links generated using the email editor placeholder, or custom confirmation/thank-you pages.',
+		description:
+			'Enter the Contact ID or Contact Key. The Contact Key may appear as a URL parameter in redirect links generated using the email editor placeholder, or custom confirmation/thank-you pages.',
 		placeholder: 'Enter contact ID or Key (required)',
 		displayOptions: {
 			show: { '@version': [2, 3], identifierType: ['id'] },

@@ -6,12 +6,16 @@ import {
 	INodeProperties,
 	IHttpRequestMethods,
 } from 'n8n-workflow';
-import { BASE_URL, KLICKTIPP_API_CREDENTIAL_NAME } from "../nodes/KlickTipp/helpers/constants";
+import { BASE_URL } from "../nodes/KlickTipp/helpers/constants";
 
 export class KlickTippApi implements ICredentialType {
-	name = KLICKTIPP_API_CREDENTIAL_NAME;
+	name = 'klickTippApi';
 	displayName = 'KlickTipp API';
 	documentationUrl = 'https://www.klicktipp.com/support/knowledge-base/install-klicktipp-node-n8n?source=n8n';
+	icon = {
+		light: 'file:../nodes/KlickTipp/klicktipp.svg',
+		dark: 'file:../nodes/KlickTipp/klicktipp.dark.svg',
+	} as const;
 	properties: INodeProperties[] = [
 		{
 			displayName: 'Username',
@@ -28,6 +32,7 @@ export class KlickTippApi implements ICredentialType {
 			},
 			default: '',
 		},
+		// eslint-disable-next-line @n8n/community-nodes/credential-unnecessary-password
 		{
 			displayName: 'Session Cookie',
 			name: 'sessionCookie',

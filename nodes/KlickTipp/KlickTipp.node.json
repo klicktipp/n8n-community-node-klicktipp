@@ -1,8 +1,8 @@
 {
 	"node": "n8n-nodes-klicktipp.klickTipp",
-	"nodeVersion": "1.0.43",
+	"nodeVersion": "1.0",
 	"codexVersion": "1.0.0",
-	"categories": ["KlickTipp", "Integration", "API"],
+	"categories": ["Marketing & Content"],
 	"resources": {
 		"credentialDocumentation": [
 			{

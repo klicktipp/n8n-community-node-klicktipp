@@ -1,11 +1,19 @@
 /* eslint-disable n8n-nodes-base/node-filename-against-convention */
-import { NodeConnectionType, type INodeTypeDescription } from 'n8n-workflow';
+import * as n8nWorkflow from 'n8n-workflow';
+import type { INodeTypeDescription } from 'n8n-workflow';
 
 import * as tag from './tag';
 import * as optIn from './opt-in-process';
 import * as subscriber from './subscriber';
 import * as field from './field';
 import * as contactTagging from './contact-tagging';
+
+const NodeConnectionTypes =
+	n8nWorkflow.NodeConnectionTypes ??
+	({
+		Main: (n8nWorkflow as unknown as { NodeConnectionType: { Main: string } }).NodeConnectionType
+			.Main,
+	} as const);
 
 export const description: INodeTypeDescription = {
 	displayName: 'KlickTipp',
@@ -19,9 +27,8 @@ export const description: INodeTypeDescription = {
 	defaults: {
 		name: 'KlickTipp',
 	},
-	inputs: [NodeConnectionType.Main],
-	// eslint-disable-next-line n8n-nodes-base/node-class-description-outputs-wrong
-	outputs: [NodeConnectionType.Main],
+	inputs: [NodeConnectionTypes.Main],
+	outputs: [NodeConnectionTypes.Main],
 	credentials: [
 		{
 			name: 'klickTippApi',

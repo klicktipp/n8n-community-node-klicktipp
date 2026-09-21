@@ -1,28 +1,35 @@
-/* eslint-disable n8n-nodes-base/node-filename-against-convention */
 import type {
 	IDataObject,
+	IHookFunctions,
 	IWebhookFunctions,
 	INodeType,
 	INodeTypeDescription,
 	IWebhookResponseData,
 } from 'n8n-workflow';
-import { NodeConnectionType } from 'n8n-workflow';
+import * as n8nWorkflow from 'n8n-workflow';
 
-export class KlickTippTrigger implements INodeType {
+const NodeConnectionTypes =
+	n8nWorkflow.NodeConnectionTypes ??
+	({
+		Main: (n8nWorkflow as unknown as { NodeConnectionType: { Main: string } }).NodeConnectionType
+			.Main,
+	} as const);
+
+export class KlicktippTrigger implements INodeType {
 	description: INodeTypeDescription = {
 		displayName: 'KlickTipp Trigger',
 		name: 'klicktippTrigger',
 		icon: { light: 'file:klicktipp.svg', dark: 'file:klicktipp.dark.svg' },
 		group: ['trigger'],
 		version: 1,
+		subtitle: 'on webhook event',
 		description:
 			'Triggers when a webhook event occurs in KlickTipp, such as a tag being added, an email being opened or sent, a link clicked, an SMS sent, and more.',
 		defaults: {
 			name: 'KlickTipp Trigger',
 		},
 		inputs: [],
-		/* eslint-disable n8n-nodes-base/node-class-description-outputs-wrong */
-		outputs: [NodeConnectionType.Main],
+		outputs: [NodeConnectionTypes.Main],
 		credentials: [
 			{
 				name: 'klickTippApi',
@@ -62,7 +69,8 @@ export class KlickTippTrigger implements INodeType {
 				type: 'options',
 				noDataExpression: true,
 				default: 'no',
-				description: 'Choose "Yes" only if your KlickTipp webhook sends auth in the POST body as a static parameter. Choose "No" if no auth is required.',
+				description:
+					'Choose "Yes" only if your KlickTipp webhook sends auth in the POST body as a static parameter. Choose "No" if no auth is required.',
 				options: [
 					{
 						name: 'No',
@@ -79,7 +87,8 @@ export class KlickTippTrigger implements INodeType {
 				name: 'authParameterKey',
 				type: 'string',
 				default: 'Authorization',
-				description: 'Enter the exact body parameter key configured in KlickTipp. Usually: Authorization.',
+				description:
+					'Enter the exact body parameter key configured in KlickTipp. Usually: Authorization.',
 				displayOptions: {
 					show: {
 						authentication: ['yes'],
@@ -94,7 +103,8 @@ export class KlickTippTrigger implements INodeType {
 					password: true,
 				},
 				default: '',
-				description: 'Paste the webhook token exactly as stored in KlickTipp. Do not add "Bearer", quotes, or extra spaces.',
+				description:
+					'Paste the webhook token exactly as stored in KlickTipp. Do not add "Bearer", quotes, or extra spaces.',
 				displayOptions: {
 					show: {
 						authentication: ['yes'],
@@ -114,6 +124,20 @@ export class KlickTippTrigger implements INodeType {
 				},
 			},
 		],
+	};
+
+	webhookMethods = {
+		default: {
+			async checkExists(this: IHookFunctions): Promise<boolean> {
+				return false;
+			},
+			async create(this: IHookFunctions): Promise<boolean> {
+				return true;
+			},
+			async delete(this: IHookFunctions): Promise<boolean> {
+				return true;
+			},
+		},
 	};
 
 	// Handles the POST webhook request from KlickTipp.
