@@ -19,11 +19,11 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22.22.2'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Update npm
-        run: npm install -g npm@latest
+      - name: Install compatible npm
+        run: npm install -g npm@11.5.1
 
       - name: Get pnpm Version
         id: get_pnpm_version
@@ -47,8 +47,8 @@ jobs:
 
       - name: Publish stable release to npm (Trusted Publishing via OIDC)
         if: ${{ !contains(github.ref_name, '-') }}
-        run: pnpm publish --no-git-checks --access public
+        run: npm publish --access public
 
       - name: Publish beta release to npm (Trusted Publishing via OIDC)
         if: ${{ contains(github.ref_name, '-beta.') }}
-        run: pnpm publish --no-git-checks --access public --tag beta
+        run: npm publish --access public --tag beta
