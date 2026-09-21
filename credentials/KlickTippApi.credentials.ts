@@ -32,14 +32,12 @@ export class KlickTippApi implements ICredentialType {
 			},
 			default: '',
 		},
-		// eslint-disable-next-line @n8n/community-nodes/credential-unnecessary-password
 		{
 			displayName: 'Session Cookie',
 			name: 'sessionCookie',
 			type: 'hidden',
 			typeOptions: {
 				expirable: true,
-				password: true,
 			},
 			default: '',
 		}

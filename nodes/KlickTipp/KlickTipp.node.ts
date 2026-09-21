@@ -6,7 +6,7 @@ import type {
 } from 'n8n-workflow';
 
 import { loadOptions } from './methods';
-import { description } from './actions/node.description';
+import { description } from './actions/Klicktipp.node';
 import { router } from './actions/router';
 
 export class KlickTipp implements INodeType {

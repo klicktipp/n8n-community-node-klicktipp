@@ -194,3 +194,7 @@
 ## Version 1.0.44 (2026-09-20)
 - **Bugfix**
     - Resolved n8n community-node review findings.
+
+## Version 1.0.45 (2026-09-21)
+- **Bugfix**
+    - Corrected source-level community scanner violations.
