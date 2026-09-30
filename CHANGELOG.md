@@ -1,5 +1,9 @@
 # Changelog
 
+## Version 1.0.46 (2026-09-30)
+- **Bugfix**
+  - Consolidated the node description into the canonical node implementation so community-node discovery identifies exactly one KlickTipp node.
+
 ## Version 1.0.0 (2024-11-08)
 - **Initial Release**:
   - Launched the node with core functionality, supporting essential operations and configurations.
