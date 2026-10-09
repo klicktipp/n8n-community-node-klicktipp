@@ -202,3 +202,7 @@
 ## Version 1.0.46 (2026-09-30)
 - **Bugfix**
     - Consolidated the node description into the canonical node implementation so community-node discovery identifies exactly one KlickTipp node.
+
+## Version 1.0.47 (2026-10-09)
+- **Bugfix**
+    - Restored the fully-qualified codex identifier `n8n-nodes-klicktipp.klicktipp` to match the node name required by n8n review.
