@@ -210,3 +210,4 @@
 ## Version 1.0.48 (2026-11-05)
 - **New Features**
     - Added multiple-tag subscriptions, including separate subscribe calls for SMS-only contacts.
+    - Added support for removing multiple tags from a contact.
