@@ -50,6 +50,25 @@ export const properties: INodeProperties[] = [
 		default: '',
 		description:
 			'Choose from the list, or specify an ID using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+		displayOptions: { show: { '@version': [1, 2, 3] } },
+	},
+	{
+		displayName: 'Tag Names or IDs',
+		name: 'tagIds',
+		type: 'multiOptions',
+		typeOptions: { loadOptionsMethod: 'getTagsWithoutPlaceholder' },
+		default: [],
+		description:
+			'Choose from the list, or specify IDs using an <a href="https://docs.n8n.io/code/expressions/">expression</a>',
+		displayOptions: { show: { '@version': [4] } },
+	},
+	{
+		displayName:
+			'For SMS-only contacts, each selected tag creates a separate subscribe call and increases API usage.',
+		name: 'smsTagUsageNotice',
+		type: 'notice',
+		default: '',
+		displayOptions: { show: { '@version': [4] } },
 	},
 	{
 		displayName: 'Data Fields',
@@ -102,26 +121,56 @@ export const description = updateDisplayOptions(displayOptions, properties);
 export async function execute(this: IExecuteFunctions, index: number) {
 	const email = this.getNodeParameter('email', index) as string;
 	const listId = this.getNodeParameter('listId', index) as number;
-	const tagId = this.getNodeParameter('tagId', index) as number;
+	const version = this.getNode().typeVersion ?? 1;
+	const tagIds =
+		version >= 4
+			? (this.getNodeParameter('tagIds', index, []) as string[]).filter(Boolean)
+			: [this.getNodeParameter('tagId', index, '') as string].filter(Boolean);
+	const [tagId, ...additionalTagIds] = tagIds;
 	const smsNumber = this.getNodeParameter('smsNumber', index) as string;
 	const fields = this.getNodeParameter('fields', index) as IDataObject;
 
 	// Validate that at least one of email or smsNumber is provided
-	if (!email && !smsNumber) {
+	if (version >= 4 ? !email.trim() && !smsNumber.trim() : !email && !smsNumber) {
 		return handleError.call(this, 'Email or SMS number is missing');
 	}
 
 	// Construct request body
 	const body: IDataObject = {
-		...(email && { email: email.trim() }),
-		...(smsNumber && { smsnumber: smsNumber.trim() }),
+		...((version >= 4 ? email.trim() : email) && { email: email.trim() }),
+		...((version >= 4 ? smsNumber.trim() : smsNumber) && { smsnumber: smsNumber.trim() }),
 		...(listId && { listid: listId }),
 		...(tagId && { tagid: tagId }),
 		...(fields?.dataFields && { fields: transformDataFields(fields.dataFields as IDataObject[]) }),
 	};
 
 	try {
-		const responseData = await apiRequest.call(this, 'POST', '/subscriber', body);
+		let responseData = await apiRequest.call(this, 'POST', '/subscriber', body);
+		if (version >= 4 && additionalTagIds.length) {
+			const emailValue = email.trim();
+			if (emailValue) {
+				for (const additionalTagId of additionalTagIds) {
+					await apiRequest.call(this, 'POST', '/subscriber/tag', {
+						email: emailValue,
+						tagids: [additionalTagId],
+					});
+				}
+				if (responseData.id) {
+					responseData = await apiRequest.call(
+						this,
+						'GET',
+						`/subscriber/${responseData.id as string}`,
+					);
+				}
+			} else {
+				for (const additionalTagId of additionalTagIds) {
+					responseData = await apiRequest.call(this, 'POST', '/subscriber', {
+						smsnumber: smsNumber.trim(),
+						tagid: additionalTagId,
+					});
+				}
+			}
+		}
 		return handleObjectResponse.call(this, responseData, index);
 	} catch (error) {
 		return handleError.call(this, error as NodeApiError);

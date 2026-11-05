@@ -32,6 +32,7 @@
     "format": "prettier nodes --write",
     "lint": "n8n-node lint",
     "lintfix": "n8n-node lint --fix",
+    "test": "pnpm build && node --test test/*.test.js",
     "prepublishOnly": "pnpm build && pnpm lint"
   },
   "files": [
