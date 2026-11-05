@@ -206,3 +206,7 @@
 ## Version 1.0.47 (2026-10-09)
 - **Bugfix**
     - Restored the fully-qualified codex identifier `n8n-nodes-klicktipp.klicktipp` to match the node name required by n8n review.
+
+## Version 1.0.48 (2026-11-05)
+- **New Features**
+    - Added multiple-tag subscriptions, including separate subscribe calls for SMS-only contacts.
