@@ -45,6 +45,9 @@ jobs:
       - name: Build the Package
         run: pnpm prepublishOnly
 
+      - name: Run tests
+        run: pnpm test
+
       - name: Publish stable release to npm (Trusted Publishing via OIDC)
         if: ${{ !contains(github.ref_name, '-') }}
         run: npm publish --access public

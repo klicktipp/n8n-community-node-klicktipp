@@ -24,7 +24,7 @@
     "node": ">=18.10",
     "pnpm": ">=9.1"
   },
-  "packageManager": "pnpm@9.1.4",
+  "packageManager": "pnpm@9.15.9",
   "main": "index.js",
   "scripts": {
     "build": "rm -rf dist && tsc && gulp build:icons",
@@ -49,15 +49,15 @@
     ]
   },
   "devDependencies": {
-    "@n8n/node-cli": "0.48.5",
-    "@types/lodash": "^4.17.13",
-    "@types/node": "^22.8.6",
-    "eslint": "9.29.0",
+    "@n8n/node-cli": "0.55.5",
+    "@types/lodash": "^4.17.27",
+    "@types/node": "^22.20.5",
+    "eslint": "9.39.5",
     "gulp": "^4.0.2",
-    "lodash": "^4.17.21",
-    "n8n-workflow": "^2.39.3",
-    "prettier": "^3.3.2",
-    "typescript": "^5.5.3"
+    "lodash": "^4.18.1",
+    "n8n-workflow": "^2.47.0",
+    "prettier": "^3.9.10",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "n8n-workflow": "*"
