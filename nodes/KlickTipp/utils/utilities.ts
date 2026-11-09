@@ -44,7 +44,11 @@ export function transformDataFields(dataFields: IDataObject[]): IDataObject {
 	);
 }
 
-export function handleError(this: IExecuteFunctions, error: NodeApiError | string): never {
+export function handleError(
+	this: IExecuteFunctions,
+	error: NodeApiError | string,
+	messagePrefix?: string,
+): never {
 	// A plain string was thrown
 	if (typeof error === 'string') {
 		throw new NodeOperationError(this.getNode(), error);
@@ -80,6 +84,9 @@ export function handleError(this: IExecuteFunctions, error: NodeApiError | strin
 		}
 	}
 
+	if (messagePrefix) {
+		error.description = [messagePrefix, error.description].filter(Boolean).join(' ');
+	}
 	throw error;
 }
 
