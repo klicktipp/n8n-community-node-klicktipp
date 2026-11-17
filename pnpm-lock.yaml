@@ -10,7 +10,7 @@ importers:
     devDependencies:
       '@n8n/node-cli':
         specifier: 0.57.3
-        version: 0.57.3(@browserbasehq/sdk@2.27.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.63.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(zod@3.25.76))(@ibm-cloud/watsonx-ai@1.7.16)(@opentelemetry/api@1.9.1)(@opentelemetry/sdk-trace-base@2.11.0(@opentelemetry/api@1.9.1))(@typescript-eslint/utils@8.70.0(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(ibm-cloud-sdk-core@5.6.2)(ignore@7.0.9)(jsonwebtoken@9.0.3)(n8n-workflow@2.49.0(zod@3.25.76))(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(playwright@1.63.0)(typescript@5.9.3)(ws@8.23.0)
+        version: 0.57.3(@browserbasehq/sdk@2.27.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.63.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(zod@3.25.76))(@ibm-cloud/watsonx-ai@1.7.16)(@opentelemetry/api@1.9.1)(@opentelemetry/sdk-trace-base@2.11.0(@opentelemetry/api@1.9.1))(@typescript-eslint/utils@8.70.0(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(ibm-cloud-sdk-core@5.6.2)(ignore@7.0.9)(jsonwebtoken@9.0.3)(n8n-workflow@3.3.0(zod@3.25.76))(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(playwright@1.63.0)(typescript@5.9.3)(ws@8.23.0)
       '@types/lodash':
         specifier: ^4.17.27
         version: 4.17.27
@@ -27,8 +27,8 @@ importers:
         specifier: ^4.18.1
         version: 4.18.1
       n8n-workflow:
-        specifier: ^2.47.0
-        version: 2.49.0(zod@3.25.76)
+        specifier: ^3.0.0
+        version: 3.3.0(zod@3.25.76)
       prettier:
         specifier: ^3.9.10
         version: 3.10.1
@@ -658,8 +658,8 @@ packages:
   '@n8n/constants@0.45.0':
     resolution: {integrity: sha512-osCoqBCMelr1sqHuB3gyDCaK90lhDcumP6GFbS7iiagZfYRhojNmOTCVy0O49jExwDQ5Qr0ftQOsSioghG0Aag==}
 
-  '@n8n/constants@0.46.0':
-    resolution: {integrity: sha512-XlrL02jQib/ZkGLFuefNABtgUAKAbnYA2J92Am/vkluXz5EC5aNiMKbUXRU9OBAAXL2XWgom6H+mpcfURn83Ow==}
+  '@n8n/constants@1.3.0':
+    resolution: {integrity: sha512-7psvyK63CzfLFQyoW3Fy92lHtJCzH4wq3JKJk2qY6mZW5B5607G8StF0L9llcPyenWirwUUscNarX/6ae1HMSw==}
 
   '@n8n/decorators@1.48.3':
     resolution: {integrity: sha512-CQYh6XTJhExURksc1ZMFnUGyC4F1Jl32ZsaJHLpDgVf3R07R0Bd8jF2cBCKaclvg288I8UrMj7ZSQgWf8cbpMQ==}
@@ -670,6 +670,9 @@ packages:
   '@n8n/errors@0.17.0':
     resolution: {integrity: sha512-AUSwsvbAWoII8Jkb2zhhbB7dxYoPgIynynccAcGe4abJ23jkXl5xMuyr7qFEl8PalVv1RjKEICGFAUsD4MsmBw==}
 
+  '@n8n/errors@1.3.0':
+    resolution: {integrity: sha512-CVLVTiRw+GDMHkf5ut6w/srX9g1/9W6R6QP8zW9zW0ptvY7RqEBIrJmxgYzTkFlfJWauye6PWhJmHtORfCgP1g==}
+
   '@n8n/eslint-plugin-community-nodes@0.40.0':
     resolution: {integrity: sha512-tq+aICcDb/3VcExNV3ooiN68PDN4Z5WUlAhaxzcWJ2DH5CdFBzcmKfqarCZ/Xm0stNkUhSWgvst+W7jwKBEKwg==}
     peerDependencies:
@@ -679,8 +682,8 @@ packages:
   '@n8n/expression-runtime@0.39.2':
     resolution: {integrity: sha512-q1JFwlw4GHAWrLgXogkKyFISSM3K1KwQwwc9gl8gD2JQox4/UOLa6dkGT7Gx/dYApSWJB4n6cHHO2VSPwIZxsA==}
 
-  '@n8n/expression-runtime@0.40.0':
-    resolution: {integrity: sha512-FWule2ri5vhb5md8lgq4W4AjmMTzffm9r0/k2lJxj4v9/4oTy8kwrfFSrd5U4CQ/4OWod2JdaIuFTrCYMiolnA==}
+  '@n8n/expression-runtime@1.3.0':
+    resolution: {integrity: sha512-o+izqvg2NWoUr+p20e/6094J9FmH/CRoq4hqC2tEYbiYNoQu4NuznJK7LTcs8d8z2tDdpsw56PhfaRYkAoGyWg==}
 
   '@n8n/inbound-auth@0.7.2':
     resolution: {integrity: sha512-0MarxHCQQnYmmbb9ydwbkOskPm5amTnko2bGVO+d0Egg1gYOcOUhasg3w1V6we7zzWRXwPTh+zyXUEm56M8VRg==}
@@ -699,14 +702,17 @@ packages:
   '@n8n/tournament@1.16.0':
     resolution: {integrity: sha512-WE83QQNLG4mTFuML9j20pH1+qFINErNaBt+ejJNh017Yw5G9SdvYgMeZXWFTSpAYqamcGYdbR6FT+egl6FnVHg==}
 
+  '@n8n/tournament@2.3.0':
+    resolution: {integrity: sha512-5yn2MUNWybK0T9Xsx848ntdj/RoHO19/XrrBkJG0dfSO441h4EIzjdIJIWS9cZguJbLorxHhewZM45XbDBaXYQ==}
+
   '@n8n/typescript-config@1.12.0':
     resolution: {integrity: sha512-WlUZSQZIjBH1LZNGstyqJ9TrjWJDLKtgmrwCly43h678rfoACbMfIuWmaehglZZ+Ohuh+ZWMBpJwCa0Pqzcd5w==}
 
   '@n8n/utils@1.55.0':
     resolution: {integrity: sha512-zSKRDl+gpiRjjhN+4+AL3xaXVEWlTN+qVSEhQLdYXFzfoYj8sP9qSsYZzCXkQgktQrkPmV75uX0sKJZ2CqMz1w==}
 
-  '@n8n/utils@1.56.0':
-    resolution: {integrity: sha512-TWhPxu2bpornaBYRzu/lD/WrZFRpKmRIoh3a5FfxkdttE5t76c4wtUVA0AEbuLFYua1UH+jxG33276RPgYHGgg==}
+  '@n8n/utils@2.3.0':
+    resolution: {integrity: sha512-QKqjwqqmAxtEBmDqL3iwLypqp2fhtQ+c/cxPVSUtRbAq82M10fbC90i2ZiNGrjGymHj4XusrmpSQgkTdb7jzWA==}
 
   '@n8n_io/ai-assistant-sdk@1.27.0':
     resolution: {integrity: sha512-xCELByG49K24I1rVx6o3FueAH1+cu66d7ojoQepkbfsphIK0HLZisTCZ3/MmgtZUjvXMUI0Ekg46NWHvMMcJtQ==}
@@ -2581,8 +2587,8 @@ packages:
     peerDependencies:
       zod: 3.25.76
 
-  n8n-workflow@2.49.0:
-    resolution: {integrity: sha512-NS909F/M1pxtuXUtKCM5OLjPUaT5xwwvFEZOZaD6NVXg0syWO4D69OT+qKgYQn4z03Cre3gJ0aYmiYXpGkCx0Q==}
+  n8n-workflow@3.3.0:
+    resolution: {integrity: sha512-4PVjTlbxismoWIvUUWT6dqICFimyemQyfU8us+vFLSk3BwUXGJR2xza0oua5V/JpoUed4Q+pmg5q6yOYnq4r3Q==}
     peerDependencies:
       zod: 3.25.76
 
@@ -4345,7 +4351,7 @@ snapshots:
 
   '@n8n/constants@0.45.0': {}
 
-  '@n8n/constants@0.46.0': {}
+  '@n8n/constants@1.3.0': {}
 
   '@n8n/decorators@1.48.3(zod@3.25.76)':
     dependencies:
@@ -4368,7 +4374,11 @@ snapshots:
     dependencies:
       callsites: 3.1.0
 
-  '@n8n/eslint-plugin-community-nodes@0.40.0(eslint@9.39.5)(n8n-workflow@2.49.0(zod@3.25.76))(typescript@5.9.3)':
+  '@n8n/errors@1.3.0':
+    dependencies:
+      callsites: 3.1.0
+
+  '@n8n/eslint-plugin-community-nodes@0.40.0(eslint@9.39.5)(n8n-workflow@3.3.0(zod@3.25.76))(typescript@5.9.3)':
     dependencies:
       '@n8n/utils': 1.55.0
       '@typescript-eslint/typescript-estree': 8.70.0(typescript@5.9.3)
@@ -4376,7 +4386,7 @@ snapshots:
       change-case: 5.4.4
       eslint: 9.39.5
       fastest-levenshtein: 1.0.16
-      n8n-workflow: 2.49.0(zod@3.25.76)
+      n8n-workflow: 3.3.0(zod@3.25.76)
       pluralize: 8.0.0
     transitivePeerDependencies:
       - supports-color
@@ -4399,12 +4409,12 @@ snapshots:
       transliteration: 2.3.5
       zod: 3.25.76
 
-  '@n8n/expression-runtime@0.40.0':
+  '@n8n/expression-runtime@1.3.0':
     dependencies:
       '@jitl/quickjs-wasmfile-release-sync': 0.32.0
-      '@n8n/errors': 0.17.0
-      '@n8n/tournament': 1.16.0
-      '@n8n/utils': 1.56.0
+      '@n8n/errors': 1.3.0
+      '@n8n/tournament': 2.3.0
+      '@n8n/utils': 2.3.0
       isolated-vm: 7.0.2
       jmespath: 0.16.0
       js-base64: 3.7.8
@@ -4426,12 +4436,12 @@ snapshots:
       - debug
       - supports-color
 
-  '@n8n/node-cli@0.57.3(@browserbasehq/sdk@2.27.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.63.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(zod@3.25.76))(@ibm-cloud/watsonx-ai@1.7.16)(@opentelemetry/api@1.9.1)(@opentelemetry/sdk-trace-base@2.11.0(@opentelemetry/api@1.9.1))(@typescript-eslint/utils@8.70.0(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(ibm-cloud-sdk-core@5.6.2)(ignore@7.0.9)(jsonwebtoken@9.0.3)(n8n-workflow@2.49.0(zod@3.25.76))(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(playwright@1.63.0)(typescript@5.9.3)(ws@8.23.0)':
+  '@n8n/node-cli@0.57.3(@browserbasehq/sdk@2.27.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.63.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(zod@3.25.76))(@ibm-cloud/watsonx-ai@1.7.16)(@opentelemetry/api@1.9.1)(@opentelemetry/sdk-trace-base@2.11.0(@opentelemetry/api@1.9.1))(@typescript-eslint/utils@8.70.0(eslint@9.39.5)(typescript@5.9.3))(eslint@9.39.5)(ibm-cloud-sdk-core@5.6.2)(ignore@7.0.9)(jsonwebtoken@9.0.3)(n8n-workflow@3.3.0(zod@3.25.76))(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(playwright@1.63.0)(typescript@5.9.3)(ws@8.23.0)':
     dependencies:
       '@clack/prompts': 0.11.0
       '@eslint/js': 9.39.5
       '@n8n/ai-node-sdk': 0.38.3(@browserbasehq/sdk@2.27.0)(@browserbasehq/stagehand@1.14.0(@playwright/test@1.63.0)(deepmerge@4.3.1)(dotenv@16.6.1)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(zod@3.25.76))(@ibm-cloud/watsonx-ai@1.7.16)(@opentelemetry/api@1.9.1)(@opentelemetry/sdk-trace-base@2.11.0(@opentelemetry/api@1.9.1))(ibm-cloud-sdk-core@5.6.2)(ignore@7.0.9)(jsonwebtoken@9.0.3)(openai@6.49.0(ws@8.23.0)(zod@3.25.76))(playwright@1.63.0)(ws@8.23.0)
-      '@n8n/eslint-plugin-community-nodes': 0.40.0(eslint@9.39.5)(n8n-workflow@2.49.0(zod@3.25.76))(typescript@5.9.3)
+      '@n8n/eslint-plugin-community-nodes': 0.40.0(eslint@9.39.5)(n8n-workflow@3.3.0(zod@3.25.76))(typescript@5.9.3)
       '@oclif/core': 4.14.0
       change-case: 5.4.4
       eslint: 9.39.5
@@ -4591,6 +4601,12 @@ snapshots:
       esprima-next: 5.8.4
       recast: 0.22.0
 
+  '@n8n/tournament@2.3.0':
+    dependencies:
+      ast-types: 0.16.1
+      esprima-next: 5.8.4
+      recast: 0.22.0
+
   '@n8n/typescript-config@1.12.0': {}
 
   '@n8n/utils@1.55.0':
@@ -4600,9 +4616,9 @@ snapshots:
       nanoid: 3.3.18
       semver: 7.7.3
 
-  '@n8n/utils@1.56.0':
+  '@n8n/utils@2.3.0':
     dependencies:
-      '@n8n/constants': 0.46.0
+      '@n8n/constants': 1.3.0
       jssha: 3.3.1
       nanoid: 3.3.18
       semver: 7.7.3
@@ -6647,14 +6663,14 @@ snapshots:
       - debug
       - supports-color
 
-  n8n-workflow@2.49.0(zod@3.25.76):
+  n8n-workflow@3.3.0(zod@3.25.76):
     dependencies:
       '@codemirror/autocomplete': 6.20.0
-      '@n8n/constants': 0.46.0
-      '@n8n/errors': 0.17.0
-      '@n8n/expression-runtime': 0.40.0
-      '@n8n/tournament': 1.16.0
-      '@n8n/utils': 1.56.0
+      '@n8n/constants': 1.3.0
+      '@n8n/errors': 1.3.0
+      '@n8n/expression-runtime': 1.3.0
+      '@n8n/tournament': 2.3.0
+      '@n8n/utils': 2.3.0
       ast-types: 0.16.1
       axios: 1.20.0(debug@4.4.3)
       esprima-next: 5.8.4

@@ -55,7 +55,7 @@
     "eslint": "9.39.5",
     "gulp": "^4.0.2",
     "lodash": "^4.18.1",
-    "n8n-workflow": "^2.47.0",
+    "n8n-workflow": "^3.0.0",
     "prettier": "^3.9.10",
     "typescript": "^5.9.3"
   },
