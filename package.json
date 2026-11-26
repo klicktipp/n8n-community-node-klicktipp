@@ -49,7 +49,7 @@
     ]
   },
   "devDependencies": {
-    "@n8n/node-cli": "0.57.3",
+    "@n8n/node-cli": "0.58.7",
     "@types/lodash": "^4.17.27",
     "@types/node": "^26.0.0",
     "eslint": "9.39.5",
